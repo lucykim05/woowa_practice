@@ -9,12 +9,10 @@
 ## 📮 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-  - GitHub을 활용한 제출
-    방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
+  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
     제출한다.
 - GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-  - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드)
-    참고
+  - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
   - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ## 🚨 과제 제출 전 체크 리스트 - 0점 방지
@@ -25,13 +23,17 @@
 
 ### 테스트 실행 가이드
 
-- 터미널에서 `java -version`을 실행하여 Java 버전이 11인지 확인한다. 또는 Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 11로
-  실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,  
-  Windows 사용자의 경우 `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+- 테스트 패키지 설치를 위해 `Node.js` 버전 `18.17.1` 이상이 필요하다.
+- 다음 명령어를 입력해 패키지를 설치한다.
 
+```bash
+npm install
 ```
-BUILD SUCCESSFUL in 0s
+
+- 설치가 완료되었다면, 다음 명령어를 입력해 테스트를 실행한다.
+
+```bash
+npm test
 ```
 
 ---
@@ -58,9 +60,7 @@ BUILD SUCCESSFUL in 0s
     - 제임스: 비빔밥, 김치찌개, 스시, 가츠동, 짜장면 → 매일 다른 메뉴를 먹으므로 가능
     - 포코: 비빔밥, 김치찌개, 스시, 가츠동, 짜장면 → 제임스와 메뉴가 같지만, 포코는 매번 다른 메뉴를 먹으므로 가능
 - 메뉴 추천을 완료하면 프로그램이 종료된다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시
-  받는다.
-  - `Exception`이 아닌 `IllegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
+- 사용자가 잘못된 값을 입력한 경우 `throw`문을 사용해 예외를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 
 ### 입출력 요구 사항
 
@@ -136,23 +136,29 @@ BUILD SUCCESSFUL in 0s
 
 ## 🎯 프로그래밍 요구 사항
 
-- JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle` 파일을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 가이드를
-  준수하며 프로그래밍한다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
+- Node.js 18.17.1 버전에서 실행 가능해야 한다. **Node.js 18.17.1에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
+- 프로그램 실행의 시작점은 `App.js`의 `play` 메서드이다. 아래와 같이 프로그램을 실행시킬 수 있어야 한다.
+
+**예시**
+
+```javascript
+const app = new App();
+app.play();
+```
+
+- `package.json`, `package-lock.json`을 변경할 수 없고 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않는다.
+- [JavaScript 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/javascript)을 지키면서 프로그래밍 한다
+- 프로그램 종료 시 `process.exit()`를 호출하지 않는다.
 - 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
-- 3항 연산자를 쓰지 않는다.
 - 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
   - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
-- else 예약어를 쓰지 않는다.
-  - 힌트: if 조건절에서 값을 return 하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-  - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+- else를 지양한다.
+  - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+  - 때로는 if/else, switch문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
 
 ### 카테고리와 메뉴 요구 사항
 
@@ -168,28 +174,24 @@ BUILD SUCCESSFUL in 0s
 
 #### 카테고리
 
-- 추천할
-  카테고리는 [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서
-  제공하는 `Randoms.pickNumberInRange()`에서 생성해 준 값을 이용하여 정해야 한다.
+- 추천할 카테고리는 [MissionUtils 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange()`에서 생성해 준 값을 이용하여 정해야 한다.
 
-```java
+```javascript
 // 예시 코드. 사용하는 자료 구조에 따라 난수를 적절하게 가공해도 된다.
-String category = categories.get(Randoms.pickNumberInRange(1, 5));
+const category = categories.get(Randoms.pickNumberInRange(1, 5));
 ```
 
 - 임의로 카테고리의 순서 또는 데이터를 변경하면 안 된다.
-  - `Randoms.pickNumberInRange()`의 결과가 **1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식**을 추천해야 한다.
-- 추천할 수 없는 카테고리인 경우 다시 `Randoms.pickNumberInRange()`를 통해 임의의 값을 생성해서 추천할 카테고리를 정해야 한다.
+  - `Random.pickNumberInRange()`의 결과가 **1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식**을 추천해야 한다.
+- 추천할 수 없는 카테고리인 경우 다시 `Random.pickNumberInRange()`를 통해 임의의 값을 생성해서 추천할 카테고리를 정해야 한다.
 
 #### 메뉴
 
-- 추천할 메뉴는 정해진 카테고리에 있는
-  메뉴를 [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서
-  제공하는 `Randoms.shuffle()`을 통해 임의의 순서로 섞은 후, 첫 번째 값을 사용해야 한다.
-  - 카테고리에 포함되는 메뉴 목록을 `List<String>` 형태로 준비한다.
+- 추천할 메뉴는 정해진 카테고리에 있는 메뉴를 [MissionUtils 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.shuffle()`을 통해 임의의 순서로 섞은 후, 첫 번째 값을 사용해야 한다.
+  - 카테고리에 포함되는 메뉴 목록은 `문자열 배열` 형태로 담아 준비한다.
 
-```java
-String menu = Randoms.shuffle(menus).get(0);
+```javascript
+const menu = Randoms.shuffle(menus)[0];
 ```
 
 - 임의로 메뉴의 순서 또는 데이터를 변경하면 안 된다.
@@ -197,14 +199,18 @@ String menu = Randoms.shuffle(menus).get(0);
     - 코치에게 추천할 메뉴를 정할 때 이미 추천한 메뉴, 먹지 못하는 메뉴도 포함된 리스트를 전달해야 한다.
 - 추천할 수 없는 메뉴인 경우 다시 섞은 후 첫 번째 값을 사용해야 한다.
 
+### 라이브러리
+
+- `@woowacourse/mission-utils`에서 제공하는 `Console` API를 사용하여 구현해야 한다.
+  - 사용자의 값을 입력 받고 출력하기 위해서는 `Console.readLineAsync`, `Console.print`를 활용한다.
+
 ---
 
 ## ✏️ 과제 진행 요구 사항
 
-- 미션은 [java-menu](https://github.com/woowacourse-precourse/java-menu) 저장소를 Fork & Clone해 시작한다.
+- 미션은 [javascript-menu](https://github.com/woowacourse-precourse/javascript-menu) 저장소를 Fork & Clone해 시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse)
-  문서를 참고한다.
+- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
   - 소감은 간소하게 입력해도 된다. 예를 들어, "."만 입력해도 좋다.
