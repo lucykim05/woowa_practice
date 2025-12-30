@@ -23,12 +23,16 @@ export class LottoGame {
     }
   }
 
-  getLottoNumbers() {
-    return this.lottoNumbers;
-  }
-
   saveWinningNumbers(numbers) {
     this.winningNumbers = numbers;
+  }
+
+  saveBonusNumber(number) {
+    this.bonusNumber = number;
+  }
+
+  getLottoNumbers() {
+    return this.lottoNumbers;
   }
 
   getWinningNumbers() {
