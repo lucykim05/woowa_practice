@@ -3,6 +3,7 @@ import { printError, printLottery } from "../View/output.js";
 import { validator } from "../Model/validator.js";
 import { TYPE, LOTTO_PRICE } from "../constants.js";
 import { LottoGame } from "../Model/LottoGame.js";
+import { winningNumParser } from "../Model/parser.js";
 export const lottoController = async () => {
   try {
     //구입 금액 입력 및 검증
@@ -16,7 +17,8 @@ export const lottoController = async () => {
 
     //당첨 번호 입력 및 검증
     const winningNumInput = await getWinningNum();
-    validator(TYPE.WINNING, winningNumInput);
+    const parsedWinningNum = winningNumParser(winningNumInput);
+    validator(TYPE.WINNING, parsedWinningNum);
   } catch (error) {
     printError(error.message);
   }

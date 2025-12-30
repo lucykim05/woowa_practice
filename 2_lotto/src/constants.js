@@ -1,5 +1,6 @@
 export const INPUT_MSG = {
   PURCHASE_PRICE: "구입금액을 입력해 주세요.\n",
+  WINNING_NUMBER: "당첨 번호를 입력해 주세요.\n",
 };
 
 export const OUTPUT_MSG = {
@@ -24,3 +25,5 @@ export const ERROR_MSG = {
 };
 
 export const LOTTO_PRICE = 1000;
+export const LOTTO_NUMBER_COUNT = 6;
+export const DELIMITER = ",";
