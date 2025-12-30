@@ -5,10 +5,12 @@ export class LottoGame {
   winningNumbers;
   bonusNumber;
   #lottoInstances;
+  #matchResults;
 
   constructor(count) {
     this.lottoNumbers = [];
     this.#lottoInstances = [];
+    this.#matchResults = Array.from({ length: 5 }, () => 0);
 
     this.#makeLotto(count);
   }
@@ -37,5 +39,15 @@ export class LottoGame {
 
   getWinningNumbers() {
     return this.winningNumbers;
+  }
+
+  calculateResult() {
+    this.#lottoInstances.forEach((lottoInstance) => {
+      const matchIndex = lottoInstance.calculateMatch(
+        this.winningNumbers,
+        this.bonusNumber
+      );
+      this.#matchResults[matchIndex]++;
+    });
   }
 }

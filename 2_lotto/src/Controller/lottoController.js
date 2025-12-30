@@ -10,7 +10,7 @@ import { LottoGame } from "../Model/LottoGame.js";
 import { winningNumParser } from "../Model/parser.js";
 export const lottoController = async () => {
   try {
-    //로또 구입 개수
+    //로또 구입
     const purchaseCount = await purchaseProcess();
 
     //로또 게임 초기화
@@ -22,6 +22,9 @@ export const lottoController = async () => {
 
     //보너스 번호
     await bonusNumProcess(lottoGame);
+
+    //로또 당첨 계산
+    lottoGame.calculateResult();
   } catch (error) {
     printError(error.message);
   }
