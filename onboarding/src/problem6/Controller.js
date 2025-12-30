@@ -1,5 +1,3 @@
-import InputView from './Input.js';
-
 class Controller {
   findDuplicate(info) {
     const [nameArr, emailArr] = info;
