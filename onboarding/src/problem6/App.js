@@ -1,3 +1,4 @@
+import Controller from './Controller.js';
 import InputView from './Input.js';
 import Validator from './Validator.js';
 
@@ -8,6 +9,11 @@ class App {
       const info = await input.getInput();
       console.log(info); //디버깅용
       this.validate(info);
+
+      //디버깅용
+      const controller = new Controller();
+      const nameMap = controller.organizeMap(info);
+      console.log(nameMap);
     } catch (error) {
       console.error(error);
     }
