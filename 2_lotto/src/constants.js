@@ -1,9 +1,9 @@
 export const INPUT_MSG = {
-  PURCHASE_PRICE: "구입금액을 입력해 주세요.",
+  PURCHASE_PRICE: "구입금액을 입력해 주세요.\n",
 };
 
 export const OUTPUT_MSG = {
-  PURCHASE_PRICE: "개를 구매했습니다.",
+  PURCHASE_PRICE: "개를 구매했습니다.\n",
 };
 
 export const TYPE = {

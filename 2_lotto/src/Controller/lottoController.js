@@ -8,6 +8,6 @@ export const lottoController = async () => {
     const purchaseInput = await getPurchase();
     const purchasePrice = validator(TYPE.PURCHASE, purchaseInput);
   } catch (error) {
-    printError(error.messge);
+    printError(error.message);
   }
 };
