@@ -1,3 +1,11 @@
+import Input from './Input.js';
+
 class App {
-  run() {}
+  async run() {
+    const input = new Input();
+    const username = await input.getUserName();
+    console.log(username);
+  }
 }
+
+export default App;
