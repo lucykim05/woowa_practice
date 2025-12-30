@@ -1,7 +1,13 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE } from './Constants.js';
 
-class Input {
+class InputView {
+  async getInput() {
+    const num = await this.getNumber();
+    const info = await this.getInfo(num);
+    return info;
+  }
+
   async getNumber() {
     const number = await MissionUtils.Console.readLineAsync(
       MESSAGE.NUMBER_INPUT
@@ -27,4 +33,4 @@ class Input {
   }
 }
 
-export default Input;
+export default InputView;
