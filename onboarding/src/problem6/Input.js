@@ -5,6 +5,7 @@ import Validator from './Validator.js';
 class InputView {
   async getInput() {
     const num = await this.getNumber();
+    Validator.validateNum(num);
     const info = await this.getInfo(num);
     Validator.validateNumber(info, num);
     return info;
@@ -14,7 +15,7 @@ class InputView {
     const number = await MissionUtils.Console.readLineAsync(
       MESSAGE.NUMBER_INPUT
     );
-    return number;
+    return Number(number);
   }
 
   async getInfo(number) {
