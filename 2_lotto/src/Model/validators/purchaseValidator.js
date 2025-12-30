@@ -1,4 +1,4 @@
-import { LOTTO_PRICE, ERROR_MSG } from "../constants.js";
+import { LOTTO_PRICE, ERROR_MSG } from "../../constants.js";
 export const purchaseValidator = (value) => {
   const number = Number(value);
 

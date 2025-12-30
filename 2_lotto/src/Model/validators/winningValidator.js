@@ -1,4 +1,8 @@
-import { LOTTO_NUMBER_COUNT, ERROR_MSG } from "../constants.js";
+import {
+  LOTTO_NUMBER_COUNT,
+  ERROR_MSG,
+  LOTTO_NUMBER,
+} from "../../constants.js";
 import { numberValidator } from "./numberValidator.js";
 export const winningValidator = (value) => {
   if (value.length !== LOTTO_NUMBER_COUNT) throw Error(ERROR_MSG.UNVALID_COUNT);
@@ -9,6 +13,7 @@ export const winningValidator = (value) => {
 
   value.forEach((number) => {
     numberValidator(number);
-    if (number < 1 || number > 45) throw Error(ERROR_MSG.OUT_OF_RANGE);
+    if (number < LOTTO_NUMBER.MIN || number > LOTTO_NUMBER.MAX)
+      throw Error(ERROR_MSG.OUT_OF_RANGE);
   });
 };

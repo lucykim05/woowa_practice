@@ -2,9 +2,9 @@ import Lotto from "../Lotto.js";
 import { Random } from "@woowacourse/mission-utils";
 export class LottoGame {
   lottoNumbers;
+  winningNumbers;
+  bonusNumber;
   #lottoInstances;
-  #winningNumbers;
-  #bonusNumber;
 
   constructor(count) {
     this.lottoNumbers = [];
@@ -28,6 +28,10 @@ export class LottoGame {
   }
 
   saveWinningNumbers(numbers) {
-    this.#winningNumbers = numbers;
+    this.winningNumbers = numbers;
+  }
+
+  getWinningNumbers() {
+    return this.winningNumbers;
   }
 }

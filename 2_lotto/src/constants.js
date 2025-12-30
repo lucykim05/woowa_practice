@@ -1,6 +1,7 @@
 export const INPUT_MSG = {
   PURCHASE_PRICE: "구입금액을 입력해 주세요.\n",
   WINNING_NUMBER: "당첨 번호를 입력해 주세요.\n",
+  BONUS_NUMBER: "보너스 번호를 입력해 주세요.\n",
 };
 
 export const OUTPUT_MSG = {
@@ -22,8 +23,13 @@ export const ERROR_MSG = {
   UNVALID_COUNT: `[ERROR] 당첨 번호의 개수가 맞지 않습니다. 6개만 입력해주세요. `,
   OUT_OF_RANGE: `[ERROR] 숫자가 범위를 벗어났습니다. 중복되지 않는 1 ~ 45 사이의 숫자만을 입력해주세요.`,
   SAME_NUMBER: `[ERROR] 중복되는 숫자가 있습니다. 중복되지 않는 1 ~ 45 사이의 숫자만을 입력해주세요.`,
+  UNKNOWN_ERROR: `[ERROR] 알 수 없는 게임 오류입니다. 다시 시작해주세요.`,
 };
 
 export const LOTTO_PRICE = 1000;
 export const LOTTO_NUMBER_COUNT = 6;
 export const DELIMITER = ",";
+export const LOTTO_NUMBER = {
+  MIN: 1,
+  MAX: 45,
+};
