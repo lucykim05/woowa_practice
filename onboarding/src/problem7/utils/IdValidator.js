@@ -1,4 +1,4 @@
-class Validator {
+class IdValidator {
   static validateId(id) {
     this.#checkLength(id);
     this.#checkLowerCase(id);
@@ -10,10 +10,10 @@ class Validator {
   }
 
   static #checkLowerCase(id) {
-    const regex = /^[a-z]+&/;
+    const regex = /^[a-z]+$/;
     if (!regex.test(id))
       throw new Error('[ERROR] 아이디는 알파벳 소문자로만 구성 가능합니다.');
   }
 }
 
-export default Validator;
+export default IdValidator;
