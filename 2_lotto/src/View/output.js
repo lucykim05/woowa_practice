@@ -1,17 +1,14 @@
 import { Console } from "@woowacourse/mission-utils";
 import { OUTPUT_MSG } from "../constants.js";
-export const printError = (errorMsg) => {
-  Console.print(errorMsg);
-};
 
 export const printLottery = (count, numbers) => {
   Console.print(`\n${count}${OUTPUT_MSG.PURCHASE_PRICE}`);
   numbers.forEach((row) => {
-    Console.print(row);
+    Console.print(`[${[...row].join(", ")}]`);
   });
   Console.print("");
 };
 
-export const printResult = (msg) => {
+export const printMsg = (msg) => {
   Console.print(msg);
 };

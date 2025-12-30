@@ -1,4 +1,5 @@
-import { LOTTO_NUMBER_COUNT } from "./constants.js";
+import { TYPE, LOTTO_NUMBER_COUNT } from "./constants.js";
+import { validator } from "./Model/validators/validator.js";
 export class Lotto {
   #numbers;
 
@@ -11,6 +12,7 @@ export class Lotto {
     if (numbers.length !== LOTTO_NUMBER_COUNT) {
       throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
     }
+    validator(TYPE.WINNING, numbers);
   }
 
   // TODO: 추가 기능 구현

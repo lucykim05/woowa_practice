@@ -66,13 +66,13 @@ export class LottoGame {
     this.#calculateProfit();
   }
 
-  getResult() {
+  getLottoStats() {
     let resultMsg = RESULT.DEFAULT;
     this.#matchResults.forEach((result, idx) => {
       resultMsg += `\n${RESULT.MSG[idx]}${result}개`;
     });
-    resultMsg += `\n총 수익률은 ${this.#profitRate}% 입니다.`;
 
+    resultMsg += `\n총 수익률은 ${this.#profitRate}%입니다.`;
     return resultMsg;
   }
 }
