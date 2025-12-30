@@ -1,14 +1,16 @@
 import InputView from './Input.js';
 
 class Controller {
-  getCrewInfo() {
-    const input = new InputView();
-    const info = input.getInput();
-    return info;
+  findDuplicate(info) {
+    const [nameArr, emailArr] = info;
+    const nameMap = this.organizeMap(nameArr);
+    const duplicateArr = this.findDuplicateName(nameMap);
+    const idx = this.findName(duplicateArr, nameArr);
+    const result = this.getEmail(idx, emailArr);
+    return result;
   }
 
-  organizeMap(info) {
-    const nameArr = info[0];
+  organizeMap(nameArr) {
     const nameMap = new Map();
     for (const name of nameArr) {
       const dividedArr = this.divideName(name);
@@ -29,6 +31,36 @@ class Controller {
       arr.push(name.slice(i, i + 2));
     }
     return new Set(arr);
+  }
+
+  findDuplicateName(nameMap) {
+    let duplicateArr = [];
+    nameMap.forEach((value, key) => {
+      if (value >= 2) {
+        duplicateArr.push(key);
+      }
+    });
+    return duplicateArr;
+  }
+
+  findName(duplicateArr, nameArr) {
+    let arr = [];
+    for (const letter of duplicateArr) {
+      for (const name of nameArr) {
+        if (name.includes(letter)) {
+          arr.push(nameArr.indexOf(name));
+        }
+      }
+    }
+    return new Set(arr);
+  }
+
+  getEmail(idx, emailArr) {
+    let result = [];
+    for (const index of idx) {
+      result.push(emailArr[index]);
+    }
+    return result.sort();
   }
 }
 

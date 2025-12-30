@@ -3,22 +3,22 @@ import { MESSAGE } from './Constants.js';
 import Validator from './Validator.js';
 
 class InputView {
-  async getInput() {
-    const num = await this.getNumber();
+  static async getInput() {
+    const num = await InputView.getNumber();
     Validator.validateNum(num);
-    const info = await this.getInfo(num);
+    const info = await InputView.getInfo(num);
     Validator.validateNumber(info, num);
     return info;
   }
 
-  async getNumber() {
+  static async getNumber() {
     const number = await MissionUtils.Console.readLineAsync(
       MESSAGE.NUMBER_INPUT
     );
     return Number(number);
   }
 
-  async getInfo(number) {
+  static async getInfo(number) {
     let nameArr = [];
     let emailArr = [];
     MissionUtils.Console.print(
