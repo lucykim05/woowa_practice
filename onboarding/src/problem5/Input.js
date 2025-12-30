@@ -8,6 +8,11 @@ class Input {
     );
     return amount.split(',').map(Number);
   }
+
+  static async getUnit() {
+    const unit = await MissionUtils.Console.readLineAsync(MESSAGE.UNIT_INPUT);
+    return unit.split(',').map(Number);
+  }
 }
 
 export default Input;

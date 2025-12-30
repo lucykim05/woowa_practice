@@ -1,17 +1,17 @@
 class Calculator {
-  setKey() {
-    const keys = [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1];
+  static getKey(input) {
+    const keys = input.sort((a, b) => b - a);
     return keys;
   }
 
-  setResult() {
-    const result = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  static setResult(input) {
+    const result = Array(input.length).fill(0);
     return result;
   }
 
-  countAmount(amount) {
-    const keys = this.setKey();
-    const result = this.setResult();
+  static countAmount(unitInput, amount) {
+    const keys = Calculator.getKey(unitInput);
+    const result = Calculator.setResult(unitInput);
     let total = amount;
     for (let i = 0; i < keys.length; i++) {
       result[i] = Math.floor(total / keys[i]);
