@@ -11,3 +11,7 @@ export const printLottery = (count, numbers) => {
   });
   Console.print("");
 };
+
+export const printResult = (msg) => {
+  Console.print(msg);
+};

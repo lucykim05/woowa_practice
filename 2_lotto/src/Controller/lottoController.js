@@ -3,7 +3,7 @@ import {
   getWinningNumInput,
   getBonusNumInput,
 } from "../View/input.js";
-import { printError, printLottery } from "../View/output.js";
+import { printError, printLottery, printResult } from "../View/output.js";
 import { validator } from "../Model/validators/validator.js";
 import { TYPE, LOTTO_PRICE } from "../constants.js";
 import { LottoGame } from "../Model/LottoGame.js";
@@ -25,6 +25,9 @@ export const lottoController = async () => {
 
     //로또 당첨 계산
     lottoGame.calculateResult();
+
+    //결과 출력
+    printResult(lottoGame.getResult());
   } catch (error) {
     printError(error.message);
   }
