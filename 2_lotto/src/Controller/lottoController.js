@@ -1,6 +1,10 @@
-import { getPurchase, getWinningNum } from "../View/input.js";
+import {
+  getPurchaseInput,
+  getWinningNumInput,
+  getBonusNumInput,
+} from "../View/input.js";
 import { printError, printLottery } from "../View/output.js";
-import { validator } from "../Model/validator.js";
+import { validator } from "../Model/validators/validator.js";
 import { TYPE, LOTTO_PRICE } from "../constants.js";
 import { LottoGame } from "../Model/LottoGame.js";
 import { winningNumParser } from "../Model/parser.js";
@@ -14,7 +18,10 @@ export const lottoController = async () => {
     printLottery(purchaseCount, lottoGame.getLottoNumbers());
 
     //당첨 금액 저장
-    getWinning(lottoGame);
+    await getWinning(lottoGame);
+
+    //보너스 번호 저장
+    await getBonus(lottoGame);
   } catch (error) {
     printError(error.message);
   }
@@ -22,20 +29,25 @@ export const lottoController = async () => {
 
 const getPurchase = async () => {
   //구입 금액 입력 및 검증
-  const purchaseInput = await getPurchase();
+  const purchaseInput = await getPurchaseInput();
   validator(TYPE.PURCHASE, purchaseInput);
   return Number(purchaseInput) / LOTTO_PRICE;
 };
 
 const getWinning = async (lottoGame) => {
   //당첨 번호 입력, 검증, 저장
-  const winningNumInput = await getWinningNum();
+  const winningNumInput = await getWinningNumInput();
   const parsedWinningNum = winningNumParser(winningNumInput);
   validator(TYPE.WINNING, parsedWinningNum);
 
-  saveWinning(lottoGame);
+  saveWinning(lottoGame, parsedWinningNum);
 };
 
-const saveWinning = (lottoGame) => {
+const saveWinning = (lottoGame, parsedWinningNum) => {
   lottoGame.saveWinningNumbers(parsedWinningNum);
+};
+
+const getBonus = async (lottoGame) => {
+  const bonusNumInput = await getBonusNumInput();
+  validator(TYPE.BONUS, bonusNumInput, lottoGame);
 };
