@@ -31,7 +31,7 @@ class InputView {
       nameArr.push(a);
       emailArr.push(b);
     }
-    MissionUtils.Console.print('입력이 완료되었습니다.');
+    MissionUtils.Console.print('입력이 완료되었습니다.\n');
     return [nameArr, emailArr];
   }
 }
