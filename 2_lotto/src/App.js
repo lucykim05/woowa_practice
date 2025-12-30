@@ -1,5 +1,8 @@
+import { lottoController } from "./Controller/lottoController.js";
 class App {
-  async run() {}
+  async run() {
+    await lottoController();
+  }
 }
 
 export default App;
