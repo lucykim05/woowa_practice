@@ -7,9 +7,7 @@ class App {
       const info = await input.getInput();
       console.log(info);
     } catch (error) {
-      {
-        console.error(error);
-      }
+      console.error(error);
     }
   }
 }

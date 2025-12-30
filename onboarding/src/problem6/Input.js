@@ -1,10 +1,12 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE } from './Constants.js';
+import Validator from './Validator.js';
 
 class InputView {
   async getInput() {
     const num = await this.getNumber();
     const info = await this.getInfo(num);
+    Validator.validateNumber(info, num);
     return info;
   }
 
