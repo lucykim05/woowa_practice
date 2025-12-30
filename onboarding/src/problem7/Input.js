@@ -9,6 +9,12 @@ class Input {
     Validator.validateId(username);
     return username;
   }
+
+  async getFriend() {
+    const friendArr = await MissionUtils.Console.readLineAsync(
+      '친구 관계 배열을 입력해주세요.\n'
+    );
+  }
 }
 
 export default Input;
