@@ -27,7 +27,7 @@
 2. 자신의 결과물을 저장할 branch를 만든다(예 - heeju-solve)
 3. 풀고자 하는 문제에 대한 branch를 만든다(예 - heeju/baseball)
 4. 다 푼 후에 2번에서 만든 branch에 PR을 만든다(baseball을 풀었으면 heeju/baseball -> heeju-solve)
-5. 다음 문제를 풀기 전에 merge하고, 3번부터 반복한다.
+5. 다음 문제를 풀기 전에 merge하고, 문제를 푼 branch 삭제 후(너무 많아지면 불편), 3번부터 반복한다.
 
 ### 문제 푸는 방법
 
@@ -39,3 +39,4 @@
 ### 리뷰방법
 
 각 문제마다 다른 PR을 생성하기 위해 불가피하게 merge된 이후의 PR을 리뷰해야할 것 같아 closed에서 찾아주시면 좋을 것 같습니다.
+
