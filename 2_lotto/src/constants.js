@@ -3,7 +3,7 @@ export const INPUT_MSG = {
 };
 
 export const OUTPUT_MSG = {
-  PURCHASE_PRICE: "개를 구매했습니다.\n",
+  PURCHASE_PRICE: "개를 구매했습니다.",
 };
 
 export const TYPE = {

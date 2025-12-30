@@ -12,6 +12,7 @@ export const lottoController = async () => {
 
     //로또 게임 초기화
     const lottoGame = new LottoGame(purchaseCount);
+    printLottery(purchaseCount, lottoGame.getLottoNumbers());
   } catch (error) {
     printError(error.message);
   }
