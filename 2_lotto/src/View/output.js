@@ -5,8 +5,9 @@ export const printError = (errorMsg) => {
 };
 
 export const printLottery = (count, numbers) => {
-  Console.print(`${count}${OUTPUT_MSG.PURCHASE_PRICE}`);
+  Console.print(`\n${count}${OUTPUT_MSG.PURCHASE_PRICE}`);
   numbers.forEach((row) => {
     Console.print(row);
   });
+  Console.print("");
 };

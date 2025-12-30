@@ -9,8 +9,6 @@ export class LottoGame {
   constructor(count) {
     this.lottoNumbers = [];
     this.#lottoInstances = [];
-    this.#winningNumbers = [];
-    this.#bonusNumber = 0;
 
     this.#makeLotto(count);
   }
@@ -27,5 +25,9 @@ export class LottoGame {
 
   getLottoNumbers() {
     return this.lottoNumbers;
+  }
+
+  saveWinningNumbers(numbers) {
+    this.#winningNumbers = numbers;
   }
 }

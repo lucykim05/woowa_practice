@@ -15,10 +15,11 @@ export const lottoController = async () => {
     const lottoGame = new LottoGame(purchaseCount);
     printLottery(purchaseCount, lottoGame.getLottoNumbers());
 
-    //당첨 번호 입력 및 검증
+    //당첨 번호 입력, 검증, 저장
     const winningNumInput = await getWinningNum();
     const parsedWinningNum = winningNumParser(winningNumInput);
     validator(TYPE.WINNING, parsedWinningNum);
+    lottoGame.saveWinningNumbers(parsedWinningNum);
   } catch (error) {
     printError(error.message);
   }
