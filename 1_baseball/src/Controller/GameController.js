@@ -28,11 +28,18 @@ class GameController {
   }
 
   #setAnswer() {
-    const arr = MissionUtils.Random.pickUniqueNumbersInRange(1, 9, 3);
-    const answerNumber = Number(arr.join(''));
+    const arr = [];
+    while (arr.length < 3) {
+      const number = MissionUtils.Random.pickNumberInRange(1, 9);
+      if (!arr.includes(number)) {
+        arr.push(number);
+      }
+    }
+    const answerNumber = arr.join('');
+    console.log(answerNumber);
     Validator.validateNumber(answerNumber);
-    this.#saveAnswerNumber(answerNumber);
-    return answerNumber;
+    this.#saveAnswerNumber(Number(answerNumber));
+    return Number(answerNumber);
   }
 
   #saveAnswerNumber(input) {

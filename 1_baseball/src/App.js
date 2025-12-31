@@ -4,12 +4,12 @@ import Output from './View/OutputView.js';
 
 class App {
   async play() {
-    try {
-      Output.printGameStart();
-      this.repeatGame();
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    Output.printGameStart();
+    await this.repeatGame();
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 
   async repeatGame() {

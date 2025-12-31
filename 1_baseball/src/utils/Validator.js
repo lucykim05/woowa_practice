@@ -2,8 +2,8 @@ import { ERROR } from '../Constants/ErrorMessage.js';
 
 class Validator {
   static validateNumber(input) {
-    this.#checkIsNumber(input);
-    this.#checkLength(String(input));
+    this.#checkIsNumber(Number(input));
+    this.#checkLength(input);
     this.#checkUnique(input);
     String(input)
       .split('')
