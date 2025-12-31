@@ -50,6 +50,7 @@ class App {
       }
     });
 
+    if (result.length > 5) return result.slice(0, 5);
     return result;
   }
 }
