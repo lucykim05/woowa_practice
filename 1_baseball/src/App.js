@@ -1,5 +1,9 @@
+import { baseballController } from "./Controller/baseballController.js";
+
 class App {
-  async run() {}
+  async run() {
+    await baseballController();
+  }
 }
 
 export default App;
