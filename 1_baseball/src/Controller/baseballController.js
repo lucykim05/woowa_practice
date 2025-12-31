@@ -1,7 +1,8 @@
-import { GAME_START_MSG } from "../constants.js";
+import { GAME_START_MSG, NUMBER, TYPE } from "../constants.js";
 
 import { Computer } from "../Model/Computer.js";
 import { userInputParser } from "../Model/parser.js";
+import { validator } from "../Model/validators/validator.js";
 
 import { getUserGuess } from "../View/input.js";
 import { printstartMsg } from "../View/output.js";
@@ -18,4 +19,6 @@ export const baseballController = async () => {
 const getUserInput = async () => {
   const rawInput = await getUserGuess();
   const parsedInput = userInputParser(rawInput);
+  validator(TYPE.GUESS, parsedInput);
+  return parsedInput.map(Number);
 };

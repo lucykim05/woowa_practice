@@ -1,3 +1,3 @@
 export const userInputParser = (input) => {
-  return input.split("").map(Number);
+  return input.split("");
 };
