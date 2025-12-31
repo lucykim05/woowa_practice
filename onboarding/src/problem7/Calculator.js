@@ -1,7 +1,8 @@
 class Calculator {
-  static calculate(friend, visitorArr, username) {
+  static calculate(friend, visitorArr, username, controller) {
+    const firstFriendArr = controller.getFirstArr();
     const scoreMap = this.#addFriendScore(friend, username);
-    const result = this.#addVisitorScore(visitorArr, scoreMap);
+    const result = this.#addVisitorScore(visitorArr, scoreMap, firstFriendArr);
     return result;
   }
 
@@ -19,12 +20,14 @@ class Calculator {
     return scoreMap;
   }
 
-  static #addVisitorScore(visitorArr, scoreMap) {
+  static #addVisitorScore(visitorArr, scoreMap, firstFriendArr) {
     for (const visitor of visitorArr) {
-      if (scoreMap.has(visitor)) {
-        scoreMap.set(visitor, scoreMap.get(visitor) + 1);
-      } else {
-        scoreMap.set(visitor, 1);
+      if (!firstFriendArr.includes(visitor)) {
+        if (scoreMap.has(visitor)) {
+          scoreMap.set(visitor, scoreMap.get(visitor) + 1);
+        } else {
+          scoreMap.set(visitor, 1);
+        }
       }
     }
     return scoreMap;
