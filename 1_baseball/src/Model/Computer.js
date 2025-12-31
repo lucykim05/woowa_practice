@@ -9,9 +9,7 @@ export class Computer {
 
   #pickRandomNum() {
     //비교하기 쉽게 오름차순 정렬하여 저장
-    this.#computerNumsArr = Random.pickUniqueNumbersInRange(1, 9, 3).sort(
-      (a, b) => a - b
-    );
+    this.#computerNumsArr = Random.pickUniqueNumbersInRange(1, 9, 3);
   }
 
   compareNumber(userNumArr) {
@@ -38,10 +36,10 @@ export class Computer {
     if (result[RESULT_INDEX.STRIKE] === 3)
       return [`${result[RESULT_INDEX.STRIKE]}${RESULT_MSG.STRIKE} `, true];
     let msg = "";
-    if (result[RESULT_INDEX.STRIKE] > 0)
-      msg += `${result[RESULT_INDEX.STRIKE]}${RESULT_MSG.STRIKE} `;
     if (result[RESULT_INDEX.BALL] > 0)
-      msg += `${result[RESULT_INDEX.BALL]}${RESULT_MSG.BALL}`;
+      msg += `${result[RESULT_INDEX.BALL]}${RESULT_MSG.BALL} `;
+    if (result[RESULT_INDEX.STRIKE] > 0)
+      msg += `${result[RESULT_INDEX.STRIKE]}${RESULT_MSG.STRIKE}`;
 
     return [msg, false];
   }
