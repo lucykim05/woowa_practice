@@ -4,7 +4,7 @@ import FriendValidator from './utils/FriendValidator.js';
 import VisitorValidator from './utils/VisitorValidator.js';
 
 class Input {
-  async getUserName() {
+  async readUserName() {
     const username = await MissionUtils.Console.readLineAsync(
       '유저 이름을 입력해주세요.\n'
     );
@@ -12,7 +12,7 @@ class Input {
     return username;
   }
 
-  async getFriend() {
+  async readFriend() {
     const input = await MissionUtils.Console.readLineAsync(
       '친구 관계 배열을 입력해주세요.\n'
     );
@@ -21,7 +21,7 @@ class Input {
     return friendArr;
   }
 
-  async getVisitor() {
+  async readVisitor() {
     const input = await MissionUtils.Console.readLineAsync(
       '방문객 배열을 입력해주세요.\n'
     );

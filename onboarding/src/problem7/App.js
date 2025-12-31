@@ -1,12 +1,15 @@
 import Input from './Input.js';
+import Controller from './Controller.js';
 
 class App {
   async run() {
     try {
       const input = new Input();
-      const username = await input.getUserName();
-      const friendArr = await input.getFriend();
+      const name = await input.readUserName();
+      const friendArr = await input.readFriend();
       console.log(friendArr);
+      const friend = Controller.getNewFriend(name, friendArr);
+      console.log(friend);
     } catch (error) {
       console.error(error);
     }
