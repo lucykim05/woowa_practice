@@ -1,14 +1,15 @@
 import Input from './Input.js';
 import Controller from './Controller.js';
 import Calculator from './Calculator.js';
+import Output from './Output.js';
 
 class App {
   async run() {
     try {
-      const scoreResult = this.#calculate();
+      const scoreResult = await this.#calculate();
       const sortedMap = this.#sort(scoreResult);
       const result = this.#recommand(sortedMap);
-      console.log(result);
+      Output.printResult(result);
     } catch (error) {
       console.error(error);
     }
