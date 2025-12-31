@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Validator from '../utils/Validator.js';
 import GameRound from './GameRound.js';
-import InputView from '../View/InputView.js';
+import Output from '../View/OutputView.js';
 
 class GameController {
   constructor() {
@@ -10,11 +10,13 @@ class GameController {
   }
 
   async play() {
-    const answerNumber = this.setAnswer();
-    await this.playGame(answerNumber);
+    const answerNumber = this.#setAnswer();
+    await this.#playGame(answerNumber);
+    const count = this.getTryCount();
+    Output.printGameResult(count);
   }
 
-  async playGame(answerNumber) {
+  async #playGame(answerNumber) {
     const gameRound = new GameRound(answerNumber);
     while (true) {
       const result = await gameRound.playRound(answerNumber);
@@ -25,7 +27,7 @@ class GameController {
     }
   }
 
-  setAnswer() {
+  #setAnswer() {
     const arr = MissionUtils.Random.pickUniqueNumbersInRange(1, 9, 3);
     const answerNumber = Number(arr.join(''));
     Validator.validateNumber(answerNumber);
@@ -39,6 +41,10 @@ class GameController {
 
   getAnswerNumber() {
     return this.answerNumber;
+  }
+
+  getTryCount() {
+    return this.tryCount;
   }
 }
 
