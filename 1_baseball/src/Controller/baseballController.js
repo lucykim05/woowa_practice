@@ -5,16 +5,19 @@ import { userInputParser } from "../Model/parser.js";
 import { validator } from "../Model/validators/validator.js";
 
 import { getUserGuess } from "../View/input.js";
-import { printstartMsg } from "../View/output.js";
+import { printMsg } from "../View/output.js";
 
 export const baseballController = async () => {
-  printstartMsg(GAME_START_MSG);
+  printMsg(GAME_START_MSG);
 
   while (true) {
     const computer = new Computer();
     const userGuess = await getUserInput();
 
-    computer.compareNumber(userGuess);
+    const [resultMsg, isOver] = computer.compareNumber(userGuess); // 리턴 값 : [메세지, 종료 여부]
+    if (!isOver) {
+      printMsg(resultMsg);
+    }
   }
 };
 

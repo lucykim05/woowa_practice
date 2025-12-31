@@ -32,15 +32,17 @@ export class Computer {
     return this.#resultMsg(result);
   }
 
+  //리턴 값 : [메세지, 종료 여부]
   #resultMsg(result) {
-    if (result[RESULT_INDEX.NOTHING]) return RESULT_MSG.NOTHING;
-
+    if (result[RESULT_INDEX.NOTHING]) return [RESULT_MSG.NOTHING, false];
+    if (result[RESULT_INDEX.STRIKE] === 3)
+      return [`${result[RESULT_INDEX.STRIKE]}${RESULT_MSG.STRIKE} `, true];
     let msg = "";
     if (result[RESULT_INDEX.STRIKE] > 0)
       msg += `${result[RESULT_INDEX.STRIKE]}${RESULT_MSG.STRIKE} `;
     if (result[RESULT_INDEX.BALL] > 0)
       msg += `${result[RESULT_INDEX.BALL]}${RESULT_MSG.BALL}`;
 
-    return msg;
+    return [msg, false];
   }
 }
