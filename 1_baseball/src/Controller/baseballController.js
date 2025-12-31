@@ -1,4 +1,4 @@
-import { GAME_START_MSG, TYPE } from "../constants.js";
+import { GAME_START_MSG, TYPE, GAME_OVER_MSG } from "../constants.js";
 
 import { Computer } from "../Model/Computer.js";
 import { userInputParser } from "../Model/parser.js";
@@ -46,6 +46,8 @@ const getUserInput = async () => {
 
 const gameOverProcess = async (resultMsg) => {
   printMsg(resultMsg);
+  printMsg(GAME_OVER_MSG);
+
   const gameOverInput = await getGameOverInput();
   validator(TYPE.GAMEOVER, gameOverInput);
 
