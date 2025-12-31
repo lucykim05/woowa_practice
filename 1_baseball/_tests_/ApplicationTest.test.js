@@ -13,10 +13,16 @@ const mockQuestions = (inputs) => {
 };
 
 const mockRandoms = (numbers) => {
-  Random.pickNumberInRange = jest.fn();
-  numbers.reduce((acc, number) => {
+  Random.pickUniqueNumbersInRange = jest.fn();
+
+  const messages = [];
+  for (let i = 0; i < numbers.length; i += 3) {
+    messages.push(numbers.slice(i, i + 3));
+  }
+
+  messages.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
-  }, Random.pickNumberInRange);
+  }, Random.pickUniqueNumbersInRange);
 };
 
 const getLogSpy = () => {
