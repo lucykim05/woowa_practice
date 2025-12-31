@@ -1,5 +1,6 @@
 import InputView from '../View/InputView.js';
-import Output from '../View/OutputView.js';
+import OutputView from '../View/OutputView.js';
+import Calculator from './Calculator.js';
 
 class GameRound {
   constructor(answerNumber) {
@@ -8,19 +9,20 @@ class GameRound {
   }
 
   async playRound() {
+    const answerNumber = this.answerNumber;
     const userNumber = await this.#getUserNumber();
-    const result = this.#getResult(userNumber);
-    Output.printRoundResult(result);
+    const result = this.#getResult(userNumber, answerNumber);
+    OutputView.printRoundResult(result);
     return result;
   }
 
-  #getResult(input) {
-    //calculator
+  #getResult(userNumber, answerNumber) {
+    const result = Calculator.calculate(userNumber, answerNumber);
+    return result;
   }
 
   async #getUserNumber() {
-    const input = new InputView();
-    const num = await input.readInput();
+    const num = await InputView.readInput();
     this.#saveUserNumber(num);
     return num;
   }

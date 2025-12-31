@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import Validator from '../utils/Validator.js';
 import GameRound from './GameRound.js';
-import Output from '../View/OutputView.js';
+import OutputView from '../View/OutputView.js';
 
 class GameController {
   constructor() {
@@ -13,7 +13,7 @@ class GameController {
     const answerNumber = this.#setAnswer();
     await this.#playGame(answerNumber);
     const count = this.getTryCount();
-    Output.printGameResult(count);
+    OutputView.printGameResult(count);
   }
 
   async #playGame(answerNumber) {

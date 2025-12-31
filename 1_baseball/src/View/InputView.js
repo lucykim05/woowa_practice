@@ -3,7 +3,7 @@ import { MESSAGE } from '../Constants/Message.js';
 import Validator from '../utils/Validator.js';
 
 class InputView {
-  async readInput() {
+  static async readInput() {
     const number = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_NUMBER
     );
@@ -11,10 +11,10 @@ class InputView {
     return Number(number);
   }
 
-  async readStart() {
+  static async readStart() {
     const start = await MissionUtils.Console.readLineAsync(MESSAGE.READ_RETRY);
-    Validator.validateStart(start);
-    return start;
+    Validator.validateStart(Number(start));
+    return Number(start);
   }
 }
 

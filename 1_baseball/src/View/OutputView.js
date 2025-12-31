@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../Constants/Message.js';
 
-class Output {
+class OutputView {
   static printGameStart() {
     MissionUtils.Console.print(MESSAGE.START_GAME);
   }
@@ -16,4 +16,4 @@ class Output {
   }
 }
 
-export default Output;
+export default OutputView;
