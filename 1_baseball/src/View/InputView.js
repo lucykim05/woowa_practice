@@ -10,6 +10,10 @@ class InputView {
     Validator.validateNumber(number);
     return number;
   }
+
+  async readStart() {
+    const start = await MissionUtils.Console.readLineAsync(MESSAGE.READ_RETRY);
+  }
 }
 
 export default InputView;
