@@ -13,6 +13,8 @@ class InputView {
 
   async readStart() {
     const start = await MissionUtils.Console.readLineAsync(MESSAGE.READ_RETRY);
+    Validator.validateStart(start);
+    return start;
   }
 }
 

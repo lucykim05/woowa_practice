@@ -32,6 +32,17 @@ class Validator {
     const unique = [...new Set(arr)];
     if (unique.length !== arr.length) throw new Error(ERROR.NOT_UNIQUE);
   }
+
+  //======================================//
+
+  static validateStart(input) {
+    this.#checkIsNumber(input);
+    this.#checkRange(input);
+  }
+
+  static #checkRange(input) {
+    if (input !== 1 && input !== 2) throw new Error(ERROR.NOT_IN_RANGE);
+  }
 }
 
 export default Validator;
