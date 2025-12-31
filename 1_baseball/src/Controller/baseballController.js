@@ -13,6 +13,8 @@ export const baseballController = async () => {
   while (true) {
     const computer = new Computer();
     const userGuess = await getUserInput();
+
+    computer.compareNumber(userGuess);
   }
 };
 

@@ -12,6 +12,18 @@ export const NUMBER = {
   MAX: 9,
 };
 
+export const RESULT_INDEX = {
+  STRIKE: 0,
+  BALL: 1,
+  NOTHING: 2,
+};
+
+export const RESULT_MSG = {
+  STRIKE: "스트라이크",
+  BALL: "볼",
+  NOTHING: "낫싱",
+};
+
 export const ERROR = {
   UNVALID_LENGTH:
     "[ERROR] 숫자의 개수가 맞지 않습니다. 세자리 숫자를 입력해주세요.",
