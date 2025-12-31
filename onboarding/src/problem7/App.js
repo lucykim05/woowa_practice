@@ -1,5 +1,6 @@
 import Input from './Input.js';
 import Controller from './Controller.js';
+import Calculator from './Calculator.js';
 
 class App {
   async run() {
@@ -7,12 +8,15 @@ class App {
       const input = new Input();
       const name = await input.readUserName();
       const friendArr = await input.readFriend();
-      console.log(friendArr);
-      const friend = Controller.getNewFriend(name, friendArr);
-      console.log(friend);
+      const visitorArr = await input.readVisitor();
     } catch (error) {
       console.error(error);
     }
+  }
+
+  recommand(username, friendArr, visitorArr) {
+    const friend = Controller.getNewFriend(username, friendArr);
+    const scoreResult = Calculator.calculate(friend, visitorArr, username);
   }
 }
 
