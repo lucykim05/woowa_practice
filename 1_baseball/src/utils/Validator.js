@@ -3,9 +3,9 @@ import { ERROR } from '../Constants/ErrorMessage.js';
 class Validator {
   static validateNumber(input) {
     this.#checkIsNumber(input);
-    this.#checkLength(input);
+    this.#checkLength(String(input));
     this.#checkUnique(input);
-    input
+    String(input)
       .split('')
       .map(Number)
       .forEach((x) => {

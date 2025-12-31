@@ -7,8 +7,8 @@ class InputView {
     const number = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_NUMBER
     );
-    Validator.validateNumber(number);
-    return number;
+    Validator.validateNumber(Number(number));
+    return Number(number);
   }
 
   async readStart() {
