@@ -16,7 +16,7 @@ Computer.js
 
 parser.js
 
-- [ ] 사용자 입력을 정해진 delimiter로 split하여 리턴
+- [x] 사용자 입력을 split하고, 숫자로 형변환 하여 리턴
 
 userGuessValidator.js
 
@@ -55,7 +55,7 @@ baseballController.js
 
 - [x] 사용자 입력 요청
 
-  - [ ] 사용자 입력 파싱 요청
+  - [x] 사용자 입력 파싱 요청
   - [ ] 사용자 입력 검증 요청
 
 - [ ] 컴퓨터 객체에 사용자 배열 비교 요청
