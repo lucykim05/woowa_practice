@@ -12,11 +12,19 @@ export const baseballController = async () => {
 
   while (true) {
     const computer = new Computer();
+    const gameOver = await makeGuess(computer);
+
+    if (gameOver) return;
+  }
+};
+
+const makeGuess = async (computer) => {
+  while (true) {
     const userGuess = await getUserInput();
 
     const [resultMsg, isStrike] = computer.compareNumber(userGuess); // 리턴 값 : [메세지, 종료 여부]
     if (isStrike) {
-      const isGameOver = await gameOverProcess(resultMsg);
+      return await gameOverProcess(resultMsg);
     }
 
     printMsg(resultMsg);
@@ -35,7 +43,7 @@ const gameOverProcess = async (resultMsg) => {
   const gameOverInput = await getGameOverInput();
   validator(TYPE.GAMEOVER, gameOverInput);
 
-  const answer = Number(gameOverInput);
-  if (answer === 1) return true;
+  const gameOver = Number(gameOverInput);
+  if (gameOver === 2) return true;
   return false;
 };
