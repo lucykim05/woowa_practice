@@ -12,22 +12,28 @@ export const baseballController = async () => {
 
   while (true) {
     const computer = new Computer();
-    const gameOver = await makeGuess(computer);
-
-    if (gameOver) return;
+    try {
+      const gameOver = await makeGuess(computer);
+      if (gameOver) return;
+    } catch (error) {
+      throw Error(error.message);
+    }
   }
 };
 
 const makeGuess = async (computer) => {
   while (true) {
-    const userGuess = await getUserInput();
+    try {
+      const userGuess = await getUserInput();
+      const [resultMsg, isStrike] = computer.compareNumber(userGuess); // 리턴 값 : [메세지, 종료 여부]
+      if (isStrike) {
+        return await gameOverProcess(resultMsg);
+      }
 
-    const [resultMsg, isStrike] = computer.compareNumber(userGuess); // 리턴 값 : [메세지, 종료 여부]
-    if (isStrike) {
-      return await gameOverProcess(resultMsg);
+      printMsg(resultMsg);
+    } catch (error) {
+      throw Error(error.message);
     }
-
-    printMsg(resultMsg);
   }
 };
 
