@@ -20,20 +20,28 @@
   - [ ] move() : 이동 시도에 대한 로직
   - [ ] retry() : 재시도 로직 → 다리 초기화
 
-validator
+Validator
 
 - [ ] 다리 검증 로직
-  - [ ] 다리 길이 : bridgeSizeValidator()
-  - [ ] 이동할 칸 : moveValidator()
-  - [ ] 라운드 종료 응답 : roundOverValidator()
+  - [x] 다리 길이 : bridgeSize()
+    - [x] 빈 값
+    - [x] 숫자가 아닌 경우
+    - [x] 범위 밖의 숫자
+  - [ ] 이동할 칸 : move()
+    - [ ] 빈 값
+    - [ ] `U` 또는 `D`가 아님
+  - [ ] 라운드 종료 응답 : roundOver()
+    - [ ] 빈 값
+    - [ ] `R` 또는 `Q`가 아님
 
 ### View
 
 - [ ] InputView
-  - [ ] readBridgeSize() : 다리 길이 입력
+  - [x] readBridgeSize() : 다리 길이 입력
   - [ ] readMoving() : 이동할 칸 입력
   - [ ] readGameCommand() : 라운드 종료 응답 입력
 - [ ] OutputView
+  - [x] printMsg() : 메세지 출력
   - [ ] printMap() : 다리 진행 결과 출력
   - [ ] printResult() : 최종 결과 출력
 
@@ -41,18 +49,18 @@ validator
 
 - [ ] bridgeGameController 함수
   - [x] 시작 메세지 출력 요청
-  - [ ] 다리 길이 입력 요청 : getBridgeSize ()
+  - [x] 다리 길이 입력 요청 : getBridgeSize ()
     - [ ] 다리 생성 요청
   - [ ] 이동할 칸 입력 요청
   - [ ] 이동 가능 여부 판별 요청
     - [ ] 만약 다리 건너기 성공 시 gameOver 함수 실행
     - [ ] 성공 시 이동할 칸 입력 요청
     - [ ] 실패 시 라운드 종료 함수 실행
-- [ ] getBridgeSize 함수 : 다리 길이 입력
+- [x] getBridgeSize 함수 : 다리 길이 입력
 
   - [x] 다리 길이 입력 요청
-  - [ ] 다리 길이 검증 요청
-    - [ ] valid한 값을 얻을 때까지 반복
+  - [x] 다리 길이 검증 요청
+    - [x] valid한 값을 얻을 때까지 반복
 
 - [ ] getMove 함수 : 이동할 칸 입력
 
@@ -84,11 +92,6 @@ validator
 
 - [ ] makeBridge(다리 사이즈, 생성된 랜덤 숫자) : 다리 생성 로직
 
-### **BridgeRandomNumberGenerator**
-
-- [ ] BridgeRandomNumberGenerator
-  - [ ] generate() : 0과 1 중 하나의 값을 반환한다.
-
 ### constants.js
 
 - [ ] 입력 메세지
@@ -103,10 +106,13 @@ validator
   - [ ] 시도 횟수 : `총 시도한 횟수:`
 
 - [ ] 에러메세지
-  - [ ] EMPTY : `[ERROR] 값이 비어있습니다. 다시 입력해주세요.`
-  - [ ] NAN : `[ERROR] 숫자가 아닙니다. 3부터 20 사이의 숫자를 입력해주세요.`
-  - [ ] OUT_OF_RANGE : `[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.`
-  - [ ] UNVALID_INPUT: `[ERROR] 알 수 없는 값입니다. 다시 입력해주세요. (소문자 불가)`
+  - [x] EMPTY : `[ERROR] 값이 비어있습니다. 다시 입력해주세요.`
+  - [x] NAN : `[ERROR] 숫자가 아닙니다. 3부터 20 사이의 숫자를 입력해주세요.`
+  - [x] OUT_OF_RANGE : `[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.`
+  - [x] UNVALID_INPUT: `[ERROR] 알 수 없는 값입니다. 다시 입력해주세요. (소문자 불가)`
+- [x] 다리 길이 제한
+  - [x] MIN : 3
+  - [x] MAX : 20
 
 ## 프로젝트 구조
 
