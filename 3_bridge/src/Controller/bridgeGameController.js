@@ -1,12 +1,16 @@
 import { OutputView } from "../View/OutputView.js";
 import { InputView } from "../View/InputView.js";
+
 import { Validator } from "../Model/validators/Validator.js";
+import { BridgeGame } from "../Model/BridgeGame.js";
 
 import { OUTPUT_MSG } from "../constants.js";
 
 export const bridgeGameController = async () => {
   OutputView.printMsg(OUTPUT_MSG.START_GAME);
   const bridgeSize = await getBridgeSize();
+
+  const bridgeGame = new BridgeGame(bridgeSize);
 };
 
 const getBridgeSize = async () => {

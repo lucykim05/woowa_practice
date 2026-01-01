@@ -15,8 +15,8 @@
 ### Model
 
 - [ ] BridgeGame 클래스
-  - [ ] constructor : 다리 생성 로직
-    - [ ] BridgeMaker 객체 활용하여 배열로 선언 ( 다리 두 개 생성 )
+  - [x] constructor : 다리 생성 로직
+    - [x] BridgeMaker 객체 활용하여 배열로 선언 ( 다리 두 개 생성하여 리턴)
   - [ ] move() : 이동 시도에 대한 로직
   - [ ] retry() : 재시도 로직 → 다리 초기화
 
@@ -50,7 +50,7 @@ Validator
 - [ ] bridgeGameController 함수
   - [x] 시작 메세지 출력 요청
   - [x] 다리 길이 입력 요청 : getBridgeSize ()
-    - [ ] 다리 생성 요청
+    - [x] 다리 생성 요청
   - [ ] 이동할 칸 입력 요청
   - [ ] 이동 가능 여부 판별 요청
     - [ ] 만약 다리 건너기 성공 시 gameOver 함수 실행
@@ -90,7 +90,7 @@ Validator
 
 ### BridgeMaker
 
-- [ ] makeBridge(다리 사이즈, 생성된 랜덤 숫자) : 다리 생성 로직
+- [x] makeBridge(다리 사이즈, 생성된 랜덤 숫자) : 다리 생성 로직
 
 ### constants.js
 
@@ -105,7 +105,7 @@ Validator
   - [ ] 성공 여부 : `게임 성공 여부:`
   - [ ] 시도 횟수 : `총 시도한 횟수:`
 
-- [ ] 에러메세지
+- [x] 에러메세지
   - [x] EMPTY : `[ERROR] 값이 비어있습니다. 다시 입력해주세요.`
   - [x] NAN : `[ERROR] 숫자가 아닙니다. 3부터 20 사이의 숫자를 입력해주세요.`
   - [x] OUT_OF_RANGE : `[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.`
