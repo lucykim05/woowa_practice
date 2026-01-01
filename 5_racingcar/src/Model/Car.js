@@ -2,6 +2,9 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import OutputView from '../View/OutputView.js';
 
 class Car {
+  #name;
+  #position;
+
   constructor(name) {
     this.name = name;
     this.position = 0;

@@ -2,6 +2,9 @@ import Car from '../Model/Car.js';
 import OutputView from '../View/OutputView.js';
 
 class GameController {
+  #names;
+  #count;
+
   constructor(names, count) {
     this.cars = names.map((x) => new Car(x));
     this.count = count;
