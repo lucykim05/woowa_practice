@@ -24,3 +24,8 @@ const getBridgeSize = async () => {
     }
   }
 };
+
+const move = async () => {
+  const rawInput = await InputView.readMoving();
+  Validator.move(rawInput);
+};

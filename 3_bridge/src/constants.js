@@ -1,5 +1,8 @@
 export const INPUT_MSG = {
   BRIDGE_SIZE: `다리의 길이를 입력해주세요.\n`,
+  MOVE: "이동할 칸을 선택해주세요. (위: U, 아래: D)\n",
+  ROUND_OVER:
+    "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n",
 };
 
 export const OUTPUT_MSG = {
@@ -9,6 +12,11 @@ export const OUTPUT_MSG = {
 export const BRIDGE_LENGTH = {
   MIN: 3,
   MAX: 20,
+};
+
+export const MOVEMENT = {
+  U: "U",
+  D: "D",
 };
 
 export const ERROR = {
