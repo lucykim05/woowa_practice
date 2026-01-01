@@ -5,7 +5,11 @@ export const InputView = {
     return await Console.readLineAsync(INPUT_MSG.BRIDGE_SIZE);
   },
 
-  readMoving() {},
+  async readMoving() {
+    return await Console.readLineAsync(INPUT_MSG.MOVE);
+  },
 
-  readGameCommand() {},
+  async readGameCommand() {
+    return await Console.readLineAsync(INPUT_MSG.ROUND_OVER);
+  },
 };
