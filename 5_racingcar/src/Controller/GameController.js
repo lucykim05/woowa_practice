@@ -1,6 +1,34 @@
+import Car from '../Model/Car.js';
+
 class GameController {
-  run() {
-    console.log('1');
+  constructor(names, count) {
+    this.cars = names.map((x) => new Car(x));
+    this.count = count;
+  }
+
+  play() {
+    const count = this.count;
+    for (let i = 0; i < count; i++) {
+      this.#round();
+    }
+  }
+
+  #round() {
+    this.cars.forEach((x) => {
+      x.move();
+    });
+  }
+
+  getWinner() {
+    const max = Math.max(...this.cars.map((x) => x.position));
+    const winner = this.cars
+      .filter((x) => x.position === max)
+      .map((x) => x.name);
+    return winner;
+  }
+
+  getCars() {
+    return this.cars;
   }
 }
 

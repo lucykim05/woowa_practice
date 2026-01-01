@@ -6,7 +6,7 @@ class Car {
     this.position = 0;
   }
 
-  #move() {
+  move() {
     const num = this.#getRandom();
     if (num >= 4) this.position++;
   }

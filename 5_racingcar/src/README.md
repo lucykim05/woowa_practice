@@ -91,8 +91,8 @@
 ### GameController
 
 - [x] 차 객체 생성
-- [ ] round 횟수 만큼 반복
-- [ ] 최종 우승자 도출
+- [x] round 횟수 만큼 반복
+- [x] 최종 우승자 도출
 
 ### NewGameController
 

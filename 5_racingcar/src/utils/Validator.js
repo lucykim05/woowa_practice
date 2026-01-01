@@ -30,7 +30,6 @@ class Validator {
   }
 
   static validateType(input) {
-    this.validateNum(input);
     if (input !== 1 && input !== 2) throw new Error(ERROR.NOT_IN_RANGE);
   }
 
