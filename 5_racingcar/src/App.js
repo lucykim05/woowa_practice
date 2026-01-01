@@ -5,8 +5,8 @@ import NewGameController from './Controller/NewGameController.js';
 class App {
   async play() {
     const gameController = await this.#selectGame();
-    gameController.play();
-    const result = gameController.getCars();
+    const result = gameController.play();
+
     console.log(result);
   }
 
@@ -21,9 +21,9 @@ class App {
 
   async #gameInput() {
     const names = await InputView.readNames();
-    console.log(names);
+
     const count = await InputView.readCount();
-    console.log(count);
+
     return new GameController(names, count);
   }
 }

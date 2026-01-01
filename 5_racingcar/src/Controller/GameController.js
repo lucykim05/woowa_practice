@@ -11,6 +11,8 @@ class GameController {
     for (let i = 0; i < count; i++) {
       this.#round();
     }
+    const winner = this.#getWinner();
+    return winner;
   }
 
   #round() {
@@ -19,7 +21,7 @@ class GameController {
     });
   }
 
-  getWinner() {
+  #getWinner() {
     const max = Math.max(...this.cars.map((x) => x.position));
     const winner = this.cars
       .filter((x) => x.position === max)
