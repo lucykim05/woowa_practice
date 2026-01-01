@@ -10,19 +10,17 @@
 
 ### Controller
 
-## 구현 기능 목록
-
 ### Model
 
-- [ ] BridgeGame 클래스
+- [x] BridgeGame 클래스
   - [x] constructor : 다리 생성 로직
     - [x] BridgeMaker 객체 활용하여 배열로 선언 ( 다리 두 개 생성하여 리턴)
   - [x] move() : 이동 시도에 대한 로직
-  - [ ] retry() : 재시도 로직 → 다리 초기화
+  - [x] retry() : 재시도 로직 → 사용자 시도 초기화
 
 Validator
 
-- [ ] 다리 검증 로직
+- [x] 다리 검증 로직
   - [x] 다리 길이 : bridgeSize()
     - [x] 빈 값
     - [x] 숫자가 아닌 경우
@@ -30,16 +28,16 @@ Validator
   - [x] 이동할 칸 : move()
     - [x] 빈 값
     - [x] `U` 또는 `D`가 아님
-  - [ ] 라운드 종료 응답 : trialOver()
-    - [ ] 빈 값
-    - [ ] `R` 또는 `Q`가 아님
+  - [x] 라운드 종료 응답 : trialOver()
+    - [x] 빈 값
+    - [x] `R` 또는 `Q`가 아님
 
 ### View
 
-- [ ] InputView
+- [x] InputView
   - [x] readBridgeSize() : 다리 길이 입력
   - [x] readMoving() : 이동할 칸 입력
-  - [ ] readGameCommand() : 라운드 종료 응답 입력
+  - [x] readGameCommand() : 라운드 종료 응답 입력
 - [x] OutputView
   - [x] printMsg() : 메세지 출력
   - [x] printMap() : 다리 진행 결과 출력
@@ -51,7 +49,7 @@ Validator
 
 ### Controller
 
-- [ ] bridgeGameController 함수
+- [x] bridgeGameController 함수
   - [x] 시작 메세지 출력 요청
   - [x] 다리 길이 입력 요청 : getBridgeSize ()
     - [x] 다리 생성 요청
@@ -59,9 +57,9 @@ Validator
   - [x] 이동 가능 여부 판별 요청
     - [x] 만약 다리 건너기 성공 시 이동할 칸 입력 요청
     - [x] 다리 완주 시 종료 함수 출력
-    - [ ] 실패 시 TrialOver 함수 실행
-      - [ ] 리턴 값이 `R` 일 시 이동할 칸 입력부터 재시작 ( 다리 길이는 유지, 진행 사항은 초기화)
-      - [ ] 리턴 값이 `Q`일 시 종료 함수 출력
+    - [x] 실패 시 gettrialOver함수 실행
+      - [x] 리턴 값이 `R` 일 시 이동할 칸 입력부터 재시작 ( 다리 길이는 유지, 진행 사항은 초기화)
+      - [x] 리턴 값이 `Q`일 시 종료 함수 출력
 - [x] getBridgeSize 함수 : 다리 길이 입력
 
   - [x] 다리 길이 입력 요청
