@@ -16,13 +16,12 @@ export const bridgeGameController = async () => {
       gameOver(bridgeGame);
       return;
     }
-
-    // const retry = await trialOver();
-    // if (retry) {
-    //   initializeProcess(bridgeGame);
-    //   return;
-    // }
-    // gameOver(bridgeGame);
+    const retry = await getTrialOver();
+    if (!retry) {
+      gameOver(bridgeGame);
+      return;
+    }
+    initializeProcess(bridgeGame);
   }
 };
 
@@ -44,13 +43,15 @@ const checkProcess = (bridgeGame) => {
   return;
 };
 
-const trialOver = async () => {
+const getTrialOver = async () => {
   const isTrialOver = await getTrialOverAnswer();
   if (isTrialOver === TRIAL.RETRY) return true;
   return false;
 };
 
-const initializeProcess = (bridgeGame) => {};
+const initializeProcess = (bridgeGame) => {
+  bridgeGame.retry();
+};
 
 const gameOver = (bridgeGame) => {
   const [process, isFinish, trial] = bridgeGame.getResult();

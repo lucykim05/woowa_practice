@@ -1,6 +1,6 @@
 import { bridgeGameController } from "./Controller/bridgeGameController.js";
 class App {
-  async run() {
+  async play() {
     await bridgeGameController();
   }
 }

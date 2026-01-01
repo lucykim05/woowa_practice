@@ -1,4 +1,4 @@
-import { BridgeMaker } from "./BridgeMaker.js";
+import { BridgeMaker } from "../BridgeMaker.js";
 import BridgeRandomNumberGenerator from "../../BridgeRandomNumberGenerator.js";
 import { MOVEMENT } from "../constants.js";
 import { PROCESS_MSG } from "../constants.js";
@@ -45,14 +45,13 @@ export class BridgeGame {
 
   #checkMove(bridge, move) {
     if (bridge[this.#round] === 1) {
-      if (move === MOVEMENT.UP) this.#move(" ", "O");
-      if (move === MOVEMENT.DOWN) this.#move("O", " ");
+      if (move === MOVEMENT.UP) this.#move("O", " ");
+      if (move === MOVEMENT.DOWN) this.#move(" ", "O");
       return true;
     }
 
-    if (move === MOVEMENT.UP) this.#move(" ", "X");
-    if (move === MOVEMENT.DOWN) this.#move("X", " ");
-    this.#trial++;
+    if (move === MOVEMENT.UP) this.#move("X", " ");
+    if (move === MOVEMENT.DOWN) this.#move(" ", "X");
     return false;
   }
 
@@ -89,5 +88,11 @@ export class BridgeGame {
     return [process, "실패", this.#trial];
   }
 
-  retry() {}
+  retry() {
+    this.#trial++;
+
+    this.#playerMoveU = [];
+    this.#playerMoveD = [];
+    this.#round = 0;
+  }
 }

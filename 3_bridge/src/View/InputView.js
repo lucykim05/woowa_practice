@@ -10,6 +10,6 @@ export const InputView = {
   },
 
   async readGameCommand() {
-    return await Console.readLineAsync(INPUT_MSG.ROUND_OVER);
+    return await Console.readLineAsync(INPUT_MSG.TRIAL_OVER);
   },
 };
