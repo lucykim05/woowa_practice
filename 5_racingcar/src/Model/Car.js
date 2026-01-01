@@ -23,6 +23,10 @@ class Car {
     const num = this.position;
     OutputView.printResult(name, num);
   }
+
+  resetPosition() {
+    this.position = 0;
+  }
 }
 
 export default Car;

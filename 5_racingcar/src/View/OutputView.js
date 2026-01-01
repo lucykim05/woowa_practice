@@ -18,6 +18,14 @@ class OutputView {
   static printNothing() {
     MissionUtils.Console.print('');
   }
+
+  static printRound(count) {
+    MissionUtils.Console.print(`${count} 라운드`);
+  }
+
+  static printNewResult(num) {
+    MissionUtils.Console.print(`${num} 라운드에 우승하셨습니다.`);
+  }
 }
 
 export default OutputView;

@@ -4,6 +4,7 @@ import NewGameController from './Controller/NewGameController.js';
 
 class App {
   async play() {
+    const retry = await InputView.read_RETRY();
     const gameController = await this.#selectGame();
     gameController.play();
   }
