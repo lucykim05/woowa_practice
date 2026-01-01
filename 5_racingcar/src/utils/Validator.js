@@ -28,6 +28,16 @@ class Validator {
   static #checkIsInteger(input) {
     if (!Number.isInteger(input)) throw new Error(ERROR.NOT_INTEGER);
   }
+
+  static validateType(input) {
+    this.validateNum(input);
+    if (input !== 1 && input !== 2) throw new Error(ERROR.NOT_IN_RANGE);
+  }
+
+  static validateRetry(input) {
+    this.#checkIsNumber(input);
+    if (input !== 0 && input !== 1) throw new Error(ERROR.NOT_IN_RANGE_RETRY);
+  }
 }
 
 export default Validator;
