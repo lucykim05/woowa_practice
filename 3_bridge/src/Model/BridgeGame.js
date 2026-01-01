@@ -13,6 +13,8 @@ export class BridgeGame {
   #round;
   #trial;
 
+  #isFinish;
+
   constructor(bridgeSize) {
     this.#bridgeSize = bridgeSize;
     this.#bridgeU = [];
@@ -21,7 +23,9 @@ export class BridgeGame {
     this.#playerMoveU = [];
     this.#playerMoveD = [];
     this.#round = 0;
-    this.#trial = 0;
+    this.#trial = 1;
+
+    this.#isFinish = false;
 
     this.#initializeBridge();
   }
@@ -33,25 +37,21 @@ export class BridgeGame {
     );
   }
 
-  #moveUP() {
+  #move(moveUp, moveDown) {
     this.#round++;
-    this.#playerMoveU.push("O");
-    this.#playerMoveD.push(" ");
-  }
-
-  #moveDOWN() {
-    this.#round++;
-    this.#playerMoveU.push(" ");
-    this.#playerMoveD.push("O");
+    this.#playerMoveU.push(moveUp);
+    this.#playerMoveD.push(moveDown);
   }
 
   #checkMove(bridge, move) {
     if (bridge[this.#round] === 1) {
-      if (move === MOVEMENT.UP) this.#moveUP();
-      if (move === MOVEMENT.DOWN) this.#moveDOWN();
+      if (move === MOVEMENT.UP) this.#move(" ", "O");
+      if (move === MOVEMENT.DOWN) this.#move("O", " ");
       return true;
     }
 
+    if (move === MOVEMENT.UP) this.#move(" ", "X");
+    if (move === MOVEMENT.DOWN) this.#move("X", " ");
     this.#trial++;
     return false;
   }
@@ -65,19 +65,28 @@ export class BridgeGame {
     let bridge1Msg = PROCESS_MSG.START + this.#playerMoveU[0];
     let bridge2Msg = PROCESS_MSG.START + this.#playerMoveD[0];
 
-    for (let i = 1; i < this.#round; i++) {
+    for (let i = 1; i < this.#round - 1; i++) {
       bridge1Msg += PROCESS_MSG.DELIMITER + this.#playerMoveU[i];
       bridge2Msg += PROCESS_MSG.DELIMITER + this.#playerMoveD[i];
     }
     bridge1Msg += PROCESS_MSG.END;
     bridge2Msg += PROCESS_MSG.END;
 
-    return [bridge1Msg, bridge2Msg];
+    return [this.#playerMoveU, this.#playerMoveD];
   }
 
   isSuccess() {
-    if (this.#round === this.bridgeSize - 1) return true;
+    if (this.#round === this.#bridgeSize) {
+      this.#isFinish = true;
+      return true;
+    }
     return false;
+  }
+
+  getResult() {
+    const process = this.getProcessMsg();
+    if (this.#isFinish) return [process, "성공", this.#trial];
+    return [process, "실패", this.#trial];
   }
 
   retry() {}

@@ -12,16 +12,17 @@ export const bridgeGameController = async () => {
   const bridgeGame = new BridgeGame(bridgeSize);
   while (true) {
     const isWin = await gameProcess(bridgeGame); //true ; 다리 건너기 성공, false ; 실패
-
     if (isWin) {
-    }
-
-    const retry = await trialOver();
-    if (!retry) {
-      gameOver();
+      gameOver(bridgeGame);
       return;
     }
-    initializeProcess();
+
+    // const retry = await trialOver();
+    // if (retry) {
+    //   initializeProcess(bridgeGame);
+    //   return;
+    // }
+    // gameOver(bridgeGame);
   }
 };
 
@@ -29,14 +30,11 @@ const gameProcess = async (bridgeGame) => {
   while (true) {
     const move = await getMove();
     const isMoveOk = bridgeGame.move(move);
-    const isSuccess = bridgeGame.isSuccess();
+    checkProcess(bridgeGame);
     if (!isMoveOk) return false;
 
-    if (isMoveOk) {
-      checkProcess(bridgeGame);
-    }
-
-    if (isSuccess) return true;
+    const isSuccess = bridgeGame.isSuccess();
+    if (isMoveOk && isSuccess) return true;
   }
 };
 
@@ -52,9 +50,12 @@ const trialOver = async () => {
   return false;
 };
 
-const initializeProcess = () => {};
+const initializeProcess = (bridgeGame) => {};
 
-const gameOver = () => {};
+const gameOver = (bridgeGame) => {
+  const [process, isFinish, trial] = bridgeGame.getResult();
+  OutputView.printResult(process, isFinish, trial);
+};
 
 const getTrialOverAnswer = async () => {
   while (true) {
