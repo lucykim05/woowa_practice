@@ -11,7 +11,7 @@ export const Validator = {
   move(input) {
     if (input.length === 0) throw Error(ERROR.EMPTY);
     if (input !== MOVEMENT.UP && input !== MOVEMENT.DOWN)
-      throw ERROR(ERROR.UNVALID_INPUT);
+      throw Error(ERROR.UNVALID_INPUT);
   },
 
   roundOver() {},

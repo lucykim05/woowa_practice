@@ -11,6 +11,14 @@ export const bridgeGameController = async () => {
   const bridgeSize = await getBridgeSize();
 
   const bridgeGame = new BridgeGame(bridgeSize);
+  await startGame(bridgeGame);
+};
+
+const startGame = async (bridgeGame) => {
+  while (true) {
+    const move = await getMove();
+    bridgeGame.move(move);
+  }
 };
 
 const getBridgeSize = async () => {
@@ -25,7 +33,14 @@ const getBridgeSize = async () => {
   }
 };
 
-const move = async () => {
-  const rawInput = await InputView.readMoving();
-  Validator.move(rawInput);
+const getMove = async () => {
+  while (true) {
+    try {
+      const rawInput = await InputView.readMoving();
+      Validator.move(rawInput);
+      return rawInput;
+    } catch (error) {
+      OutputView.printMsg(error.message);
+    }
+  }
 };

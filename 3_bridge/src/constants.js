@@ -19,6 +19,11 @@ export const MOVEMENT = {
   DOWN: "D",
 };
 
+export const PLAYER_MOVE = {
+  SUCCESS: "O",
+  FAIL: "X",
+};
+
 export const ERROR = {
   EMPTY: "[ERROR] 값이 비어있습니다. 다시 입력해주세요.",
   NAN: "[ERROR] 숫자가 아닙니다. 3부터 20 사이의 숫자를 입력해주세요.",
