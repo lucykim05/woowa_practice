@@ -1,4 +1,5 @@
 import Car from '../Model/Car.js';
+import OutputView from '../View/OutputView.js';
 
 class GameController {
   constructor(names, count) {
@@ -12,10 +13,11 @@ class GameController {
       this.#round();
     }
     const winner = this.#getWinner();
-    return winner;
+    OutputView.printWinner(winner);
   }
 
   #round() {
+    OutputView.printNothing();
     this.cars.forEach((x) => {
       x.move();
     });

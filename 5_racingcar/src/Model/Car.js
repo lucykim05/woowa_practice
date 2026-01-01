@@ -1,4 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+import OutputView from '../View/OutputView.js';
 
 class Car {
   constructor(name) {
@@ -9,11 +10,18 @@ class Car {
   move() {
     const num = this.#getRandom();
     if (num >= 4) this.position++;
+    this.#printResult();
   }
 
   #getRandom() {
     const num = MissionUtils.Random.pickNumberInRange(0, 9);
     return num;
+  }
+
+  #printResult() {
+    const name = this.name;
+    const num = this.position;
+    OutputView.printResult(name, num);
   }
 }
 

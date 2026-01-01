@@ -5,9 +5,7 @@ import NewGameController from './Controller/NewGameController.js';
 class App {
   async play() {
     const gameController = await this.#selectGame();
-    const result = gameController.play();
-
-    console.log(result);
+    gameController.play();
   }
 
   async #selectGame() {
