@@ -51,6 +51,8 @@ export class BridgeGame {
       if (move === MOVEMENT.DOWN) this.#moveDOWN();
       return true;
     }
+
+    this.#trial++;
     return false;
   }
 

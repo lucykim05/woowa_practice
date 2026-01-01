@@ -1,4 +1,4 @@
-import { ERROR, BRIDGE_LENGTH, MOVEMENT } from "../../constants.js";
+import { ERROR, BRIDGE_LENGTH, MOVEMENT, TRIAL } from "../../constants.js";
 export const Validator = {
   bridgeSize(input) {
     if (input.length === 0) throw Error(ERROR.EMPTY);
@@ -14,5 +14,9 @@ export const Validator = {
       throw Error(ERROR.UNVALID_INPUT);
   },
 
-  roundOver() {},
+  trialOver(input) {
+    if (input.length === 0) throw Error(ERROR.EMPTY);
+    if (input !== TRIAL.RETRY && input !== TRIAL.QUIT)
+      throw Error(ERROR.UNVALID_INPUT);
+  },
 };

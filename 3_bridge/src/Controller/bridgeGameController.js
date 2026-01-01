@@ -4,18 +4,25 @@ import { InputView } from "../View/InputView.js";
 import { Validator } from "../Model/validators/Validator.js";
 import { BridgeGame } from "../Model/BridgeGame.js";
 
-import { OUTPUT_MSG } from "../constants.js";
+import { OUTPUT_MSG, TRIAL } from "../constants.js";
 
 export const bridgeGameController = async () => {
   OutputView.printMsg(OUTPUT_MSG.START_GAME);
   const bridgeSize = await getBridgeSize();
-
   const bridgeGame = new BridgeGame(bridgeSize);
-  const isWin = await gameProcess(bridgeGame); //true ; 다리 건너기 성공, false ; 실패
+  while (true) {
+    const isWin = await gameProcess(bridgeGame); //true ; 다리 건너기 성공, false ; 실패
 
-  if (isWin) {
+    if (isWin) {
+    }
+
+    const retry = await trialOver();
+    if (!retry) {
+      gameOver();
+      return;
+    }
+    initializeProcess();
   }
-  trialOver();
 };
 
 const gameProcess = async (bridgeGame) => {
@@ -39,7 +46,27 @@ const checkProcess = (bridgeGame) => {
   return;
 };
 
-const trialOver = () => {};
+const trialOver = async () => {
+  const isTrialOver = await getTrialOverAnswer();
+  if (isTrialOver === TRIAL.RETRY) return true;
+  return false;
+};
+
+const initializeProcess = () => {};
+
+const gameOver = () => {};
+
+const getTrialOverAnswer = async () => {
+  while (true) {
+    try {
+      const rawInput = await InputView.readGameCommand();
+      Validator.trialOver(rawInput);
+      return rawInput;
+    } catch (error) {
+      OutputView.printMsg(error.message);
+    }
+  }
+};
 
 const getBridgeSize = async () => {
   while (true) {

@@ -1,7 +1,7 @@
 export const INPUT_MSG = {
   BRIDGE_SIZE: `다리의 길이를 입력해주세요.\n`,
   MOVE: "이동할 칸을 선택해주세요. (위: U, 아래: D)\n",
-  ROUND_OVER:
+  TRIAL_OVER:
     "게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n",
 };
 
@@ -22,6 +22,11 @@ export const MOVEMENT = {
 export const PLAYER_MOVE = {
   SUCCESS: "O",
   FAIL: "X",
+};
+
+export const TRIAL = {
+  RETRY: "R",
+  QUIT: "Q",
 };
 
 export const PROCESS_MSG = {
