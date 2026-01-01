@@ -22,7 +22,7 @@ class Validator {
   }
 
   static #checkIsNumber(input) {
-    if (!Number.isNaN(input)) throw new Error(ERROR.NOT_A_NUMBER);
+    if (Number.isNaN(input)) throw new Error(ERROR.NOT_A_NUMBER);
   }
 
   static #checkIsInteger(input) {
