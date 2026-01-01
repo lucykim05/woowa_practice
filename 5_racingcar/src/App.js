@@ -16,7 +16,8 @@ class App {
       const gameController = await this.#gameInput();
       return gameController;
     }
-    // return new NewGameController();
+    const gameController = await this.#newGameInput();
+    return gameController;
   }
 
   async #gameInput() {
@@ -25,6 +26,14 @@ class App {
     const count = await InputView.readCount();
 
     return new GameController(names, count);
+  }
+
+  async #newGameInput() {
+    const user = await InputView.readUserName();
+    const others = await InputView.readOtherNames();
+    const count = await InputView.readCount();
+
+    return new NewGameController(user, others, count);
   }
 }
 

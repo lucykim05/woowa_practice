@@ -41,9 +41,10 @@ class InputView {
     const names = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_OTHERS_NAME
     );
-    const arr = names.split(',').forEach((x) => {
-      x = x.trim();
-      Validator.validateName(x);
+    const arr = names.split(',').map((x) => {
+      const trimmed = x.trim();
+      Validator.validateName(trimmed);
+      return trimmed;
     });
     return arr;
   }
