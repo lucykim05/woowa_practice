@@ -49,7 +49,7 @@ class InputView {
     return arr;
   }
 
-  static async read_RETRY() {
+  static async readRetry() {
     const input = await MissionUtils.Console.readLineAsync(MESSAGE.RETRY);
     const retry = Number(input);
     Validator.validateRetry(retry);

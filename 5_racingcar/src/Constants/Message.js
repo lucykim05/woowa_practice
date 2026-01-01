@@ -6,5 +6,5 @@ export const MESSAGE = Object.freeze({
   READ_USER_NAME: '사용자의 자동차 이름을 입력하세요.\n',
   READ_OTHERS_NAME:
     '경주할 상대방의 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  RETRY: '게임을 재시작하려면 1, 종료하려면 0을 입력해주세요.\n',
+  RETRY: '게임을 처음부터 재시작하려면 1, 종료하려면 0을 입력해주세요.\n',
 });

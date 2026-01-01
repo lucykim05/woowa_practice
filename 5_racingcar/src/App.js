@@ -4,9 +4,13 @@ import NewGameController from './Controller/NewGameController.js';
 
 class App {
   async play() {
-    const retry = await InputView.read_RETRY();
-    const gameController = await this.#selectGame();
-    gameController.play();
+    while (true) {
+      const gameController = await this.#selectGame();
+      gameController.play();
+
+      const retry = await InputView.readRetry();
+      if (retry === 0) break;
+    }
   }
 
   async #selectGame() {
