@@ -15,8 +15,8 @@ export const BRIDGE_LENGTH = {
 };
 
 export const MOVEMENT = {
-  U: "U",
-  D: "D",
+  UP: "U",
+  DOWN: "D",
 };
 
 export const ERROR = {

@@ -10,7 +10,7 @@ export const Validator = {
 
   move(input) {
     if (input.length === 0) throw Error(ERROR.EMPTY);
-    if (input !== MOVEMENT.U && input !== MOVEMENT.D)
+    if (input !== MOVEMENT.UP && input !== MOVEMENT.DOWN)
       throw ERROR(ERROR.UNVALID_INPUT);
   },
 
