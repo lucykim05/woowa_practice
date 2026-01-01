@@ -1,22 +1,30 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../Constants/Message.js';
+import Validator from '../utils/Validator.js';
 
 class InputView {
   static async readType() {
     const gameType = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_TYPE
     );
-    return gameType;
+    const type = Number(gameType);
+    Validator.validateType(type);
+    return type;
   }
 
   static async readNames() {
     const names = await MissionUtils.Console.readLineAsync(MESSAGE.READ_NAME);
-    const arr = names.split(',').map((x) => x.trim());
+    const arr = names.split(',').forEach((x) => {
+      x = x.trim();
+      Validator.validateName(x);
+    });
     return arr;
   }
 
   static async readCount() {
-    const count = await MissionUtils.Console.readLineAsync(MESSAGE.READ_COUNT);
+    const input = await MissionUtils.Console.readLineAsync(MESSAGE.READ_COUNT);
+    const count = Number(input);
+    Validator.validateNum(count);
     return count;
   }
 
@@ -24,6 +32,7 @@ class InputView {
     const name = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_USER_NAME
     );
+    Validator.validateName(name);
     return name;
   }
 
@@ -31,13 +40,18 @@ class InputView {
     const names = await MissionUtils.Console.readLineAsync(
       MESSAGE.READ_OTHERS_NAME
     );
-    const arr = names.split(',').map((x) => x.trim());
+    const arr = names.split(',').forEach((x) => {
+      x = x.trim();
+      Validator.validateName(x);
+    });
     return arr;
   }
 
   static async read_RETRY() {
     const input = await MissionUtils.Console.readLineAsync(MESSAGE.RETRY);
-    return input;
+    const retry = Number(input);
+    Validator.validateRetry(retry);
+    return retry;
   }
 }
 
