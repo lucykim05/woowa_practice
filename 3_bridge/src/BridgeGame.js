@@ -2,6 +2,7 @@ import BridgeMaker from './BridgeMaker.js';
 import BridgeRandomNumberGenerator from './BridgeRandomNumberGenerator.js';
 import InputView from './InputView.js';
 import GameRound from './GameRound.js';
+import GameResult from './GameResult.js';
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -26,13 +27,14 @@ class BridgeGame {
     this.#gameRound = gameRound;
   }
 
-  async move(gameRound, length) {
+  async move(length) {
     const input = await InputView.readMoving();
     const gameRound = this.#gameRound;
     const userBridge = gameRound.round(input, length);
     const userPosition = gameRound.getPosition();
     this.#tryCount++;
-    if (userPosition === length) this.#printResult(userBridge, userPosition);
+    if (userPosition === length)
+      this.#getResult(userBridge, userPosition, length);
     await this.#checkRetry(userBridge, userPosition);
   }
 
@@ -43,7 +45,7 @@ class BridgeGame {
   async #checkRetry(userBridge, userPosition) {
     const retry = await InputView.readGameCommand();
     if (retry === 'R') await this.retry();
-    if (retry === 'Q') this.#printResult(userBridge, userPosition);
+    if (retry === 'Q') this.#getResult(userBridge, userPosition);
   }
 
   #makeBridge(length) {
@@ -56,7 +58,13 @@ class BridgeGame {
     return length;
   }
 
-  #printResult(bridge, position) {}
+  #getResult(userBridge, position, length) {
+    const gameResult = new GameResult();
+    gameResult.calculate(userBridge, position, length);
+    const up = gameResult.getUpSide();
+    const down = gameResult.getDownSide();
+    console.log(up);
+  }
 }
 
 export default BridgeGame;

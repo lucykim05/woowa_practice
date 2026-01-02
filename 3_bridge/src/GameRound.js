@@ -47,6 +47,10 @@ class GameRound {
   getPosition() {
     return this.#position;
   }
+
+  getAnswer() {
+    return this.#bridge;
+  }
 }
 
 export default GameRound;
