@@ -7,6 +7,13 @@ const SAMPLE = {
   양식: "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니",
 };
 
+import { lunchController } from "./Controller/lunchController.js";
+import { OutputView } from "./View/OutputView.js";
 export class App {
-  play() {}
+  play() {
+    //시작메세지 출력
+    OutputView.startMsg();
+    //프로그램 시작
+    lunchController(SAMPLE);
+  }
 }
