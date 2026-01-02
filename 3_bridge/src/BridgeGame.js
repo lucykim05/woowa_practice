@@ -3,6 +3,7 @@ import BridgeRandomNumberGenerator from './BridgeRandomNumberGenerator.js';
 import InputView from './InputView.js';
 import GameRound from './GameRound.js';
 import GameResult from './GameResult.js';
+import OutputView from './OutputView.js';
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -11,9 +12,13 @@ class BridgeGame {
   #tryCount;
   #gameRound;
   #bridge;
+  #upArr;
+  #downArr;
 
   constructor() {
     this.#tryCount = 0;
+    this.#upArr = [];
+    this.#downArr = [];
   }
 
   async play() {
@@ -35,25 +40,33 @@ class BridgeGame {
       const input = await InputView.readMoving();
       const isAnswer = this.#gameRound.move(input);
       const position = this.#gameRound.getPosition();
+      this.#setArr(isAnswer, input);
       console.log(position);
       if (!isAnswer || position == length) break;
     }
     const position = this.#gameRound.getPosition();
-    if (position !== length) {
-      await this.#checkRetry(position);
+    if (position == length) {
+      this.#getResult(position, this.#bridge);
       return;
     }
-    this.#getResult(position, this.#bridge);
+    await this.#checkRetry(position, length);
+  }
+
+  #setArr(isAnswer, input) {
+    if (!isAnswer && input === 'D') this.#updateDown('X');
+    if (!isAnswer && input === 'U') this.#updateUp('X');
+    if (isAnswer && input === 'D') this.#updateDown('O');
+    if (isAnswer && input === 'U') this.#updateUp('O');
   }
 
   async retry() {
     await this.play();
   }
 
-  async #checkRetry(position) {
+  async #checkRetry(position, length) {
     const retry = await InputView.readGameCommand();
     if (retry === 'R') await this.retry();
-    if (retry === 'Q') this.#getResult(position, this.#bridge);
+    if (retry === 'Q') this.#getResult(position, this.#bridge, length);
   }
 
   #makeBridge(length) {
@@ -67,11 +80,18 @@ class BridgeGame {
     return length;
   }
 
-  #getResult(position, bridge) {
-    const gameResult = new GameResult();
-    gameResult.calculate(position, bridge);
-    const up = gameResult.getUpSide();
-    const down = gameResult.getDownSide();
+  #updateDown(input) {
+    this.#downArr.push(input);
+    this.#upArr.push(' ');
+  }
+
+  #updateUp(input) {
+    this.#downArr.push(' ');
+    this.#upArr.push(input);
+  }
+
+  #getResult() {
+    OutputView.printMap(this.#upArr, this.#downArr);
   }
 }
 
