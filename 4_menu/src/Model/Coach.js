@@ -5,14 +5,20 @@ export class Coach {
 
   constructor(name) {
     this.#name = name;
+    this.#menuList = [];
   }
 
-  #checkMenu(menu) {}
+  checkMenu(menu) {
+    if (this.#menuList.includes(menu)) return false;
+    return true;
+  }
 
   saveDontEat(menuList) {
     this.#dontEatList = menuList;
   }
 
   //단일 메뉴 저장
-  saveMenu(menu) {}
+  saveMenu(menu) {
+    this.#menuList.push(menu);
+  }
 }

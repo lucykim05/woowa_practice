@@ -15,29 +15,54 @@ export class RecommendSystem {
   #pickRandomCategory() {
     while (true) {
       const category = Random.pickNumberInRange(1, 5);
-      const duplicateCategory = this.#selectedCategories.filter(
-        (c) => c === category
-      );
-      if (duplicateCategory.length < CATEGORY_LIMIT) {
-        this.#selectedCategories.push(category);
+      if (this.#checkSameCategory(category)) {
+        this.#saveCategory(category);
         return category;
       }
     }
   }
 
-  #pickRandomMenu(menuList, category) {
+  #checkSameCategory(category) {
+    const duplicateCategory = this.#selectedCategories.filter(
+      (c) => c === category
+    );
+    if (duplicateCategory.length < CATEGORY_LIMIT) {
+      this.#selectedCategories.push(category);
+      return true;
+    }
+    return false;
+  }
+
+  #saveCategory(category) {
+    this.#selectedCategories.push(category);
+  }
+
+  #saveRandomMenu(categoryIndex) {
+    for (let i = 0; i < this.#coachList.length; i++) {
+      const randomIndex = this.#pickRandomMenu(categoryIndex);
+      const selectedMenu = this.#menuList[categoryIndex][randomIndex];
+      const isMenuOk = this.#coachList[i].checkMenu(selectedMenu);
+      if (isMenuOk) {
+        this.#coachList[i].saveMenu(selectedMenu);
+        continue;
+      }
+      --i;
+    }
+  }
+
+  #pickRandomMenu(category) {
     const menuIndex = Array.from(
-      { length: menuList[category - 1].length },
+      { length: this.#menuList[category].length },
       (_, i) => i
     );
     const randMenuIndex = Random.shuffle(menuIndex)[0];
     return randMenuIndex;
   }
 
-  recommendProcess(menuList) {
+  recommendProcess() {
     for (let day = 0; day < DAYS; day++) {
-      const category = this.#pickRandomCategory();
-      const menuIndex = this.#pickRandomMenu(menuList, category);
+      const categoryIndex = this.#pickRandomCategory() - 1;
+      this.#saveRandomMenu(categoryIndex);
     }
   }
 }
