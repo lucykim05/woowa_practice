@@ -1,6 +1,7 @@
 import BridgeMaker from './BridgeMaker.js';
 import BridgeRandomNumberGenerator from './BridgeRandomNumberGenerator.js';
 import InputView from './InputView.js';
+import GameRound from './GameRound.js';
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -10,10 +11,15 @@ class BridgeGame {
     this.tryCount = 0;
   }
 
+  async play() {
+    const gameRound = await this.startGame();
+  }
+
   async startGame() {
     const length = await InputView.readBridgeSize();
     const bridge = this.#makeBridge(length);
-    console.log(bridge);
+    const gameRound = new GameRound(bridge);
+    return gameRound;
   }
 
   move() {}
