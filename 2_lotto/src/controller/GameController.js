@@ -5,6 +5,7 @@ import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 import LottoIssuer from '../model/LottoIssuer.js';
 import LottoResult from '../model/LottoResult.js';
+import { PRIZE } from '../constants/Message.js';
 
 class GameController {
   async run() {
@@ -14,8 +15,7 @@ class GameController {
     const lottos = this.#issueLottos(amount);
     this.#printLottos(lottos, output);
     const winning = await this.#getNumbers(input);
-    const result = this.#getResult(lottos, winning);
-    output.printResult(result);
+    this.#printResult(lottos, winning, amount, output);
   }
 
   async #getAmount(input) {
@@ -43,10 +43,18 @@ class GameController {
     output.printLottos(msg);
   }
 
-  #getResult(lottos, winning) {
+  #printResult(lottos, winning, amount, output) {
     const [winningNumbers, bonusNumber] = winning;
-    const lottoResult = new LottoResult(lottos, winningNumbers, bonusNumber);
-    const result = lottoResult.calculate();
+    const lottoResult = new LottoResult(
+      lottos,
+      winningNumbers,
+      bonusNumber,
+      amount
+    );
+    const resultMap = lottoResult.getResult();
+    const profit = lottoResult.getProfit();
+    output.printResult(resultMap);
+    output.printProfit(profit);
   }
 }
 
