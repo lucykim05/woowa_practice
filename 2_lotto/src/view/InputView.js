@@ -9,7 +9,7 @@ class InputView {
 
   async readWinningNumbers() {
     const winning = MissionUtils.Console.readLineAsync(MESSAGE.WINNING);
-    return winning.split(',').map((x) => x.trim());
+    return winning.split(',').map((x) => Number(x).trim());
   }
 
   async readBonusNumber() {

@@ -2,7 +2,11 @@ import { ERROR } from '../../constants/ErrorMessage.js';
 import NumberValidator from './NumberValidator.js';
 
 class WinningValidator {
-  validate(numbers) {
+  constructor(numbers) {
+    this.#validate(numbers);
+  }
+
+  #validate(numbers) {
     const numberValidator = new NumberValidator();
     numbers.forEach((x) => {
       numberValidator.validate(x);
@@ -21,7 +25,7 @@ class WinningValidator {
   }
 
   #checkIsUnique(input) {
-    const unique = [...new Set(input.length)];
+    const unique = [...new Set(input)];
     if (unique.length !== input.length) throw new Error(ERROR.NOT_UNIQUE);
   }
 }
