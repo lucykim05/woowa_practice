@@ -26,10 +26,29 @@ class BridgeGame {
     this.#gameRound = gameRound;
   }
 
-  async move(length) {
+  async move(gameRound, length) {
     const input = await InputView.readMoving();
     const gameRound = this.#gameRound;
-    gameRound.round(input, length);
+    const userBridge = gameRound.round(input, length);
+    const userPosition = gameRound.getPosition();
+    this.#tryCount++;
+    if (userPosition === length) this.#printResult(userBridge, userPosition);
+    await this.#checkRetry(userBridge, userPosition);
+  }
+
+  async retry() {
+    await this.play();
+  }
+
+  async #checkRetry(userBridge, userPosition) {
+    const retry = await InputView.readGameCommand();
+    if (retry === 'R') await this.retry();
+    if (retry === 'Q') this.#printResult(userBridge, userPosition);
+  }
+
+  #makeBridge(length) {
+    const bridge = BridgeMaker.makeBridge(length, BridgeRandomNumberGenerator);
+    return bridge;
   }
 
   async #getLength() {
@@ -37,12 +56,7 @@ class BridgeGame {
     return length;
   }
 
-  retry() {}
-
-  #makeBridge(length) {
-    const bridge = BridgeMaker.makeBridge(length, BridgeRandomNumberGenerator);
-    return bridge;
-  }
+  #printResult(bridge, position) {}
 }
 
 export default BridgeGame;
