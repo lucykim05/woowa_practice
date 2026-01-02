@@ -18,9 +18,7 @@ class BonusValidator {
   }
 
   #checkIsUnique(number, winningNumbers) {
-    const arr = winningNumbers.push(number);
-    const unique = [...new Set(arr)];
-    if (arr.length !== unique.length) throw new Error(ERROR.NOT_UNIQUE);
+    if (winningNumbers.includes(number)) throw new Error(ERROR.NOT_UNIQUE);
   }
 }
 

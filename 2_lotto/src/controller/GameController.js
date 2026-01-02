@@ -7,11 +7,11 @@ import LottoIssuer from '../model/LottoIssuer.js';
 class GameController {
   async run() {
     const input = new InputView();
-    const amount = await this.getAmount(input);
+    // const amount = await this.getAmount(input);
 
-    const lottos = this.issueLottos(amount);
-    console.log(lottos);
-    // await this.getNumbers(input);
+    // const lottos = this.issueLottos(amount);
+    // console.log(lottos);
+    await this.getNumbers(input);
   }
 
   async getAmount(input) {
@@ -21,10 +21,11 @@ class GameController {
   }
 
   async getNumbers(input) {
-    const winningNumbers = await input.readWinningNumbers();
+    const arr = await input.readWinningNumbers();
+    const winningNumbers = arr.map(Number);
     new WinningValidator(winningNumbers);
     const bonusNumber = Number(await input.readBonusNumber());
-    new BonusValidator(bonusNumber);
+    new BonusValidator(bonusNumber, winningNumbers);
     return [winningNumbers, bonusNumber];
   }
 
