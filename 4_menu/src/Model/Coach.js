@@ -21,4 +21,12 @@ export class Coach {
   saveMenu(menu) {
     this.#menuList.push(menu);
   }
+
+  getName() {
+    return this.#name;
+  }
+
+  getMenu() {
+    return this.#menuList;
+  }
 }

@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { DAYS, CATEGORY_LIMIT } from "../constants.js";
+import { DAYS, CATEGORY_LIMIT, CATEGORY } from "../constants.js";
 
 export class RecommendSystem {
   #coachList;
@@ -27,7 +27,6 @@ export class RecommendSystem {
       (c) => c === category
     );
     if (duplicateCategory.length < CATEGORY_LIMIT) {
-      this.#selectedCategories.push(category);
       return true;
     }
     return false;
@@ -64,5 +63,14 @@ export class RecommendSystem {
       const categoryIndex = this.#pickRandomCategory() - 1;
       this.#saveRandomMenu(categoryIndex);
     }
+  }
+
+  getCategories() {
+    const categories = [];
+    this.#selectedCategories.forEach((category) => {
+      categories.push(CATEGORY[category]);
+    });
+
+    return categories;
   }
 }

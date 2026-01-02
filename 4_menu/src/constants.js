@@ -4,6 +4,15 @@ export const INPUT_MSG = {
   DONT_EAT: "(이)가 못 먹는 메뉴를 입력해 주세요.\n",
 };
 
+export const OUTPUT_MSG = {
+  DAYS: "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]\n",
+  CATEGORY: "카테고리",
+  START: "[ ",
+  DELIMITER: " | ",
+  END: " ]",
+  OVER: "\n추천을 완료했습니다.",
+};
+
 export const DAYS = 5;
 
 export const CATEGORY = {
