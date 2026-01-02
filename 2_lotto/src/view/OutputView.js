@@ -36,6 +36,10 @@ class OutputView {
   printProfit(input) {
     MissionUtils.Console.print(`총 수익률은 ${input}%입니다.`);
   }
+
+  static printError(input) {
+    MissionUtils.Console.print(input);
+  }
 }
 
 export default OutputView;
