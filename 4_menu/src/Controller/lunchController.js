@@ -5,4 +5,8 @@ export const lunchController = async (SAMPLE) => {
 
 const initializeSystem = async () => {
   const coachList = await ReadInput.coachList();
+
+  coachList.forEach(async (coach) => {
+    const dontEatList = await ReadInput.dontEat(coach);
+  });
 };

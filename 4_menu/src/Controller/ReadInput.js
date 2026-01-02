@@ -13,4 +13,14 @@ export const ReadInput = {
       }
     }
   },
+
+  async dontEat(coach) {
+    while (true) {
+      try {
+        InputView.dontEat(coach);
+      } catch (error) {
+        OutputView.error(error);
+      }
+    }
+  },
 };
