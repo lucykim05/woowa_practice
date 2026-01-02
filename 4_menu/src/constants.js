@@ -4,6 +4,8 @@ export const INPUT_MSG = {
   DONT_EAT: "(이)가 못 먹는 메뉴를 입력해 주세요.\n",
 };
 
+export const DAYS = 5;
+
 export const CATEGORY = {
   1: "일식",
   2: "한식",
@@ -11,6 +13,8 @@ export const CATEGORY = {
   4: "아시안",
   5: "양식",
 };
+
+export const CATEGORY_LIMIT = 2;
 
 export const COACH_COUNT = {
   MIN: 2,
