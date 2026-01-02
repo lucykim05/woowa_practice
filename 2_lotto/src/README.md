@@ -140,11 +140,13 @@ MVC 패턴에 따라서 계층은 다음과 같이 나누게 되었다.
 
 ### WinningValidator
 
-- [ ] 내부 내용 NumberValidator 돌리기
-- [ ] 내부 내용 45이하인가
-- [ ] length 6인가
+- [x] 내부 내용 NumberValidator 돌리기
+- [x] 내부 내용 45이하인가
+- [x] length 6인가
+- [x] 중복되지 않는가
 
 ### BonusValidator
 
 - [ ] NumberValidator 돌리기
 - [ ] 45 이하인가
+- [ ] 중복되지 않는가
