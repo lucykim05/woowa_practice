@@ -15,6 +15,10 @@ class Lotto {
     new WinningValidator(numbers);
   }
 
+  getNumbers() {
+    return this.#numbers;
+  }
+
   // TODO: 추가 기능 구현
 }
 
