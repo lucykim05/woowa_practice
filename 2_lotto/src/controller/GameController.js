@@ -9,19 +9,28 @@ import { PRIZE } from '../constants/Message.js';
 
 class GameController {
   async run() {
-    const input = new InputView();
-    const output = new OutputView();
-    const amount = await this.#getAmount(input);
-    const lottos = this.#issueLottos(amount);
-    this.#printLottos(lottos, output);
-    const winning = await this.#getNumbers(input);
-    this.#printResult(lottos, winning, amount, output);
+    try {
+      const input = new InputView();
+      const output = new OutputView();
+      const amount = await this.#getAmount(input);
+      const lottos = this.#issueLottos(amount);
+      this.#printLottos(amount, lottos, output);
+      const winning = await this.#getNumbers(input);
+      this.#printResult(lottos, winning, amount, output);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async #getAmount(input) {
-    const amount = Number(await input.readAmount());
-    new AmountValidator(amount);
-    return amount / 1000;
+    try {
+      const amount = Number(await input.readAmount());
+      console.log(amount);
+      new AmountValidator(amount);
+      return amount / 1000;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async #getNumbers(input) {
@@ -38,9 +47,9 @@ class GameController {
     return lottoIssuer.issue();
   }
 
-  #printLottos(lottos, output) {
-    const msg = '[' + lottos.map((x) => x.join(', ')).join(']\n[') + ']';
-    output.printLottos(msg);
+  #printLottos(amount, lottos, output) {
+    output.printAmount(amount);
+    output.printLottos(lottos);
   }
 
   #printResult(lottos, winning, amount, output) {
