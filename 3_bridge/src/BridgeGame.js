@@ -10,6 +10,7 @@ import GameResult from './GameResult.js';
 class BridgeGame {
   #tryCount;
   #gameRound;
+  #bridge;
 
   constructor() {
     this.#tryCount = 0;
@@ -19,37 +20,45 @@ class BridgeGame {
     const length = await this.#getLength();
     await this.startGame(length);
     await this.move(length);
+    this.#tryCount++;
   }
 
   async startGame(length) {
     const bridge = this.#makeBridge(length);
-    const gameRound = new GameRound(bridge);
+    console.log(bridge);
+    const gameRound = new GameRound(bridge, length);
     this.#gameRound = gameRound;
   }
 
   async move(length) {
-    const input = await InputView.readMoving();
-    const gameRound = this.#gameRound;
-    const userBridge = gameRound.round(input, length);
-    const userPosition = gameRound.getPosition();
-    this.#tryCount++;
-    if (userPosition === length)
-      this.#getResult(userBridge, userPosition, length);
-    await this.#checkRetry(userBridge, userPosition);
+    while (true) {
+      const input = await InputView.readMoving();
+      const isAnswer = this.#gameRound.move(input);
+      const position = this.#gameRound.getPosition();
+      console.log(position);
+      if (!isAnswer || position == length) break;
+    }
+    const position = this.#gameRound.getPosition();
+    if (position !== length) {
+      await this.#checkRetry(position);
+      return;
+    }
+    this.#getResult(position, this.#bridge);
   }
 
   async retry() {
     await this.play();
   }
 
-  async #checkRetry(userBridge, userPosition) {
+  async #checkRetry(position) {
     const retry = await InputView.readGameCommand();
     if (retry === 'R') await this.retry();
-    if (retry === 'Q') this.#getResult(userBridge, userPosition);
+    if (retry === 'Q') this.#getResult(position, this.#bridge);
   }
 
   #makeBridge(length) {
     const bridge = BridgeMaker.makeBridge(length, BridgeRandomNumberGenerator);
+    this.#bridge = bridge;
     return bridge;
   }
 
@@ -58,12 +67,11 @@ class BridgeGame {
     return length;
   }
 
-  #getResult(userBridge, position, length) {
+  #getResult(position, bridge) {
     const gameResult = new GameResult();
-    gameResult.calculate(userBridge, position, length);
+    gameResult.calculate(position, bridge);
     const up = gameResult.getUpSide();
     const down = gameResult.getDownSide();
-    console.log(up);
   }
 }
 

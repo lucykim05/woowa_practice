@@ -6,11 +6,11 @@ class GameResult {
     this.#setArr();
   }
 
-  calculate(userBridge, position, length) {
+  calculate(position, bridge) {
     for (let i = 0; i < position; i++) {
-      this.#getRight(userBridge[i]);
+      this.#getRight(bridge[i]);
     }
-    if (position !== length) this.#getOpposite(userBridge[position]);
+    if (position !== length) this.#getOpposite(ridge[position]);
   }
 
   #setArr() {
