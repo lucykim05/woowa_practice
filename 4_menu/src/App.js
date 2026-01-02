@@ -10,10 +10,10 @@ const SAMPLE = {
 import { lunchController } from "./Controller/lunchController.js";
 import { OutputView } from "./View/OutputView.js";
 export class App {
-  play() {
+  async play() {
     //시작메세지 출력
     OutputView.startMsg();
     //프로그램 시작
-    lunchController(SAMPLE);
+    await lunchController(SAMPLE);
   }
 }

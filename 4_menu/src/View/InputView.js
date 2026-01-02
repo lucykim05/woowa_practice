@@ -1,4 +1,10 @@
+import { Console } from "@woowacourse/mission-utils";
+import { INPUT_MSG } from "../constants.js";
+import { parser } from "../Utils/parser.js";
 export const InputView = {
-  coachList() {},
+  async coachList() {
+    const input = await Console.readLineAsync(INPUT_MSG.COACH);
+    return parser(input);
+  },
   dontEat() {},
 };
