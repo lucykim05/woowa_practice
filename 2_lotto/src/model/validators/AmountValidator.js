@@ -2,7 +2,11 @@ import { ERROR } from '../../constants/ErrorMessage.js';
 import NumberValidator from './NumberValidator.js';
 
 class AmountValidator {
-  validate(input) {
+  constructor(number) {
+    this.#validate(number);
+  }
+
+  #validate(input) {
     const numberValidator = new NumberValidator();
     numberValidator.validate(input);
     this.#checkMod(input);

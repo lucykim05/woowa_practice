@@ -12,8 +12,7 @@ class GameController {
 
   async getAmount(input) {
     const amount = Number(await input.readAmount());
-    const amountValidator = new AmountValidator();
-    amountValidator.validate(amount);
+    new AmountValidator(amount);
     return amount / 1000;
   }
 }
