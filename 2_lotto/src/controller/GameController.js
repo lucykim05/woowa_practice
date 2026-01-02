@@ -14,7 +14,8 @@ class GameController {
     const lottos = this.#issueLottos(amount);
     this.#printLottos(lottos, output);
     const winning = await this.#getNumbers(input);
-    this.#getResult(lottos, winning);
+    const result = this.#getResult(lottos, winning);
+    output.printResult(result);
   }
 
   async #getAmount(input) {
@@ -44,7 +45,8 @@ class GameController {
 
   #getResult(lottos, winning) {
     const [winningNumbers, bonusNumber] = winning;
-    const result = new LottoResult(lottos, winningNumbers, bonusNumber);
+    const lottoResult = new LottoResult(lottos, winningNumbers, bonusNumber);
+    const result = lottoResult.calculate();
   }
 }
 

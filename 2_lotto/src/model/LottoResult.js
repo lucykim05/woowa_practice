@@ -7,17 +7,16 @@ class LottoResult {
     this.#numbers = numbers;
     this.#winningNumbers = winningNumbers;
     this.#bonusNumber = bonusNumber;
-    this.calculate(numbers, winningNumbers, bonusNumber);
   }
 
   calculate(numbers, winningNumbers, bonusNumber) {
     const arr = Array.from({ length: 5 }, () => 0);
     for (const lotto of numbers) {
       const idx = this.#calculateRank(lotto, winningNumbers, bonusNumber);
-      if (!idx) continue;
+      if (idx === undefined) continue;
       arr[idx]++;
     }
-    console.log(arr);
+    return arr;
   }
 
   #calculateRank(lotto, winningNumbers, bonusNumber) {
