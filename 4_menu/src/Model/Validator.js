@@ -22,11 +22,12 @@ export const Validator = {
   },
 
   menu(list, menuList) {
+    if (list[0].length === 0) return;
+
     if (list.length > MENU_LIMIT.MAX)
       throw Error(ERROR_MSG.MENU_COUNT_OUT_OF_RANGE);
 
     const allmenu = getAll2DimArrayValues(menuList);
-
     const notIncludedMenu = list.filter((menu) => !allmenu.includes(menu));
     if (notIncludedMenu.length > 0) throw Error(ERROR_MSG.MENU_NO_EXIST);
   },
