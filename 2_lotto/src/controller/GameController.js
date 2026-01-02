@@ -1,3 +1,4 @@
+import AmountValidator from '../model/validators/AmountValidator.js';
 import InputView from '../view/InputView.js';
 
 class GameController {
@@ -10,7 +11,10 @@ class GameController {
   }
 
   async getAmount(input) {
-    const amount = await input.readAmount();
+    const amount = Number(await input.readAmount());
+    const amountValidator = new AmountValidator();
+    amountValidator.validate(amount);
+    return amount;
   }
 }
 
