@@ -4,7 +4,7 @@ import { ReadInput } from "./ReadInput.js";
 export const lunchController = async (menuList) => {
   const coachInstanceList = await getCoachList(menuList);
   const system = new RecommendSystem(coachInstanceList, menuList);
-  system.recommendProcess();
+  system.recommendProcess(menuList);
 };
 
 const getCoachList = async (menuList) => {
