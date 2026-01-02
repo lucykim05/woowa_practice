@@ -1,5 +1,10 @@
+import BridgeGame from './BridgeGame.js';
+
 class App {
-  play() {}
+  async play() {
+    const bridgeGame = new BridgeGame();
+    await bridgeGame.startGame();
+  }
 }
 
 export default App;

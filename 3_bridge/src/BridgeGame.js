@@ -1,3 +1,5 @@
+import BridgeMaker from './BridgeMaker.js';
+import BridgeRandomNumberGenerator from './BridgeRandomNumberGenerator.js';
 import InputView from './InputView.js';
 
 /**
@@ -11,13 +13,17 @@ class BridgeGame {
   async startGame() {
     const length = await InputView.readBridgeSize();
     const bridge = this.#makeBridge(length);
+    console.log(bridge);
   }
 
   move() {}
 
   retry() {}
 
-  #makeBridge() {}
+  #makeBridge(length) {
+    const bridge = BridgeMaker.makeBridge(length, BridgeRandomNumberGenerator);
+    return bridge;
+  }
 }
 
 export default BridgeGame;

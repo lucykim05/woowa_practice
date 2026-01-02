@@ -55,7 +55,7 @@
 ### BridgeGame
 
 - [x] 다리길이 input 받음
-- [ ] BridgeMaker 이용 -> 다리 생성
+- [x] BridgeMaker 이용 -> 다리 생성
 - [ ] 새 게임 생성(다리 정보 전달)
 - [ ] 사용자 입력(이동할 위치) 받음
 - [ ] move 실행(GameRound 내부의 위치 이동 메서드 실행)
@@ -71,13 +71,13 @@
 
 ### BridgeRandom
 
-- [ ] 그대로 둠 뭐 바꿀거 없는듯
+- [x] 그대로 둠 뭐 바꿀거 없는듯
 
 ### BridgeMaker
 
-- [ ] size, randomNum 받아서 size만큼 실행
-- [ ] 결과를 바탕으로 정답 다리 만듦
-- [ ] 다리 정보 return(배열로)
+- [x] size, randomNum 받아서 size만큼 실행
+- [x] 결과를 바탕으로 정답 다리 만듦
+- [x] 다리 정보 return(배열로)
 
 ### GameRound
 
