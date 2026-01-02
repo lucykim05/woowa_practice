@@ -20,10 +20,10 @@
 
 Validator
 
-- [ ] coach
-  - [ ] 빈 값
-  - [ ] 2명 이상 5명 이하의 인원
-  - [ ] 각 이름이 2글자 이상 4글자 이하
+- [x] coach
+  - [x] 빈 값
+  - [x] 2명 이상 5명 이하의 인원
+  - [x] 각 이름이 2글자 이상 4글자 이하
 - [ ] menu
   - [ ] 종류가 2개 초과
   - [ ] 추천 메뉴에 해당하지 않는 음식
@@ -35,6 +35,8 @@ recommendSystem
   - [ ] 코치 객체를 저장하고 있는 배열
   - [ ] 카테고리 배열
 - 메소드
+  - [ ] initializeMenu
+    - [ ] SAMPLE 값 가공하여 저장
   - [ ] pickRandomCategory
     - [ ] 랜덤 카테고리 선정
   - [ ] pickRandomMenu
@@ -58,23 +60,45 @@ Coach
 
 InputView
 
-- [ ] coachList : 코치 이름 입력
+- [x] coach : 코치 이름 입력
+  - [x] parser로 값 1차 검증하여 넘김
 - [ ] dontEat : 못 먹는 메뉴 입력
+  - [ ] parser로 값 1차 검증하여 넘김
 
 OutputView
 
-- [ ] startMsg : 시작 메세지 출력
+- [x] startMsg : 시작 메세지 출력
+- [x] error : 에러 출력
 - [ ] result : 결과 출력
 
 ### Controller
 
-- [ ] lunchController.js
-  - [ ] 코치 이름 입력 요청
-  - [ ] 코치 이름 검증 요청
+lunchController.js
+
+- [x] 코치 이름 목록 요청
+- [ ] 코치 인스턴스 선언
+- [ ] RecommendSystem 인스턴스 선언
+  - [ ] 코치와 SAMPLE을 생성자 인자로 넣음
+- [ ] 못 먹는 메뉴 목록 요청
+- [ ] RecommendSystem의 추천 로직 실행
+- [ ] 결과 받기
+- [ ] 결과 출력
+
+ReadInput
+
+- [x] coachList
+  - [x] 코치 이름 입력 요청
+    - [x] 코치 이름 검증 요청
+    - [x] 오류가 있을 시 재입력 요청
+- [ ] dontEat
+  - [ ] 코치마다 못 먹는 메뉴 입력
+    - [ ] 메뉴 검증 요청
+    - [ ] 오류가 있을 시 재입력 요청
+    - [ ] 코치 객체에 값 저장
 
 ### Utils
 
-- [ ] parser.js : 배열의 값을 `,`로 split 하여 리턴하는 함수
+- [x] parser.js : 배열의 값을 `,`로 split 하여 리턴하는 함수
 
 ### constants.js
 
@@ -97,3 +121,8 @@ OutputView
 - OUTPUT_MSG
   - DAYS : `[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]\n`
   - CATEGORY :
+- ERROR_MSG
+  - EMPTY : `[ERROR] 입력 값이 비어있습니다. 다시 입력해주세요.`
+  - NAME_OUT_OF_RANGE : `[ERROR] 코치 이름은 2글자 이상, 4글자 이하여야 합니다.`
+  - COACH_COUNT_OUT_OF_RANGE : `[ERROR] 코치는 2명 이상, 5명 이하여야 합니다.`
+  -

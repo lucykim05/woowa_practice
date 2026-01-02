@@ -5,5 +5,9 @@ export const OutputView = {
     Console.print(INPUT_MSG.START);
   },
 
+  error(error) {
+    Console.print(error.message);
+  },
+
   result() {},
 };
