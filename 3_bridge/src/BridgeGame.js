@@ -2,7 +2,6 @@ import BridgeMaker from './BridgeMaker.js';
 import BridgeRandomNumberGenerator from './BridgeRandomNumberGenerator.js';
 import InputView from './InputView.js';
 import GameRound from './GameRound.js';
-import GameResult from './GameResult.js';
 import OutputView from './OutputView.js';
 
 /**
@@ -14,6 +13,7 @@ class BridgeGame {
   #bridge;
   #upArr;
   #downArr;
+  #isAnswer;
 
   constructor() {
     this.#tryCount = 0;
@@ -22,10 +22,12 @@ class BridgeGame {
   }
 
   async play() {
+    this.#tryCount++;
+    this.#upArr = [];
+    this.#downArr = [];
     const length = await this.#getLength();
     await this.startGame(length);
     await this.move(length);
-    this.#tryCount++;
   }
 
   async startGame(length) {
@@ -33,23 +35,28 @@ class BridgeGame {
     console.log(bridge);
     const gameRound = new GameRound(bridge, length);
     this.#gameRound = gameRound;
+    this.#isAnswer = true;
   }
 
   async move(length) {
+    await this.#round(length);
+    const position = this.#gameRound.getPosition();
+    if (position == length) {
+      this.#getGameResult(position, this.#bridge);
+      return;
+    }
+    await this.#checkRetry(position, length);
+  }
+
+  async #round(length) {
     while (true) {
       const input = await InputView.readMoving();
       const isAnswer = this.#gameRound.move(input);
       const position = this.#gameRound.getPosition();
       this.#setArr(isAnswer, input);
-      console.log(position);
+      this.#getResult(position, this.#bridge);
       if (!isAnswer || position == length) break;
     }
-    const position = this.#gameRound.getPosition();
-    if (position == length) {
-      this.#getResult(position, this.#bridge);
-      return;
-    }
-    await this.#checkRetry(position, length);
   }
 
   #setArr(isAnswer, input) {
@@ -92,6 +99,15 @@ class BridgeGame {
 
   #getResult() {
     OutputView.printMap(this.#upArr, this.#downArr);
+  }
+
+  #getGameResult() {
+    OutputView.printResult(
+      this.#upArr,
+      this.#downArr,
+      this.#isAnswer,
+      this.#tryCount
+    );
   }
 }
 
