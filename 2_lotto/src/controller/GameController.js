@@ -4,6 +4,7 @@ import BonusValidator from '../model/validators/BonusValidator.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 import LottoIssuer from '../model/LottoIssuer.js';
+import LottoResult from '../model/LottoResult.js';
 
 class GameController {
   async run() {
@@ -12,7 +13,8 @@ class GameController {
     const amount = await this.#getAmount(input);
     const lottos = this.#issueLottos(amount);
     this.#printLottos(lottos, output);
-    await this.#getNumbers(input);
+    const winning = await this.#getNumbers(input);
+    this.#getResult(lottos, winning);
   }
 
   async #getAmount(input) {
@@ -38,6 +40,11 @@ class GameController {
   #printLottos(lottos, output) {
     const msg = '[' + lottos.map((x) => x.join(', ')).join(']\n[') + ']';
     output.printLottos(msg);
+  }
+
+  #getResult(lottos, winning) {
+    const [winningNumbers, bonusNumber] = winning;
+    const result = new LottoResult(lottos, winningNumbers, bonusNumber);
   }
 }
 
