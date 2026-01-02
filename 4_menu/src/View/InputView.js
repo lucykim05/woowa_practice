@@ -8,7 +8,7 @@ export const InputView = {
   },
 
   async dontEat(coach) {
-    const input = await Console.readLineAsync(INPUT_MSG.DONT_EAT);
+    const input = await Console.readLineAsync(`${coach}${INPUT_MSG.DONT_EAT}`);
     return parseWithComma(input);
   },
 };

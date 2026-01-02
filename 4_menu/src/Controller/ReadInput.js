@@ -5,9 +5,9 @@ export const ReadInput = {
   async coachList() {
     while (true) {
       try {
-        const rawCoachList = await InputView.coachList();
-        Validator.coach(rawCoachList);
-        return rawCoachList;
+        const coachList = await InputView.coachList();
+        Validator.coach(coachList);
+        return coachList;
       } catch (error) {
         OutputView.error(error);
       }
@@ -17,7 +17,9 @@ export const ReadInput = {
   async dontEat(coach) {
     while (true) {
       try {
-        InputView.dontEat(coach);
+        const menuList = InputView.dontEat(coach);
+        Validator.menu(menuList);
+        return menuList;
       } catch (error) {
         OutputView.error(error);
       }

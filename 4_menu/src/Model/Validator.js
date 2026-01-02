@@ -1,4 +1,9 @@
-import { ERROR_MSG, COACH_COUNT, COACH_NAME_LIMIT } from "../constants.js";
+import {
+  ERROR_MSG,
+  COACH_COUNT,
+  COACH_NAME_LIMIT,
+  MENU_LIMIT,
+} from "../constants.js";
 
 export const Validator = {
   coach(list) {
@@ -13,5 +18,10 @@ export const Validator = {
       )
         throw Error(ERROR_MSG.NAME_OUT_OF_RANGE);
     }
+  },
+
+  menu(list) {
+    if (list.length > MENU_LIMIT.MAX)
+      throw Error(ERROR_MSG.MENU_COUNT_OUT_OF_RANGE);
   },
 };
