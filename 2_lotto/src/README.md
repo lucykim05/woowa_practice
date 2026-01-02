@@ -147,6 +147,6 @@ MVC 패턴에 따라서 계층은 다음과 같이 나누게 되었다.
 
 ### BonusValidator
 
-- [ ] NumberValidator 돌리기
-- [ ] 45 이하인가
-- [ ] 중복되지 않는가
+- [x] NumberValidator 돌리기
+- [x] 45 이하인가
+- [x] 중복되지 않는가
