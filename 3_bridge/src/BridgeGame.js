@@ -7,22 +7,35 @@ import GameRound from './GameRound.js';
  * 다리 건너기 게임을 관리하는 클래스
  */
 class BridgeGame {
+  #tryCount;
+  #gameRound;
+
   constructor() {
-    this.tryCount = 0;
+    this.#tryCount = 0;
   }
 
   async play() {
-    const gameRound = await this.startGame();
+    const length = await this.#getLength();
+    await this.startGame(length);
+    await this.move(length);
   }
 
-  async startGame() {
-    const length = await InputView.readBridgeSize();
+  async startGame(length) {
     const bridge = this.#makeBridge(length);
     const gameRound = new GameRound(bridge);
-    return gameRound;
+    this.#gameRound = gameRound;
   }
 
-  move() {}
+  async move(length) {
+    const input = await InputView.readMoving();
+    const gameRound = this.#gameRound;
+    gameRound.round(input, length);
+  }
+
+  async #getLength() {
+    const length = await InputView.readBridgeSize();
+    return length;
+  }
 
   retry() {}
 
