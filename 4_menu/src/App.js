@@ -9,11 +9,22 @@ const SAMPLE = {
 
 import { lunchController } from "./Controller/lunchController.js";
 import { OutputView } from "./View/OutputView.js";
+import { parseWithComma } from "./Utils/parser.js";
+
 export class App {
   async play() {
     //시작메세지 출력
     OutputView.startMsg();
+    const parsedSample = editSample(SAMPLE);
     //프로그램 시작
-    await lunchController(SAMPLE);
+    await lunchController(parsedSample);
   }
 }
+
+const editSample = (SAMPLE) => {
+  const sampleValues = Object.values(SAMPLE);
+  const splittedSample = sampleValues.map((category) =>
+    parseWithComma(category)
+  );
+  return splittedSample;
+};
