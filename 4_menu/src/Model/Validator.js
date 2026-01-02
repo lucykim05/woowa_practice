@@ -4,6 +4,7 @@ import {
   COACH_NAME_LIMIT,
   MENU_LIMIT,
 } from "../constants.js";
+import { getAll2DimArrayValues } from "../Utils/parser.js";
 
 export const Validator = {
   coach(list) {
@@ -20,8 +21,13 @@ export const Validator = {
     }
   },
 
-  menu(list) {
+  menu(list, menuList) {
     if (list.length > MENU_LIMIT.MAX)
       throw Error(ERROR_MSG.MENU_COUNT_OUT_OF_RANGE);
+
+    const allmenu = getAll2DimArrayValues(menuList);
+
+    const notIncludedMenu = list.filter((menu) => !allmenu.includes(menu));
+    if (notIncludedMenu.length > 0) throw Error(ERROR_MSG.MENU_NO_EXIST);
   },
 };

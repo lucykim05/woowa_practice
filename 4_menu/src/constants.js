@@ -4,6 +4,14 @@ export const INPUT_MSG = {
   DONT_EAT: "(이)가 못 먹는 메뉴를 입력해 주세요.\n",
 };
 
+export const CATEGORY = {
+  1: "일식",
+  2: "한식",
+  3: "중식",
+  4: "아시안",
+  5: "양식",
+};
+
 export const COACH_COUNT = {
   MIN: 2,
   MAX: 5,
@@ -24,4 +32,5 @@ export const ERROR_MSG = {
   COACH_COUNT_OUT_OF_RANGE: "[ERROR] 코치는 2명 이상, 5명 이하여야 합니다.",
   MENU_COUNT_OUT_OF_RANGE:
     "[ERROR] 메뉴 종류는 2가지 이하여야 합니다. 없는 경우 빈 값을 입력해주세요.",
+  MENU_NO_EXIST: "[ERROR] 존재하지 않는 메뉴입니다.",
 };

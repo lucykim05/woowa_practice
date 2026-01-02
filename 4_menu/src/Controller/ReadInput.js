@@ -14,12 +14,12 @@ export const ReadInput = {
     }
   },
 
-  async dontEat(coach) {
+  async dontEat(coach, menuList) {
     while (true) {
       try {
-        const menuList = InputView.dontEat(coach);
-        Validator.menu(menuList);
-        return menuList;
+        const dontEatList = await InputView.dontEat(coach);
+        Validator.menu(dontEatList, menuList);
+        return dontEatList;
       } catch (error) {
         OutputView.error(error);
       }
