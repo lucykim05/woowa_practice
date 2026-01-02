@@ -1,13 +1,14 @@
-const App = require('../src/App');
-const MissionUtils = require('@woowacourse/mission-utils');
+import App from '../src/App.js';
+import { MissionUtils } from '@woowacourse/mission-utils';
 
-const mockQuestions = (answers) => {
-  MissionUtils.Console.readLine = jest.fn();
-  answers.reduce((acc, input) => {
-    return acc.mockImplementationOnce((question, callback) => {
-      callback(input);
-    });
-  }, MissionUtils.Console.readLine);
+const mockQuestions = (inputs) => {
+  MissionUtils.Console.readLineAsync = jest.fn();
+
+  MissionUtils.Console.readLineAsync.mockImplementation(() => {
+    const input = inputs.shift();
+
+    return Promise.resolve(input);
+  });
 };
 
 const mockRandoms = (numbers) => {
@@ -23,8 +24,33 @@ const getLogSpy = () => {
   return logSpy;
 };
 
+const runException = async (input) => {
+  // given
+  const logSpy = getLogSpy();
+
+  const RANDOM_NUMBERS_TO_END = [1, 2, 3, 4, 5, 6];
+  const INPUT_NUMBERS_TO_END = ['1000', '1,2,3,4,5,6', '7'];
+
+  mockRandoms([RANDOM_NUMBERS_TO_END]);
+  mockQuestions([input, ...INPUT_NUMBERS_TO_END]);
+
+  // when
+  const app = new App();
+  await app.run();
+
+  // then
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('[ERROR]'));
+};
+
 describe('로또 테스트', () => {
-  test('기능 테스트', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('기능 테스트', async () => {
+    // given
+    const logSpy = getLogSpy();
+
     mockRandoms([
       [8, 21, 23, 41, 42, 43],
       [3, 5, 11, 16, 32, 38],
@@ -36,6 +62,12 @@ describe('로또 테스트', () => {
       [1, 3, 5, 14, 22, 45],
     ]);
     mockQuestions(['8000', '1,2,3,4,5,6', '7']);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
     const logs = [
       '8개를 구매했습니다.',
       '[8, 21, 23, 41, 42, 43]',
@@ -53,19 +85,13 @@ describe('로또 테스트', () => {
       '6개 일치 (2,000,000,000원) - 0개',
       '총 수익률은 62.5%입니다.',
     ];
-    const logSpy = getLogSpy();
-    const app = new App();
-    app.play();
+
     logs.forEach((log) => {
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
     });
   });
 
-  test('예외 테스트', () => {
-    mockQuestions(['1000j']);
-    expect(() => {
-      const app = new App();
-      app.play();
-    }).toThrow('[ERROR]');
+  test('예외 테스트', async () => {
+    await runException('1000j');
   });
 });
