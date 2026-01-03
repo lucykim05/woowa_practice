@@ -11,6 +11,13 @@ export const InputController = {
       throw Error(error.message);
     }
   },
-  async move() {},
+  async move() {
+    try {
+      const move = await InputView.readMoving();
+    } catch (error) {
+      throw Error(error.message);
+    }
+  },
+
   async retry() {},
 };

@@ -6,7 +6,9 @@ export const InputView = {
     return await Console.readLineAsync(DEFAULT_MSG.BRIDGE_SIZE);
   },
 
-  readMoving() {},
+  async readMoving() {
+    return await Console.readLineAsync(DEFAULT_MSG.MOVE);
+  },
 
   readGameCommand() {},
 };
