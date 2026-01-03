@@ -1,4 +1,6 @@
-위, 아래 둘 중 하나의 칸만 건너서 다리를 끝까지 건너가는 프로그램
+## 다리 건너기
+
+사용자가 다리를 건너는 프로그램;
 
 ## 설계
 
@@ -10,121 +12,148 @@
 
 ### Controller
 
+## 구현 기능 목록
+
 ### Model
 
-- [x] BridgeGame 클래스
-  - [x] constructor : 다리 생성 로직
-    - [x] BridgeMaker 객체 활용하여 배열로 선언 ( 다리 두 개 생성하여 리턴)
-  - [x] move() : 이동 시도에 대한 로직
-  - [x] retry() : 재시도 로직 → 사용자 시도 초기화
+BridgeGame
+
+- 다리 길이
+- 다리 정보
+- 사용자 이동 정보
+- 단계 정보 (round, 몇 번째 칸인지 확인 )
+- 완주 상태
+- 도전 정보 (trial, 몇 판 했는지 확인)
+- [ ] initialize
+  - [ ] 필드 초기화
+- [ ] make
+  - [ ] 다리 생성 → 저장
+- [ ] getRandNum
+  - [ ] 랜덤 0/1 뽑는 메소드
+- [ ] canMove
+  - [ ] 사용자가 해당 칸으로 이동 가능한지 확인
+- [ ] move
+  - [ ] 사용자 이동 정보 저장
+  - [ ] round + 1
+- [ ] retry
+  - [ ] 사용자 이동 정보 초기화
+  - [ ] 도전 정보 + 1
+- [ ] makeProgressMsg
+  - [ ] 현재 사용자 이동 정보를 메세지로 변환하여 리턴
 
 Validator
 
-- [x] 다리 검증 로직
-  - [x] 다리 길이 : bridgeSize()
-    - [x] 빈 값
-    - [x] 숫자가 아닌 경우
-    - [x] 범위 밖의 숫자
-  - [x] 이동할 칸 : move()
-    - [x] 빈 값
-    - [x] `U` 또는 `D`가 아님
-  - [x] 라운드 종료 응답 : trialOver()
-    - [x] 빈 값
-    - [x] `R` 또는 `Q`가 아님
+- [ ] bridgeLength
+  - [ ] 빈 값
+  - [ ] 문자인지
+  - [ ] 3~20 사이의 숫자
+- [ ] move
+  - [ ] 빈 값
+  - [ ] U 또는 D
+- [ ] retry
+  - [ ] 빈 값
+  - [ ] R 또는 Q
 
 ### View
 
-- [x] InputView
-  - [x] readBridgeSize() : 다리 길이 입력
-  - [x] readMoving() : 이동할 칸 입력
-  - [x] readGameCommand() : 라운드 종료 응답 입력
-- [x] OutputView
-  - [x] printMsg() : 메세지 출력
-  - [x] printMap() : 다리 진행 결과 출력
-  - [x] printResult() : 최종 결과 출력
-    - [x] 최종 게임 결과 메세지 출력
-    - [x] 다리 진행 상황 출력
-    - [x] 게임 성공 여부 출력
-    - [x] 총 시도 횟수 출력
+InputView
+
+- [ ] readBrigeSize
+  - [ ] 다리 길이 입력
+- [ ] readMoving
+  - [ ] 이동 방향 입력
+- [ ] readGameCommand
+  - [ ] 재시도/종료 입력
+
+OutputView
+
+- [ ] printMap
+  - [ ] 중간 결과 출력
+- [ ] printResult
+  - [ ] 최종 진행 및 결과 출력
 
 ### Controller
 
-- [x] bridgeGameController 함수
-  - [x] 시작 메세지 출력 요청
-  - [x] 다리 길이 입력 요청 : getBridgeSize ()
-    - [x] 다리 생성 요청
-  - [x] 이동할 칸 입력 요청
-  - [x] 이동 가능 여부 판별 요청
-    - [x] 만약 다리 건너기 성공 시 이동할 칸 입력 요청
-    - [x] 다리 완주 시 종료 함수 출력
-    - [x] 실패 시 gettrialOver함수 실행
-      - [x] 리턴 값이 `R` 일 시 이동할 칸 입력부터 재시작 ( 다리 길이는 유지, 진행 사항은 초기화)
-      - [x] 리턴 값이 `Q`일 시 종료 함수 출력
-- [x] getBridgeSize 함수 : 다리 길이 입력
+bridgeController
 
-  - [x] 다리 길이 입력 요청
-  - [x] 다리 길이 검증 요청
-    - [x] valid한 값을 얻을 때까지 반복
+- [ ] inputController에 다리 길이 입력 요청
+  - [ ] 리턴 값을 활용하여 다리 생성
+- [ ] inputController에 이동할 칸 입력 요청
+  - [ ] 해당 칸으로 이동 가능한 지 확인
+    - [ ] 이동 가능 → moveSucceedProcess
+    - [ ] 이동 불가능 → moveFailProcess
+- [ ] 종료 메세지 요청
+  - [ ] 출력 요청
 
-- [x] getMove 함수 : 이동할 칸 입력
+moveFailProcess
 
-  - [x] 이동할 칸 입력 요청
-  - [x] 입력 검증 요청
-    - [x] valid한 값을 얻을 때까지 반복
+- [ ] 이동 가능 X ) 재시도 입력 요청
+  - [ ] 재시도 ) 초기화 후 false 반환
+  - [ ] 재시도 X ) true 반환
 
-- [x] TrialOver 함수 : 라운드 종료 시 실행 로직
+moveSucceedProcess
 
-  - [x] isRoundOver 함수 실행
+- [ ] 이동 가능 ) 이동 후 완주 했는지 요청
+  - [ ] 완주 ) true 반환
+  - [ ] 완주 X ) false 반환
 
-- [x] getTrialOverAnswer함수 : 라운드 종료에 따른 사용자 입력
+getGameOverMsg
 
-  - [x] 사용자 응답 입력 요청
-  - [x] 사용자 응답 검증 요청
-    - [x] valid한 값을 얻을 때까지 반복
+- [ ] bridgeGame으로 부터 종료 메세지 받아오는 함수
 
-- [x] gameOver() : 최종 결과 출력
+inputController
 
-### BridgeMaker
-
-- [x] makeBridge(다리 사이즈, 생성된 랜덤 숫자) : 다리 생성 로직
+- [ ] bridgeSize
+  - [ ] 다리 길이 입력 요청
+  - [ ] 입력값 검증
+  - [ ] 옳은 값이 들어올 때까지 재시도
+- [ ] move
+  - [ ] 이동할 칸 입력 요청
+  - [ ] 입력 값 검증
+  - [ ] 옳은 값이 들어올 때까지 재시도
+- [ ] retry
+  - [ ] 재시도 할 지 요청
+  - [ ] 입력 값 검증
+  - [ ] 옳은 값이 들어올 때까지 재시도
 
 ### constants.js
 
-- [x] 입력 메세지
-  - [x] 다리 길이 입력 : `다리의 길이를 입력해주세요.`
-  - [x] 이동할 칸 입력 : `이동할 칸을 선택해주세요. (위: U, 아래: D)`
-  - [x] 게임 재시작 여부 입력 : `게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)`
-- [x] 출력 메세지
+- [ ] DEFULT_MSG
 
-  - [x] 시작 메세지 : `다리 건너기 게임을 시작합니다.\n`
-  - [x] 최종 결과 : `최종 게임 결과`
-  - [x] 성공 여부 : `게임 성공 여부:`
-  - [x] 시도 횟수 : `총 시도한 횟수:`
+  - [ ] START : `다리 건너기 게임을 시작합니다.\n`
+  - [ ] BRIDGE_SIZE : `다리의 길이를 입력해주세요.\n`
+  - [ ] MOVE : `\n이동할 칸을 선택해주세요. (위: U, 아래: D)\n`
+  - [ ] RETRY : `\n게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n`
+  - [ ] RESULT : `최종 게임 결과\n`
+  - [ ] FINISH : `게임 성공 여부:`
+  - [ ] TRIAL : `총 시도한 횟수:`
 
-- [x] 에러메세지
-  - [x] EMPTY : `[ERROR] 값이 비어있습니다. 다시 입력해주세요.`
-  - [x] NAN : `[ERROR] 숫자가 아닙니다. 3부터 20 사이의 숫자를 입력해주세요.`
-  - [x] OUT_OF_RANGE : `[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.`
-  - [x] UNVALID_INPUT: `[ERROR] 알 수 없는 값입니다. 다시 입력해주세요. (소문자 불가)`
-- [x] 다리 길이 제한
+- [ ] BRIDGE_SIZE
 
-  - [x] MIN : 3
-  - [x] MAX : 20
+  - [ ] MIN : `3`
+  - [ ] MAX : `20`
 
-- [x] 사용자 이동
+- [ ] MSG
 
-  - [x] SUCCESS : O
-  - [x] FAIL : X
+  - [ ] START : `[`
+  - [ ] DELIMITER : `|`
+    - [ ] END : `]`
 
-- [x] 횟수 종료
+- [ ] MOVE
 
-  - [x] RETRY: `R`
-  - [x] QUIT: `Q`
+  - [ ] UP : `U`
+  - [ ] DOWN : `D`
 
-- [x] 과정 메세지
-  - [x] START : `[`
-  - [x] DELIMITER : `|`
-  - [x] END : `]`
+- [ ] GAME_OVER
+
+  - [ ] RETRY : `R`
+  - [ ] QUIT : `Q`
+
+- [ ] ERROR
+  - [ ] EMPTY : `[ERROR] 입력 값이 비어있습니다. 값을 입력해주세요.`
+  - [ ] OUT_OF_RANGE : `[ERROR] 값이 범위에 맞지 않습니다. 다시 입력해주세요.`
+  - [ ] NAN : `[ERROR] 값이 숫자가 아닙니다. 숫자만 입력해주세요.`
+  - [ ] UNVALID_VALUE : `[ERROR] 값이 올바르지 않습니다. 다시 입력해주세요.`
 
 ## 프로젝트 구조
 
@@ -135,5 +164,3 @@ Validator
 ### 추가한 테스트
 
 - [ ]
-
-## 리팩토링
