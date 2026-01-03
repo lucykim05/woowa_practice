@@ -8,5 +8,7 @@ export const OutputView = {
 
   printMap() {},
 
-  printResult() {},
+  printResult(msg) {
+    Console.print(msg);
+  },
 };
