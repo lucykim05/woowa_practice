@@ -15,7 +15,8 @@ export const MOVE = Object.freeze({
 });
 
 export const ERROR = Object.freeze({
-  EMPTY: `[ERROR] 입력 값이 비어있습니다. 값을 입력해주세요.`,
-  OUT_OF_RANGE: `[ERROR] 값이 범위에 맞지 않습니다. 다시 입력해주세요.`,
-  NAN: `[ERROR] 값이 숫자가 아닙니다. 숫자만 입력해주세요.`,
+  EMPTY: "[ERROR] 입력 값이 비어있습니다. 값을 입력해주세요.",
+  OUT_OF_RANGE: "[ERROR] 값이 범위에 맞지 않습니다. 다시 입력해주세요.",
+  NAN: "[ERROR] 값이 숫자가 아닙니다. 숫자만 입력해주세요.",
+  UNVALID_VALUE: "[ERROR] 값이 올바르지 않습니다. 다시 입력해주세요.",
 });
