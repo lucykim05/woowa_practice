@@ -1,6 +1,6 @@
 import { Console, Random } from "@woowacourse/mission-utils";
 import App from "../src/App.js";
-import BridgeMaker from "../src/BridgeMaker.js";
+import { BridgeMaker } from "../src/BridgeMaker.js";
 
 const mockQuestions = (inputs) => {
   Console.readLineAsync = jest.fn();

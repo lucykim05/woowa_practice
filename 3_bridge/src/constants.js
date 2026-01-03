@@ -1,10 +1,16 @@
 export const DEFAULT_MSG = Object.freeze({
   START: "다리 건너기 게임을 시작합니다.\n",
+  BRIDGE_SIZE: "다리의 길이를 입력해주세요.\n",
 });
 
 export const BRIDGE_SIZE = Object.freeze({
   MIN: 3,
   MAX: 20,
+});
+
+export const MOVE = Object.freeze({
+  UP: "U",
+  DOWN: "D",
 });
 
 export const ERROR = Object.freeze({
