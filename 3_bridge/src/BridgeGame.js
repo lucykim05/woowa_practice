@@ -26,6 +26,7 @@ class BridgeGame {
     this.#upArr = [];
     this.#downArr = [];
     const length = await this.#getLength();
+    console.log(length);
     await this.startGame(length);
     await this.move(length);
   }
@@ -53,6 +54,7 @@ class BridgeGame {
       const input = await InputView.readMoving();
       const isAnswer = this.#gameRound.move(input);
       const position = this.#gameRound.getPosition();
+      console.log(position);
       this.#setArr(isAnswer, input);
       this.#getResult(position, this.#bridge);
       if (!isAnswer || position == length) break;
