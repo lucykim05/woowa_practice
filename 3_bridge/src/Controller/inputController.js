@@ -15,6 +15,7 @@ export const InputController = {
     try {
       const move = await InputView.readMoving();
       Validator.move(move);
+      return move;
     } catch (error) {
       throw Error(error.message);
     }
