@@ -9,8 +9,4 @@ export const OutputView = {
   printMap() {},
 
   printResult() {},
-
-  printError(error) {
-    Console.print(error);
-  },
 };
