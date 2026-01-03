@@ -1,6 +1,6 @@
 import { InputView } from "../InputView.js";
 
-export const inputController = {
+export const InputController = {
   async bridgeSize() {
     while (true) {
       try {
