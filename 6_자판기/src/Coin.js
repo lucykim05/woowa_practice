@@ -6,6 +6,3 @@ const Coin = {
 };
 
 export default Coin;
-
-// 또는 배열로 관리하려면
-export const COINS = [500, 100, 50, 10];

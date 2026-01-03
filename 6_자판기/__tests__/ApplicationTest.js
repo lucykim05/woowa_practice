@@ -2,12 +2,10 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../src/App.js';
 
 const mockQuestions = (answers) => {
-  MissionUtils.Console.readLine = jest.fn();
+  MissionUtils.Console.readLineAsync = jest.fn();
   answers.reduce((acc, input) => {
-    return acc.mockImplementationOnce((_, callback) => {
-      callback(input);
-    });
-  }, MissionUtils.Console.readLine);
+    return acc.mockResolvedValueOnce(input);
+  }, MissionUtils.Console.readLineAsync);
 };
 
 const mockRandoms = (numbers) => {
@@ -27,12 +25,12 @@ const getOutput = (logSpy) => {
   return [...logSpy.mock.calls].join('');
 };
 
-const runException = (inputs) => {
+const runException = async (inputs) => {
   mockQuestions(inputs);
   const logSpy = getLogSpy();
   const app = new App();
 
-  app.play();
+  await app.play();
 
   expectLogContains(getOutput(logSpy), ['[ERROR]']);
 };
@@ -44,7 +42,7 @@ const expectLogContains = (received, logs) => {
 };
 
 describe('자판기 테스트', () => {
-  test('기능 테스트', () => {
+  test('기능 테스트', async () => {
     const logSpy = getLogSpy();
     mockRandoms([100, 100, 100, 100, 50]);
     mockQuestions([
@@ -56,7 +54,7 @@ describe('자판기 테스트', () => {
     ]);
 
     const app = new App();
-    app.play();
+    await app.play();
 
     const log = getOutput(logSpy);
     expectLogContains(log, [
@@ -70,7 +68,7 @@ describe('자판기 테스트', () => {
     ]);
   });
 
-  test('예외 테스트', () => {
-    runException(['-1']);
+  test('예외 테스트', async () => {
+    await runException(['-1']);
   });
 });
