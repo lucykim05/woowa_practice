@@ -1,6 +1,6 @@
-import { InputView } from "../InputView.js";
+import { InputView } from "../View/InputView.js";
 import { Validator } from "../Model/Validator.js";
-import { OutputView } from "../OutputView.js";
+import { OutputView } from "../View/OutputView.js";
 
 export const InputController = {
   async bridgeSize() {
