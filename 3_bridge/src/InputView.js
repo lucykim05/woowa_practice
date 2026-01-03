@@ -3,7 +3,7 @@ import { DEFAULT_MSG } from "./constants.js";
 
 export const InputView = {
   async readBridgeSize() {
-    return await Console.readLineAsync(DEFAULT_MSG.START);
+    return await Console.readLineAsync(DEFAULT_MSG.BRIDGE_SIZE);
   },
 
   readMoving() {},
