@@ -6,7 +6,9 @@ export const OutputView = {
     Console.print(DEFAULT_MSG.START);
   },
 
-  printMap() {},
+  printMap(msg) {
+    Console.print(msg);
+  },
 
   printResult(msg) {
     Console.print(msg);

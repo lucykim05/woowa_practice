@@ -26,4 +26,6 @@ const gameProcess = async (bridgeGame) => {
 
 const moveSucceedProcess = (bridgeGame, userMove) => {
   bridgeGame.move(userMove);
+  const progress = bridgeGame.makeProgressMsg();
+  OutputView.printMap(progress);
 };
