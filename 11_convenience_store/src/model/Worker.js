@@ -3,13 +3,11 @@ import Customer from './Customer.js';
 import PurchaseManager from './PurchaseManager.js';
 
 class Worker {
-  #purchase;
   #store;
   #customer;
   #manager;
 
-  constructor(purchase, store) {
-    this.#purchase = purchase;
+  constructor(store) {
     this.#store = store;
     this.#makeCustomer(store);
   }

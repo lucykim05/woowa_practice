@@ -64,7 +64,7 @@ class Controller {
       x.map((y) => y.replace(/[^가-힣0-9]/g, ''))
     );
     this.#purchase = filtered;
-    this.#worker = new Worker(filtered, this.#store);
+    this.#worker = new Worker(this.#store);
   }
 
   async purchase() {
