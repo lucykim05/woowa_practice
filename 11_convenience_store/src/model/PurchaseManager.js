@@ -143,20 +143,34 @@ class PurchaseManager {
   getInfo() {
     const promoInfo = this.store.getPromoInfo(this.name);
     const productInfo = this.store.getProductInfo(this.name);
+    const promoFiltered = this.filterPromoInfo();
+    if (promoFiltered.length > 0) {
+      return this.getPromoInfo(promoFiltered, promoInfo, productInfo);
+    }
+    return this.getNonPromoInfo(productInfo);
+  }
+
+  getPromoInfo(promoFiltered, promoInfo, productInfo) {
+    const promoQuantity = Number(promoFiltered[0].quantity);
+    const nonpromoFiltered = productInfo.filter((x) => x.promotion == null);
+    const nonpromoQuantity = Number(nonpromoFiltered[0].quantity);
+    return {
+      promoInfo: promoInfo,
+      productInfo: productInfo,
+      promoQuantity: promoQuantity,
+      nonpromoQuantity: nonpromoQuantity,
+    };
+  }
+
+  filterPromoInfo() {
+    const productInfo = this.store.getProductInfo(this.name);
     const promoFiltered = productInfo
       .filter((x) => x.promotion !== null)
       .filter((x) => this.store.checkPromotion(x.promotion));
-    if (promoFiltered.length > 0) {
-      const promoQuantity = Number(promoFiltered[0].quantity);
-      const nonpromoFiltered = productInfo.filter((x) => x.promotion == null);
-      const nonpromoQuantity = Number(nonpromoFiltered[0].quantity);
-      return {
-        promoInfo: promoInfo,
-        productInfo: productInfo,
-        promoQuantity: promoQuantity,
-        nonpromoQuantity: nonpromoQuantity,
-      };
-    }
+    return promoFiltered;
+  }
+
+  getNonPromoInfo(productInfo) {
     const nonpromoFiltered = productInfo.filter((x) => x.promotion == null);
     const nonpromoQuantity = Number(nonpromoFiltered[0].quantity);
     return {
@@ -164,7 +178,6 @@ class PurchaseManager {
       productInfo: productInfo,
       promoQuantity: 0,
       nonpromoQuantity: nonpromoQuantity,
-      quantity: nonpromoQuantity,
     };
   }
 
