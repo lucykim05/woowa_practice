@@ -7,6 +7,7 @@ class Controller {
   #output;
   #validator;
   #store;
+  #worker;
 
   constructor() {}
 
@@ -25,8 +26,7 @@ class Controller {
     const filtered = arr.map((x) =>
       x.map((y) => y.replace(/[^가-힣0-9]/g, ''))
     );
-
-    return filtered;
+    this.#worker = new Worker(filtered);
   }
 }
 
