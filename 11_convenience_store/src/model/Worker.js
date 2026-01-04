@@ -1,21 +1,27 @@
 import { ERROR } from '../constants/error.js';
+import Customer from './Customer.js';
+import PurchaseManager from './PurchaseManager.js';
 
 class Worker {
   #purchase;
   #store;
   #customer;
+  #manager;
 
   constructor(purchase, store) {
     this.#purchase = purchase;
     this.#store = store;
+    this.#makeCustomer(store);
   }
 
-  process() {
-    const request = this.#purchase;
-    this.#purchase.forEach((x) => {
-      const [name, quantity] = x;
-      this.checkRemaining(name, Number(quantity));
-    });
+  makeManager(name, quantity) {
+    const manager = new PurchaseManager(name, Number(quantity), this.#store);
+    this.#manager = manager;
+  }
+
+  process(input) {
+    const result = this.#manager.checkProcess(input);
+    return result;
   }
 
   checkRemaining(name, quantity) {
@@ -24,6 +30,31 @@ class Worker {
     info.forEach((x) => (total += Number(x.quantity)));
     if (total >= quantity) return info;
     throw new Error(ERROR.REAMINING);
+  }
+
+  reprocessPurchase(result) {
+    const name = result.name;
+    const quantity = result.quantity;
+    const manager = new PurchaseManager(name, Number(quantity), this.#store);
+    return manager.checkProcess(result);
+  }
+
+  getCustomer() {
+    return this.#customer;
+  }
+
+  #makeCustomer(store) {
+    this.#customer = new Customer(store);
+  }
+
+  processResult(result) {
+    const name = result.name;
+    const quantity = result.quantity;
+    const free = result.free;
+    this.#store.buyProducts(name, quantity);
+    const customer = this.#customer;
+    const totalPrice = customer.purchaseProduct(name, quantity);
+    customer.purchaseFreeProduct(name, free, totalPrice);
   }
 }
 

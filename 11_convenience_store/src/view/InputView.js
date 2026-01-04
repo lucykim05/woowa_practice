@@ -1,7 +1,7 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { MESSAGE } from '../constants/message.js';
 import fs from 'fs';
-import parseCSV from '../model/Parser.js';
+import { parseCSV, uniqueName } from '../model/Parser.js';
 
 class InputView {
   async readGoods() {
@@ -10,9 +10,7 @@ class InputView {
   }
 
   async readMembership() {
-    const reusult = await MissionUtils.Console.readLineAsync(
-      MESSAGE.MEMBERSHIP
-    );
+    const result = await MissionUtils.Console.readLineAsync(MESSAGE.MEMBERSHIP);
     return result;
   }
 
@@ -26,6 +24,13 @@ class InputView {
     const data = fs.readFileSync(filePath, 'utf-8');
     const parsedData = parseCSV(data);
     return parsedData;
+  }
+
+  getUniqueNames() {
+    const filePath = 'public/products.md';
+    const data = fs.readFileSync(filePath, 'utf-8');
+    const names = uniqueName(data);
+    return names;
   }
 
   readPromoInfo() {
