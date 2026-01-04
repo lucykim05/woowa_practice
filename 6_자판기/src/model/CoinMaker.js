@@ -11,7 +11,7 @@ class CoinMaker {
   }
 
   #makeCoin() {
-    const map = this.#makeCoinMap();
+    this.#makeCoinMap();
     this.#updateMap();
   }
 
@@ -27,17 +27,13 @@ class CoinMaker {
   }
 
   #updateMap() {
-    this.#updateAmount(this.#coinMap, Coin.COIN_500);
-    this.#updateAmount(this.#coinMap, Coin.COIN_100);
-    this.#updateAmount(this.#coinMap, Coin.COIN_50);
-    this.#coinMap.set(Coin.COIN_10, this.#amount / Coin.COIN_10);
-  }
-
-  #updateAmount(map, coin) {
-    const remain = Math.floor(this.#amount / coin);
-    const randomNum = MissionUtils.Random.pickNumberInRange(0, remain);
-    map.set(coin, randomNum);
-    this.#amount = this.#amount - coin * randomNum;
+    const coins = [Coin.COIN_500, Coin.COIN_100, Coin.COIN_50, Coin.COIN_10];
+    while (this.#amount >= 10) {
+      const available = coins.filter((x) => x <= this.#amount);
+      const coin = MissionUtils.Random.pickNumberInList(available);
+      this.#coinMap.set(coin, this.#coinMap.get(coin) + 1);
+      this.#amount -= coin;
+    }
   }
 
   getCoinMap() {

@@ -24,7 +24,7 @@ class MachineController {
   }
 
   async makeCoin() {
-    const amount = await this.#input.readAmount();
+    const amount = Number(await this.#input.readAmount());
     this.#validator.validateAmount(amount);
     const coinMaker = new CoinMaker(amount);
     this.#coinMap = coinMaker.getCoinMap();
