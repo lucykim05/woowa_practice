@@ -35,10 +35,6 @@ class Store {
     return null;
   }
 
-  addnonPromo() {
-    const names = this.#products.entries();
-  }
-
   buyProducts(name, quantity) {
     const nonPromo = this.#products
       .filter((x) => x.name === name)
