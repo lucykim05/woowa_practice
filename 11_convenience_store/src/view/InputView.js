@@ -4,16 +4,21 @@ import fs from 'fs';
 import parseCSV from '../model/Parser.js';
 
 class InputView {
-  readGoods() {
-    MissionUtils.Console.readLineAsync(MESSAGE.GOODS);
+  async readGoods() {
+    const result = await MissionUtils.Console.readLineAsync(MESSAGE.GOODS);
+    return result;
   }
 
-  readMembership() {
-    MissionUtils.Console.readLineAsync(MESSAGE.MEMBERSHIP);
+  async readMembership() {
+    const reusult = await MissionUtils.Console.readLineAsync(
+      MESSAGE.MEMBERSHIP
+    );
+    return result;
   }
 
-  readMoreShopping() {
-    MissionUtils.Console.readLineAsync(MESSAGE.SHOP_MORE);
+  async readMoreShopping() {
+    const result = await MissionUtils.Console.readLineAsync(MESSAGE.SHOP_MORE);
+    return result;
   }
 
   readGoodsInfo() {
