@@ -1,14 +1,12 @@
 import InputView from '../view/InputView.js';
 import Store from '../model/Store.js';
 import OutputView from '../view/OutputView.js';
-import Validator from '../model/Validator.js';
 import Worker from '../model/Worker.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 class Controller {
   #input;
   #output;
-  #validator;
   #store;
   #worker;
   #purchase;
@@ -19,7 +17,6 @@ class Controller {
     this.#input = new InputView();
     this.#output = new OutputView();
     const productsData = this.#input.readGoodsInfo();
-    console.log(productsData);
     const promotionData = this.#input.readPromoInfo();
     const uniqueNames = this.#input.getUniqueNames();
     const result = this.processData(productsData, uniqueNames);

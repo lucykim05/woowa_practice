@@ -3,7 +3,6 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 class Store {
   #products;
   #promotion;
-  #originalProducts;
 
   constructor(products, promotion) {
     this.#products = products;
@@ -36,13 +35,8 @@ class Store {
   }
 
   buyProducts(name, quantity) {
-    const nonPromo = this.#products
-      .filter((x) => x.name === name)
-      .filter((y) => y.promotion == null || !this.checkPromotion(y.promotion));
-    const promo = this.#products
-      .filter((x) => x.name === name)
-      .filter((y) => y.promotion !== null)
-      .filter((x) => this.checkPromotion(x.promotion));
+    const result = this.filterInfo(name);
+    const [nonPromo, promo] = result;
     if (promo.length === 0) {
       nonPromo[0].quantity -= quantity;
       return;
@@ -53,6 +47,17 @@ class Store {
     }
     promo[0].quantity = 0;
     nonPromo[0].quantity -= quantity - promo[0].quantity;
+  }
+
+  filterInfo(name) {
+    const nonPromo = this.#products
+      .filter((x) => x.name === name)
+      .filter((y) => y.promotion == null || !this.checkPromotion(y.promotion));
+    const promo = this.#products
+      .filter((x) => x.name === name)
+      .filter((y) => y.promotion !== null)
+      .filter((x) => this.checkPromotion(x.promotion));
+    return [nonPromo, promo];
   }
 
   getAllProduct() {
