@@ -19,6 +19,10 @@ class Store {
       if (!promo.includes(x.promotion)) x.promotion = null;
     });
   }
+
+  getProductInfo(name) {
+    return this.#products.filter((x) => x.name === name);
+  }
 }
 
 export default Store;

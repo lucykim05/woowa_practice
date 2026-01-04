@@ -1,6 +1,7 @@
 import InputView from '../view/InputView.js';
 import Store from '../model/Store.js';
 import Validator from '../model/Validator.js';
+import Worker from '../model/Worker.js';
 
 class Controller {
   #input;
@@ -26,7 +27,11 @@ class Controller {
     const filtered = arr.map((x) =>
       x.map((y) => y.replace(/[^가-힣0-9]/g, ''))
     );
-    this.#worker = new Worker(filtered);
+    this.#worker = new Worker(filtered, this.#store);
+  }
+
+  debug(input) {
+    this.#worker.checkRemaining('사이다', 16);
   }
 }
 
