@@ -115,7 +115,7 @@
 - [x] 방문 날짜 입력 받아 order로 전달
 - [x] 주문할 메뉴 입력 받아 Validator
 - [x] 검증 후 calculator로 전달
-- [ ] 결과 받아와 출력
+- [x] 결과 받아와 출력
 
 ### Customer
 

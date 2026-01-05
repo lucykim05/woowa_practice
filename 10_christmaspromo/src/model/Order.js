@@ -5,6 +5,7 @@ class Order {
     this.date = date;
     this.order = order;
     this.customer = customer;
+    this.process();
   }
 
   process() {

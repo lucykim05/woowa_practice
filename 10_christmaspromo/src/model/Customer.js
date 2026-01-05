@@ -38,6 +38,16 @@ class Customer {
       price: 25000,
     });
   }
+
+  getResult() {
+    return {
+      order: this.#order,
+      total: this.#totalAmount,
+      freeMenu: this.#freeMenu,
+      freeList: this.#freeList,
+      freeAmount: this.#freeAmount,
+    };
+  }
 }
 
 export default Customer;

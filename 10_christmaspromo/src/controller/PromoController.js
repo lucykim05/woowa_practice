@@ -18,6 +18,10 @@ class PromoController {
     this.#customer = new Customer(Number(date), parsedOrder);
     new Order(Number(date), parsedOrder, this.#customer);
   }
+
+  printResult() {
+    const result = this.#customer.getResult();
+  }
 }
 
 export default PromoController;
