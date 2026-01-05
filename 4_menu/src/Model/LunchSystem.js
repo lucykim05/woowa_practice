@@ -33,4 +33,13 @@ export class LunchSystem {
       coach.saveCantEat(list[idx]);
     });
   }
+
+  recommend() {
+    this.#coachList.forEach((coach) => {
+      this.#categoryList.forEach((category) => {
+        const categoryIdx = category - 1;
+        coach.recommend(categoryIdx);
+      });
+    });
+  }
 }

@@ -11,6 +11,8 @@ export const lunchController = async () => {
   const coachList = await getCoachList();
   lunchSystem.saveCoach(coachList);
   await saveCantEat(coachList, lunchSystem);
+
+  lunchSystem.recommend();
 };
 
 const getCoachList = async () => {
