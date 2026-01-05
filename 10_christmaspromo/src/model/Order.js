@@ -1,3 +1,11 @@
-class Order {}
+class Order {
+  #date;
+  #order;
+
+  constructor(date, order) {
+    this.#date = date;
+    this.#order = order;
+  }
+}
 
 export default Order;
