@@ -12,7 +12,9 @@ class PromoController {
     const date = await InputView.readDate();
     const order = await InputView.readOrder();
     const parsedOrder = Parser.parseOrder(order);
-    // this.#order = new Order(date, parsedOrder);
+    Validator.validateUnique(parsedOrder);
+    Validator.validateMenu(parsedOrder);
+    this.#order = new Order(date, parsedOrder);
   }
 }
 

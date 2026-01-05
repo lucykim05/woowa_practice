@@ -2,7 +2,12 @@ import Validator from './Validator.js';
 
 const Parser = {
   parseOrder(order) {
-    const arr = order.split(',').map((x) => x.split('-'));
+    const arr = order.split(',').map((x) =>
+      x
+        .trim()
+        .split('-')
+        .map((x) => x.trim())
+    );
     Validator.validateOrder(arr);
     const parsedOrder = [];
     arr.forEach((x) =>
