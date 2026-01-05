@@ -111,7 +111,7 @@
 
 ### PromoController
 
-- [ ] 메뉴 저장
+- [x] 메뉴 저장
 - [ ] 방문 날짜 입력 받아 order로 전달
 - [ ] 주문할 메뉴 입력 받아 Validator
 - [ ] 검증 후 calculator로 전달
@@ -139,7 +139,7 @@
 
 ### Menu
 
-- [ ] 메뉴 저장
+- [x] 메뉴 저장
 
 ### Validator
 
