@@ -112,7 +112,7 @@
 ### PromoController
 
 - [x] 메뉴 저장
-- [ ] 방문 날짜 입력 받아 order로 전달
+- [x] 방문 날짜 입력 받아 order로 전달
 - [ ] 주문할 메뉴 입력 받아 Validator
 - [ ] 검증 후 calculator로 전달
 - [ ] 결과 받아와 출력
