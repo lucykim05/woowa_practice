@@ -15,8 +15,8 @@ class PromoController {
     const parsedOrder = Parser.parseOrder(order);
     Validator.validateUnique(parsedOrder);
     Validator.validateMenu(parsedOrder);
-    this.#customer = new Customer(date, parsedOrder);
-    new Order(date, parsedOrder, this.#customer);
+    this.#customer = new Customer(Number(date), parsedOrder);
+    new Order(Number(date), parsedOrder, this.#customer);
   }
 }
 
