@@ -5,8 +5,9 @@
 한 주의 점심 메뉴를 추천해 주는 서비스다.
 
 ## 설계
+![IMG_9186](https://github.com/user-attachments/assets/3e1799f2-e630-4a6a-9a87-5d1211846c00)
 
-![IMG_9186.jpg](attachment:77635341-dcb7-4651-9996-9aca2b56d6af:IMG_9186.jpg)
+
 
 ## **기능 상세 설명 및 구현 기능 목록**
 
