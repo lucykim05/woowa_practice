@@ -1,2 +1,2 @@
 export const PARSING_DELIMITER = ",";
-export const SAMPLE_ARR = [];
+export const MENU_SAMPLE = [];
