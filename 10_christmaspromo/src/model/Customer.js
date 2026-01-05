@@ -41,6 +41,7 @@ class Customer {
 
   getResult() {
     return {
+      date: this.#date,
       order: this.#order,
       total: this.#totalAmount,
       freeMenu: this.#freeMenu,

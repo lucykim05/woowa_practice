@@ -4,6 +4,7 @@ class App {
   async run() {
     const controller = new PromoController();
     await controller.readInput();
+    controller.printResult();
   }
 }
 

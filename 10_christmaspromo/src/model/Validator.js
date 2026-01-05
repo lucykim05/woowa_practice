@@ -34,9 +34,7 @@ const Validator = {
 
   validateMenu(order) {
     order.forEach((x) => {
-      console.log(x);
       const filtered = Menu.filter((y) => y.name === x.name);
-      console.log(filtered);
       if (filtered.length === 0) throw new Error(ERROR.MENU);
     });
   },

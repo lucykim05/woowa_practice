@@ -9,8 +9,8 @@ class Order {
   }
 
   process() {
-    const total = this.totalAmount();
-    if (total >= 10000) {
+    this.totalAmount();
+    if (this.total >= 10000) {
       this.processPromo();
     }
   }
@@ -24,7 +24,7 @@ class Order {
       totalAmount += quantity * price;
     }
     this.customer.setAmount(totalAmount);
-    return totalAmount;
+    this.total = totalAmount;
   }
 
   processPromo() {
@@ -39,8 +39,8 @@ class Order {
   }
 
   freePromo() {
-    if (this.totalAmount() >= 120000) {
-      this.customer.setFreeAmount();
+    if (this.total >= 120000) {
+      this.customer.setFreeProduct();
     }
   }
 
@@ -56,36 +56,33 @@ class Order {
     const day = today.getDay();
     if (day <= 4) {
       this.workdayPromo();
-      return;
     }
-    this.weekendPromo();
+    if (day > 4) this.weekendPromo();
   }
 
   workdayPromo() {
-    const filtered = product.filter((x) => x.type === '디저트');
-    if (filtered.length !== 0) {
-      let total = 0;
-      filtered.forEach((x) => {
-        total += x.quantity * 2023;
-      });
-      this.customer.setFreeAmount('평일할인', total);
-    }
+    let total = 0;
+    this.order.forEach((x) => {
+      const filtered = Menu.filter((y) => y.name === x.name);
+      const type = filtered[0].type;
+      if (type === '디저트') total += x.quantity * 2023;
+    });
+    this.customer.setFreeAmount('평일 할인', total);
   }
 
   weekendPromo() {
-    const filtered = product.filter((x) => x.type === '메인');
-    if (filtered.length !== 0) {
-      let total = 0;
-      filtered.forEach((x) => {
-        total += x.quantity * 2023;
-      });
-      this.customer.setFreeAmount('주말할인', total);
-    }
+    let total = 0;
+    this.order.forEach((x) => {
+      const filtered = Menu.filter((y) => y.name === x.name);
+      const type = filtered[0].type;
+      if (type === '메인') total += x.quantity * 2023;
+    });
+    this.customer.setFreeAmount('주말 할인', total);
   }
 
   christmasDday() {
     if (this.date <= 25) {
-      const amount = (this.date - 1) * 100;
+      const amount = 1000 + (this.date - 1) * 100;
       this.customer.setFreeAmount('크리스마스 디데이 할인', amount);
     }
   }
