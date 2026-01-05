@@ -31,10 +31,13 @@ export const Validator = {
     if (list.length === 0) return;
 
     const parsedList = commaParser(list);
-    if (parsedList > CANT_EAT_LIMIT) throw Error(ERROR.MENU_OUT_OF_RANGE);
+    if (parsedList.length > CANT_EAT_LIMIT)
+      throw Error(ERROR.MENU_OUT_OF_RANGE);
 
-    for (let i = 0; i < list.length; i++) {
-      const menuExist = MENU_SAMPLE.filter((row) => row.includes(list[i]));
+    for (let i = 0; i < parsedList.length; i++) {
+      const menuExist = MENU_SAMPLE.filter((row) =>
+        row.includes(parsedList[i])
+      );
       if (menuExist.length === 0) throw Error(ERROR.MENU_NO_EXIST);
     }
   },
