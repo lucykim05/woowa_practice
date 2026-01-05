@@ -2,7 +2,11 @@ const Validator = {
   validateCustom(input) {
     this.validateNaN(input);
     this.validateEmpty(input);
-    this.validaeLength(input);
+    this.validateLength(input);
+  },
+
+  validateInput(input) {
+    this.validateNumber(input);
   },
 
   validateNaN(input) {
@@ -18,6 +22,12 @@ const Validator = {
   validateLength(input) {
     if (input.length !== 1)
       throw new Error('[ERROR] 적절하지 않은 커스텀 구분자');
+  },
+
+  validateNumber(input) {
+    if (Number.isNaN(Number(input))) throw new Error('[ERROR] 숫자아님');
+    if (!Number.isInteger(Number(input))) throw new Error('[ERROR] 정수 아님');
+    if (Number(input) < 0) throw new Error('[ERROR] 음수');
   },
 };
 

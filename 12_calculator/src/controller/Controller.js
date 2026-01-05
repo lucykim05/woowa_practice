@@ -1,6 +1,8 @@
 import InputView from '../view/InputView.js';
 import Matcher from '../model/Matcher.js';
 import Validator from '../model/Validator.js';
+import OutputView from '../view/OutputView.js';
+import Parser from '../model/Parser.js';
 
 class Controller {
   #input;
@@ -32,10 +34,17 @@ class Controller {
     return letter;
   }
 
-  validateParsed(input) {}
+  validateParsed(input) {
+    console.log(input);
+    input.forEach((x) => Validator.validateInput(x));
+  }
 
   calculate(input) {
-    return input.reduce((a, b) => a + b);
+    let result = 0;
+    input.forEach((x) => {
+      result += x.map(Number).reduce((a, b) => a + b);
+    });
+    OutputView.printResult(result);
   }
 }
 

@@ -8,8 +8,13 @@ class Parser {
     const regex = /[,:]/;
     const custom = this.letter[2];
     if (custom) {
-      return this.input.split(regex).map((x) => x.split(custom));
+      return this.input
+        .slice(5, this.input.length)
+        .split(regex)
+        .map((x) => x.split(custom));
     }
     return this.input.split(regex);
   }
 }
+
+export default Parser;
