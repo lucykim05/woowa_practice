@@ -29,10 +29,41 @@ class Order {
   processPromo() {
     //크리스마스디데이
     this.christmasDday();
-    //평일할인
-    //주말할인
+    this.dayPromo();
     //특별할인
     //증정할인
+  }
+
+  dayPromo() {
+    const today = new Date(`2023-12-${String(this.date).padStart(2, 0)}`);
+    const day = today.getDay();
+    if (day <= 4) {
+      this.workdayPromo();
+      return;
+    }
+    this.weekendPromo();
+  }
+
+  workdayPromo() {
+    const filtered = product.filter((x) => x.type === '디저트');
+    if (filtered.length !== 0) {
+      let total = 0;
+      filtered.forEach((x) => {
+        total += x.quantity * 2023;
+      });
+      this.customer.setFreeAmount('평일할인', total);
+    }
+  }
+
+  weekendPromo() {
+    const filtered = product.filter((x) => x.type === '메인');
+    if (filtered.length !== 0) {
+      let total = 0;
+      filtered.forEach((x) => {
+        total += x.quantity * 2023;
+      });
+      this.customer.setFreeAmount('주말할인', total);
+    }
   }
 
   christmasDday() {
