@@ -1,10 +1,12 @@
 import { DAYS, CATEGORY_LIMIT } from "../constants.js";
 import { Random } from "@woowacourse/mission-utils";
+import { Coach } from "./Coach.js";
 
 export class LunchSystem {
   #coachList;
   #categoryList;
   constructor() {
+    this.#coachList = [];
     this.#categoryList = [];
 
     this.#pickCategory();
@@ -18,4 +20,13 @@ export class LunchSystem {
       if (sameCategory <= CATEGORY_LIMIT) this.#categoryList.push(category);
     }
   }
+
+  saveCoach(list) {
+    list.forEach((name) => {
+      const coach = new Coach(name);
+      this.#coachList.push(coach);
+    });
+  }
+
+  saveCantEat(list) {}
 }

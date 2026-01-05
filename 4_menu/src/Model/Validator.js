@@ -1,4 +1,10 @@
-import { COACH_LIMIT, COACH_NAME_LIMIT, ERROR } from "../constants.js";
+import {
+  CANT_EAT_LIMIT,
+  COACH_LIMIT,
+  COACH_NAME_LIMIT,
+  ERROR,
+  MENU_SAMPLE,
+} from "../constants.js";
 import { commaParser } from "../Utils/parser.js";
 export const Validator = {
   coach(list) {
@@ -9,7 +15,7 @@ export const Validator = {
       parsedList.length < COACH_LIMIT.MIN ||
       parsedList.length > COACH_LIMIT.MAX
     )
-      throw Error(ERROR.COUNT_OUT_OF_RANGE);
+      throw Error(ERROR.COACH_OUT_OF_RANGE);
 
     for (let i = 0; i < parsedList.length; i++) {
       const name = parsedList[i];
@@ -20,5 +26,16 @@ export const Validator = {
         throw Error(ERROR.NAME_OUT_OF_RANGE);
     }
   },
-  cantEat() {},
+
+  cantEat(list) {
+    if (list.length === 0) return;
+
+    const parsedList = commaParser(list);
+    if (parsedList > CANT_EAT_LIMIT) throw Error(ERROR.MENU_OUT_OF_RANGE);
+
+    for (let i = 0; i < list.length; i++) {
+      const menuExist = MENU_SAMPLE.filter((row) => row.includes(list[i]));
+      if (menuExist.length === 0) throw Error(ERROR.MENU_NO_EXIST);
+    }
+  },
 };
