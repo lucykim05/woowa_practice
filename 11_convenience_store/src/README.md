@@ -1,64 +1,5 @@
 # 🏪 편의점
 
-## 💡 목표
-
-### 학습 목표
-
-- 관련 함수를 묶어 클래스를 만들고, 객체들이 협력하여 하나의 큰 기능을 수행하도록 한다.
-- 클래스와 함수에 대한 단위 테스트를 통해 의도한 대로 정확하게 작동하는 영역을 확보한다.
-- [3주 차 공통 피드백](https://docs.google.com/document/d/1MsfVKpgiDyhq6ArbTwsf9EEqDBD85vyt9Oj25i0zkEM/edit?tab=t.0)을 최대한 반영한다.
-- [비공개 저장소 과제 진행 가이드](https://docs.google.com/document/d/1cmg0VpPkuvdaetxwp4hnyyFC_G-1f2Gr8nIDYIWcKC8/preview?tab=t.0#heading=h.1x8npe961lrb)를 참고하여 새로운 방식으로 과제 제출물을 제출한다.
-
-### 회고
-
-아래 질문에 대한 최종 회고를 진행하고 소감에 구체적인 결과를 작성한다. 소감은 텍스트로 작성해야 하며 외부 링크는 허용하지 않는다.
-
-- 지원서나 중간 회고에서 현실적인 목표를 설정하고 이를 달성했다고 생각하나요? 그 이유는 무엇인가요?
-- 중간 회고에서 조정한 목표가 실제 목표 달성에 도움이 되었나요? 목표를 달성하는 데 어떤 점이 효과적이었다고 생각하나요?
-- 각 미션의 목표를 달성하기 위해 세운 계획을 잘 이행했나요? 그 과정에서 어떤 전략이 효과가 있었나요?
-- 몰입하고 함께 성장하는 과정을 통해 인상 깊었던 경험이나 변화가 있었나요?
-
----
-
-## ️💡 개요
-
-### 편의점 프로그램
-
-편의점에서 물건을 구매하는 프로그램입니다. 재고와 프로모션 등을 적용해 물건을 구매하고 멤버쉽으로도 할인을 받을 수 있습니다. 구매자의 할인 혜택과 재고 상황을 고려하여 최종 결제 금액을 계산하고 안내하는 결제 시스템 입니다.
-
-### 주요 기능
-
-- 재고 출력
-  - 현재 편의점이 가지고 있는 재품과 수량 프로모션을 출력합니다.
-- 구입할 물품 및 수량 입력
-  - 구입할 물품과 수량을 입력합니다.
-  - 입력이 잘못될 경우 다시 입력 받습니다.
-- 재고와 프로모션 등의 할인을 적용 후 결제 금액 출력
-  - 구입할 물품의 재고를 확인합니다.
-  - 프로모션이 있는지 체크합니다.
-  - 멤버쉽 할인이 있는지 확인합니다.
-
----
-
-## ℹ️ 과제 진행 요구사항
-
-- 미션은 [편의점](https://github.com/woowacourse-precourse/java-convenience-store-7) 저장소를 생성하는 것으로 시작한다.
-- **기능을 구현하기 전 `README.md`에 구현할 기능 목록을 정리**해 추가한다.
-- Git의 커밋 단위는 앞 단계에서 README.md에 정리한 기능 목록 단위로 추가한다.
-  - [AngularJS Git Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 참고해 커밋 메시지를 작성한다.
-- 자세한 과제 진행 방법은 프리코스 진행 가이드 문서를 참고한다.
-
-## 📍 기능 요구 사항
-
-구매자의 할인 혜택과 재고 상황을 고려하여 최종 결제 금액을 계산하고 안내하는 결제 시스템을 구현한다.
-
-- 사용자가 입력한 상품의 가격과 수량을 기반으로 최종 결제 금액을 계산한다.
-  - 총구매액은 상품별 가격과 수량을 곱하여 계산하며, 프로모션 및 멤버십 할인 정책을 반영하여 최종 결제 금액을 산출한다.
-- 구매 내역과 산출한 금액 정보를 영수증으로 출력한다.
-- 영수증 출력 후 추가 구매를 진행할지 또는 종료할지를 선택할 수 있다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
-  - `Exception`이 아닌 `IllegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
-
 ### 재고 관리
 
 - 각 상품의 재고 수량을 고려하여 결제 가능 여부를 확인한다.
@@ -352,70 +293,97 @@
     N
 ```
 
-## 💻 프로그래밍 요구 사항 1
+## 설계
 
-- JDK 21 버전에서 실행 가능해야 한다.
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle` 파일은 변경할 수 없으며, **제공된 라이브러리 이외의 외부 라이브러리는 사용하지 않는다.**
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 등의 이름을 바꾸거나 이동하지 않는다.
-- 자바 코드 컨벤션을 지키면서 프로그래밍한다.
-  - 기본적으로 [Java Style Guide](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/java)를 원칙으로 한다.
+일단 프로그램의 진행과정을 정리하였고, 진행 순서는 다음과 같다.
 
-## 💻 프로그래밍 요구 사항 2
+1. products, promotion 받아옴 -> 날짜 비교 -> 저장
+2. 보유한 상품 출력 -> 구매할 상품, 수량 입력
+3. 입력된 내용 형식 오류 검증
+4. 재고 수량 확인 -> 프로모션 재고 모자라면 계속 진행 여부 확인 후 다음
+5. 프로모션 가능한 제품이 있으면 증졍 여부 확인 후 다음
+6. 수량이 없거나 재고가 없는 제품이면 오류 처리
+7. 모든 단계 완료되면 멤버십 여부 확인
+8. 멤버십 처리 후 결과 출력
 
-- indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
-- 3항 연산자를 쓰지 않는다.
-- 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
-  - 테스트 도구 사용법이 익숙하지 않다면 아래 문서를 참고하여 학습한 후 테스트를 구현한다.
-    - [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
-    - [AssertJ User Guide](https://assertj.github.io/doc/)
-    - [AssertJ Exception Assertions](https://www.baeldung.com/assertj-exception-assertion)
-    - [Guide to JUnit 5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)
+이 순서에 따라서 책임 분리를 하였고, 정리하면 다음과 같다.
 
-## 💻 프로그래밍 요구 사항 3
+### View
 
-- else 예약어를 쓰지 않는다.
-  - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
-  - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-- Java Enum을 적용하여 프로그램을 구현한다.
-- 구현한 기능에 대한 단위 테스트를 작성한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
+- InputView(사용자 입력 처리)
+- OutputView(출력 처리)
 
-## 💻 프로그래밍 요구 사항 4
+### Controller
 
-- 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다.
-  - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
-  - main()도 포함된다.
-- 입출력을 담당하는 클래스를 별도로 구현한다.
-  - 아래 `InputView`, `OutputView` 클래스를 참고하여 입출력 클래스를 구현한다.
-  - 클래스 이름, 메소드 반환 유형, 시그니처 등은 자유롭게 수정할 수 있다.
+- Controller(메인 컨트롤러, 입출력 처리 및 종합적인 처리 담당)
 
-```
-    public class InputView {
-        public String readItem() {
-            System.out.println("구매하실 상품명과 수량을 입력해 주세요. (예: [사이다-2],[감자칩-1])");
-            String input = Console.readLine();
-            // ...
-        }
-        // ...
-    }
-```
+### Model
 
-```
-    public class OutputView {
-        public void printProducts() {
-            System.out.println("- 콜라 1,000원 10개 탄산2+1");
-            // ...
-        }
-        // ...
-    }
-```
+- Store(상품 재고)
+- Customer(사용자 정보)
+- Worker(사용자 내용과 상품 재고 상호작용)
+- Calculator(결과 도출)
+- Validator(검증)
 
-## 라이브러리
+위와 같은 계층 분리를 통해 설계한 세부적인 기능들은 체크리스트로 정리하였습니다.
 
-- `camp.nextstep.edu.missionutils`에서 제공하는 `DateTimes` 및 `Console` API를 사용하여 구현해야 한다.
-  - 현재 날짜와 시간을 가져오려면 `camp.nextstep.edu.missionutils.DateTimes`의 `now()`를 활용한다.
-  - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+## 구현 체크리스트
+
+### InputView
+
+- [x] 구매할 상품명 & 수량 입력
+- [ ] 프로모션 재고 없을 때 진행 여부
+- [ ] 프로모션 증정 여부
+- [x] 멤버십 여부
+- [x] 계속 구매 여부
+
+### OutputView
+
+- [ ] 재고 출력
+- [ ] 영수증 출력
+
+### Validator
+
+- [x] 입력된 상품 형식 검증
+- [ ] 재고 수량 검증
+- [ ] 재고 존재 여부 검증
+- [ ] 기타 오류
+
+### Controller
+
+- [x] 상품 정보 받아옴 -> store로 전달
+- [x] 구매 입력 받아옴 -> worker로 전달
+- [ ] worker 통해 단계 반복
+- [ ] 프로모션 재고 모자랄 시 입력 받아옴 -> worker 전달
+- [ ] 프로모션 증정 있을 시 입력 받아옴 -> worker 전달
+- [ ] 모든 단계 종료 시 멤버십 입력
+- [ ] 종료된 결과 Calculator로 전달
+- [ ] 영수증 내용 출력
+- [ ] 추가 구매 여부 확인 후 반복
+
+### Store
+
+- [x] 상품 정보 저장
+- [ ] 프로모 여부 확인
+- [ ] 재고 확인
+- [ ] 구매 처리
+
+### Customer
+
+- [ ] 구매한 상품 저장
+- [ ] 증정된 상품 저장
+
+### Worker
+
+- [x] 구매 요청 받음
+- [ ] 프로모 여부 확인(store 통해)
+- [x] 재고 확인(store 통해)
+- [ ] 구매 처리(store, customer)
+
+### Calculator
+
+- [ ] Customer 구매 상품 정보 받아옴
+- [ ] 멤버십 여부 받아옴
+- [ ] 금액 계산
+
+[콜라-3],[에너지바-5]
