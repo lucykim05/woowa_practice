@@ -2,13 +2,7 @@ import Validator from './Validator.js';
 
 const Parser = {
   parseOrder(order) {
-    const arr = order.split(',').map((x) =>
-      x
-        .trim()
-        .split('-')
-        .map((x) => x.trim())
-    );
-    Validator.validateOrder(arr);
+    const arr = this.splitOrder(order);
     const parsedOrder = [];
     arr.forEach((x) =>
       parsedOrder.push({
@@ -17,6 +11,17 @@ const Parser = {
       })
     );
     return parsedOrder;
+  },
+
+  splitOrder(order) {
+    const arr = order.split(',').map((x) =>
+      x
+        .trim()
+        .split('-')
+        .map((x) => x.trim())
+    );
+    Validator.validateOrder(arr);
+    return arr;
   },
 };
 
