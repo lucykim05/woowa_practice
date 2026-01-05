@@ -1,10 +1,15 @@
+import { Console } from '@woowacourse/mission-utils';
 import PromoController from './controller/PromoController.js';
 
 class App {
   async run() {
-    const controller = new PromoController();
-    await controller.readInput();
-    controller.printResult();
+    try {
+      const controller = new PromoController();
+      await controller.readInput();
+      controller.printResult();
+    } catch (error) {
+      Console.print(error.message);
+    }
   }
 }
 

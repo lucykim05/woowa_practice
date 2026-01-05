@@ -12,6 +12,7 @@ class PromoController {
 
   async readInput() {
     const date = await InputView.readDate();
+    Validator.validateDate(Number(date));
     const order = await InputView.readOrder();
     const parsedOrder = Parser.parseOrder(order);
     Validator.validateUnique(parsedOrder);

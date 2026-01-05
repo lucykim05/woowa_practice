@@ -2,6 +2,16 @@ import { ERROR } from '../constants/error.js';
 import { Menu } from './Menu.js';
 
 const Validator = {
+  validateDate(date) {
+    this.validateRange(date);
+  },
+
+  validateRange(date) {
+    if (Number.isNaN(Number(date))) throw new Error(ERROR.DATE);
+    if (!Number.isInteger(Number(date))) throw new Error(ERROR.DATE);
+    if (date < 1 || date > 31) throw new Error(ERROR.DATE);
+  },
+
   validateOrder(order) {
     order.forEach((x) => {
       this.validateArr(x);
