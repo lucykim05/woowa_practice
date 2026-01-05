@@ -1,10 +1,11 @@
 import InputView from '../InputView.js';
-import Order from '../model/Order.js';
+import Customer from '../model/Customer.js';
 import Parser from '../model/Parser.js';
 import Validator from '../model/Validator.js';
+import Order from '../model/Order.js';
 
 class PromoController {
-  #order;
+  #customer;
 
   consturctor() {}
 
@@ -14,7 +15,8 @@ class PromoController {
     const parsedOrder = Parser.parseOrder(order);
     Validator.validateUnique(parsedOrder);
     Validator.validateMenu(parsedOrder);
-    this.#order = new Order(date, parsedOrder);
+    this.#customer = new Customer(date, parsedOrder);
+    new Order(date, parsedOrder, this.#customer);
   }
 }
 
