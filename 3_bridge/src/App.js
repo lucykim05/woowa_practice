@@ -1,7 +1,9 @@
-import { bridgeGameController } from "./Controller/bridgeGameController.js";
+import { bridgeController } from "./Controller/bridgeController.js";
+import { OutputView } from "./View/OutputView.js";
 class App {
   async play() {
-    await bridgeGameController();
+    OutputView.printStartMsg();
+    await bridgeController();
   }
 }
 
