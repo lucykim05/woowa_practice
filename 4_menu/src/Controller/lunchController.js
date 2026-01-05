@@ -13,6 +13,8 @@ export const lunchController = async () => {
   await saveCantEat(coachList, lunchSystem);
 
   lunchSystem.recommend();
+  const result = lunchSystem.getResult();
+  OutPutView.result(result);
 };
 
 const getCoachList = async () => {

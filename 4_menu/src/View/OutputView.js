@@ -10,5 +10,12 @@ export const OutPutView = {
     Console.print(error.message);
   },
 
-  result() {},
+  result(msg) {
+    Console.print(DEFAULT_MSG.RESULT);
+    Console.print(DEFAULT_MSG.WEEK);
+    msg.forEach((string) => {
+      Console.print(string);
+    });
+    Console.print(DEFAULT_MSG.FINISH);
+  },
 };

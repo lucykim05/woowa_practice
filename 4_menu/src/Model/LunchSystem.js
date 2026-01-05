@@ -1,4 +1,10 @@
-import { DAYS, CATEGORY_LIMIT } from "../constants.js";
+import {
+  DAYS,
+  CATEGORY_LIMIT,
+  CATEGORY,
+  DEFAULT_MSG,
+  MSG_TOOL,
+} from "../constants.js";
 import { Random } from "@woowacourse/mission-utils";
 import { Coach } from "./Coach.js";
 
@@ -21,6 +27,22 @@ export class LunchSystem {
     }
   }
 
+  #convertCategory() {
+    const categoryString = [DEFAULT_MSG.CATEGORY];
+    this.#categoryList.forEach((category) => {
+      categoryString.push(CATEGORY[category - 1]);
+    });
+    return categoryString;
+  }
+
+  #makeCategoryMsg() {
+    const categoryString = this.#convertCategory();
+    let categoryMsg = `${MSG_TOOL.START}${categoryString.join(
+      MSG_TOOL.DELIMITER
+    )}${MSG_TOOL.END}`;
+    return categoryMsg;
+  }
+
   saveCoach(list) {
     list.forEach((name) => {
       const coach = new Coach(name);
@@ -41,5 +63,14 @@ export class LunchSystem {
         coach.recommend(categoryIdx);
       });
     });
+  }
+
+  getResult() {
+    const msg = [];
+    msg.push(this.#makeCategoryMsg());
+    this.#coachList.forEach((coach) => {
+      msg.push(coach.makeResultMsg());
+    });
+    return msg;
   }
 }

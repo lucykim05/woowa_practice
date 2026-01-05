@@ -3,6 +3,7 @@ export const MENU_SAMPLE = [];
 export const DAYS = 5;
 export const CATEGORY_LIMIT = 2;
 export const CANT_EAT_LIMIT = 2;
+export const CATEGORY = ["일식", "한식", "중식", "아시안", "양식"];
 
 export const COACH_LIMIT = Object.freeze({
   MIN: 2,
@@ -14,11 +15,19 @@ export const COACH_NAME_LIMIT = Object.freeze({
   MAX: 4,
 });
 
+export const MSG_TOOL = Object.freeze({
+  START: `[ `,
+  DELIMITER: ` | `,
+  END: ` ]`,
+});
+
 export const DEFAULT_MSG = Object.freeze({
   START: `점심 메뉴 추천을 시작합니다.\n`,
   COACH_LIST: `코치의 이름을 입력해 주세요. (, 로 구분)\n`,
   CANT_EAT: `(이)가 못 먹는 메뉴를 입력해 주세요.\n`,
-  RESULT: `메뉴 추천 결과입니다.\n`,
+  RESULT: `메뉴 추천 결과입니다.`,
+  WEEK: "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]",
+  CATEGORY: "카테고리",
   FINISH: `\n추천을 완료했습니다.`,
 });
 

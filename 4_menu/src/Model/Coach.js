@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { MENU_SAMPLE } from "../constants.js";
+import { MENU_SAMPLE, MSG_TOOL } from "../constants.js";
 
 export class Coach {
   #name;
@@ -32,5 +32,14 @@ export class Coach {
   recommend(categoryIdx) {
     const menuList = MENU_SAMPLE[categoryIdx];
     this.#pickMenu(menuList);
+  }
+
+  makeResultMsg() {
+    const msg = [this.#name, ...this.#menuList];
+    let menuMsg = `${MSG_TOOL.START}${msg.join(MSG_TOOL.DELIMITER)}${
+      MSG_TOOL.END
+    }`;
+
+    return menuMsg;
   }
 }
