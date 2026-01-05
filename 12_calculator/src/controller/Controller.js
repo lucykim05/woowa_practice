@@ -16,9 +16,10 @@ class Controller {
     if (customLetter) return customLetter;
   }
 
-  makeParser() {
+  parse() {
     const letter = this.getLetter();
     const parser = new Parser(letter, this.#input);
+    return parser.parse();
   }
 
   getLetter() {
@@ -29,6 +30,12 @@ class Controller {
       letter.push(custom);
     }
     return letter;
+  }
+
+  validateParsed(input) {}
+
+  calculate(input) {
+    return input.reduce((a, b) => a + b);
   }
 }
 

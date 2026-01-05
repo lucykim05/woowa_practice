@@ -4,7 +4,7 @@ class App {
   async run() {
     const controller = new Controller();
     await controller.readInput();
-    controller.checkCustom();
+    const parsedResult = controller.parse();
   }
 }
 
