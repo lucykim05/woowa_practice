@@ -28,5 +28,9 @@ export class LunchSystem {
     });
   }
 
-  saveCantEat(list) {}
+  saveCantEat(list) {
+    this.#coachList.forEach((coach, idx) => {
+      coach.saveCantEat(list[idx]);
+    });
+  }
 }

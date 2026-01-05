@@ -6,4 +6,8 @@ export class Coach {
     this.#name = name;
     this.#menuList = [];
   }
+
+  saveCantEat(list) {
+    this.#cantEat = list;
+  }
 }

@@ -18,8 +18,7 @@ const getCoachList = async () => {
     try {
       const list = await InputView.coach();
       Validator.coach(list);
-      const parsedList = commaParser(list);
-      return parsedList;
+      return commaParser(list);
     } catch (error) {
       OutPutView.error(error);
     }
@@ -31,7 +30,7 @@ const getCantEat = async (coach) => {
     try {
       const cantEatList = await InputView.cantEat(coach);
       Validator.cantEat(cantEatList);
-      return cantEatList;
+      return commaParser(cantEatList);
     } catch (error) {
       OutPutView.error(error);
     }
