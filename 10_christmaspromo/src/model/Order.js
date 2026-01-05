@@ -29,9 +29,25 @@ class Order {
   processPromo() {
     //크리스마스디데이
     this.christmasDday();
+    //요일 할인
     this.dayPromo();
     //특별할인
+    this.specialPromo();
     //증정할인
+    this.freePromo();
+  }
+
+  freePromo() {
+    if (this.totalAmount() >= 120000) {
+      this.customer.setFreeAmount();
+    }
+  }
+
+  specialPromo() {
+    const arr = [3, 10, 17, 24, 25, 31];
+    if (arr.includes(this.date)) {
+      this.customer.setFreeAmount('특별 할인', 1000);
+    }
   }
 
   dayPromo() {

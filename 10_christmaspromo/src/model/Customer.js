@@ -26,6 +26,18 @@ class Customer {
     });
     this.#freeAmount += amount;
   }
+
+  setFreeProduct() {
+    this.#freeMenu.push({
+      name: '샴페인',
+      quantity: 1,
+    });
+    this.#freeAmount += 25000;
+    this.#freeList.push({
+      name: '증정 이벤트',
+      price: 25000,
+    });
+  }
 }
 
 export default Customer;
