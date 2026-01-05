@@ -7,24 +7,6 @@ const SAMPLE = {
   양식: "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니",
 };
 
-import { lunchController } from "./Controller/lunchController.js";
-import { OutputView } from "./View/OutputView.js";
-import { parseWithComma } from "./Utils/parser.js";
-
 export class App {
-  async play() {
-    //시작메세지 출력
-    OutputView.startMsg();
-    const parsedSample = editSample(SAMPLE);
-    //프로그램 시작
-    await lunchController(parsedSample);
-  }
+  async play() {}
 }
-
-const editSample = (SAMPLE) => {
-  const sampleValues = Object.values(SAMPLE);
-  const splittedSample = sampleValues.map((category) =>
-    parseWithComma(category)
-  );
-  return splittedSample;
-};
