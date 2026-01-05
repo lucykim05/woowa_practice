@@ -1,5 +1,10 @@
+import PromoController from './controller/PromoController.js';
+
 class App {
-  async run() {}
+  async run() {
+    const controller = new PromoController();
+    await controller.readInput();
+  }
 }
 
 export default App;
