@@ -14,7 +14,9 @@ export const Parser = {
 
     categorizedArr.forEach((x) => {
       const [name, foods] = x;
-      const arr = foods.split(',').map((x) => x.replace(/[^가-힣]/g, ''));
+      const arr = foods
+        .split(',')
+        .map((x) => x.trim().replace(/[^가-힣 ]/g, ''));
       arr.forEach((x) => {
         menuArr.push({
           category: name,
@@ -42,6 +44,7 @@ export const Parser = {
 
   organizeSameCategory(category, menu) {
     const arr = [];
+
     menu
       .filter((x) => x.category === category)
       .forEach((x) => {

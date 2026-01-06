@@ -29,6 +29,7 @@ export const InputValidator = {
 
   checkIsMenu(name, menu) {
     const filtered = menu.filter((x) => x.menuName === name);
+    console.log(filtered);
     if (filtered.length === 0) throw new Error(ERROR.NOT_IN_MENU);
   },
 

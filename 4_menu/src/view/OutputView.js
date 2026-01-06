@@ -6,7 +6,7 @@ const OutputView = {
   },
 
   printCategory(input) {
-    console.log(input);
+    Console.print('\n메뉴 추천 결과입니다.');
     const message = input.join(' | ');
     Console.print('[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]');
     Console.print(`[ 카테고리 | ${message} ]`);
