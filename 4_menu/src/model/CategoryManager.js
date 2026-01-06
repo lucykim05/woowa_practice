@@ -16,8 +16,7 @@ class CategoryManager {
     while (this.#length !== 5) {
       this.#makeRandom();
     }
-    this.#category.map((x) => CATEGORY[x]);
-    console.log(this.#category);
+    this.#category = this.#category.map((x) => CATEGORY[x]);
   }
 
   #makeRandom() {
@@ -27,6 +26,10 @@ class CategoryManager {
       this.#category.push(randomNum);
       this.#length++;
     }
+  }
+
+  getCategory() {
+    return this.#category;
   }
 }
 

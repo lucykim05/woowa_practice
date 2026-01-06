@@ -27,7 +27,8 @@ class Controller {
     const names = await this.readNames();
     const foodInfo = await this.readFoodInfo(names);
     const organizedInfo = Parser.organizeInfo(names, foodInfo);
-    this.#category = new CategoryManager();
+    const category = new CategoryManager();
+    this.#category = category.getCategory();
     return organizedInfo;
   }
 
@@ -53,10 +54,13 @@ class Controller {
   }
 
   printResult() {
-    const filePath = 'public/menu.md';
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const menu = Parser.makeMenu(data);
-    this.#menu = menu;
+    OutputView.printCategory(this.#category);
+    this.#names.forEach((x) => {
+      const filtered = this.#coaches.filter((y) => y.name === x);
+      const coach = filtered[0].coach;
+      OutputView.printMenu(x, coach.getFood());
+    });
+    OutputView.printEnd();
   }
 
   async readNames() {
