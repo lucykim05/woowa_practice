@@ -19,3 +19,5 @@ class Controller {
     InputValidator.validateNames(namesInput);
   }
 }
+
+export default Controller;

@@ -12,8 +12,10 @@ export const InputValidator = {
   },
 
   validateNames(input) {
-    input.foEach((x) => {
+    console.log(input);
+    input.split(',').forEach((x) => {
       if (x.length < 2 || x.length > 4) throw new Error(ERROR.COACH_NAMES);
+      if (!x.match(/^[가-힣]+$/)) throw new Error(ERROR.NAME_KOREAN);
     });
   },
 };
