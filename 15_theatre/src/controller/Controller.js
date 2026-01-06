@@ -1,4 +1,5 @@
 import Database from '../model/Database.js';
+import InputView from '../view/InputView.js';
 
 class Controller {
   #database;
@@ -16,7 +17,9 @@ class Controller {
 
   start() {}
 
-  makeOldReservation() {}
+  makeOldReservation() {
+    const data = InputView.readOldReservation();
+  }
 }
 
 export default Controller;

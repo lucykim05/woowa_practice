@@ -255,8 +255,8 @@
 ### Controller
 
 - [ ] 일단... 기존 예매처리 해야함
-  - [ ] InputView에서 파일 읽어서
-  - [ ] 가공(ResultProcessor)
+  - [x] InputView에서 파일 읽어서
+  - [x] 가공(ResultProcessor)
   - [ ] 해당 예매정보마다 구매처리
 - [ ] 메인 로직
   - [ ] while문으로 감쌈
