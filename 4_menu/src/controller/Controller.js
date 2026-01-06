@@ -1,6 +1,14 @@
+import OutputView from '../view/OutputView.js';
+
 class Controller {
   // 시작 문구 출력
   // 입력 받아서 코치별로 못 먹는 음식 정리
+  // CategoryManager 생성
+  // while 문으로 결과 받음
+  // 카테고리 별로 shuffle
+  // 결과 최종 처리
 
-  async printStart() {}
+  async readInput() {
+    OutputView.printStart();
+  }
 }
