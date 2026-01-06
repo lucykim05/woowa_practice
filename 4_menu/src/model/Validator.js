@@ -27,7 +27,7 @@ export const InputValidator = {
   },
 
   checkIsMenu(menu) {
-    const filtered = Menu.filter((x) => x.name === menu);
+    const filtered = Menu.filter((x) => x.menuName === menu);
     if (filtered.length === 0) throw new Error(ERROR.NOT_IN_MENU);
   },
 

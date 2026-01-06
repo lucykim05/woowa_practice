@@ -14,6 +14,7 @@ class Controller {
     OutputView.printStart();
     const names = await this.readNames();
     const foodInfo = await this.readFoodInfo(names);
+    const organizedInfo = Parser.organizeInfo(names, foodInfo);
   }
 
   async readNames() {
@@ -24,11 +25,14 @@ class Controller {
   }
 
   async readFoodInfo(names) {
+    const result = [];
     for (const name of names) {
       const info = await InputView.readFoodInfo(name);
       const arr = info.split(',').map((x) => x.trim());
       InputValidator.validateMenu(arr);
+      result.push(arr);
     }
+    return result;
   }
 }
 

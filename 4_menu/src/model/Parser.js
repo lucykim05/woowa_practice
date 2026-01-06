@@ -18,7 +18,7 @@ const Parser = {
       arr.forEach((x) => {
         menuArr.push({
           category: name,
-          name: x,
+          menuName: x,
         });
       });
     });
@@ -27,6 +27,17 @@ const Parser = {
 
   splitNames(input) {
     return input.split(',').map((x) => x.trim());
+  },
+
+  organizeInfo(names, foodInfo) {
+    const result = [];
+    for (let i = 0; i < names.length; i++) {
+      result.push({
+        name: names[i],
+        food: foodInfo[i],
+      });
+    }
+    return result;
   },
 };
 
