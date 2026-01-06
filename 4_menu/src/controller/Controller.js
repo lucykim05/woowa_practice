@@ -38,8 +38,8 @@ class Controller {
     });
   }
 
-  makeMenu(info) {
-    const manager = new MenuManager(info, this.#coaches);
+  makeMenu() {
+    const manager = new MenuManager(this.#coaches, this.#names);
     this.#category.forEach((x) => {
       manager.shuffle(x);
     });
