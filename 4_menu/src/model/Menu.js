@@ -5,4 +5,6 @@ const filePath = '../constants/menu.md';
 
 const data = fs.readFileSync(filePath, 'utf-8');
 
-export const menu = Parser.organizeCategory(data);
+const Menu = Parser.organizeCategory(data);
+
+export default Menu;

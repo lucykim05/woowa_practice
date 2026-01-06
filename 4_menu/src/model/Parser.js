@@ -24,6 +24,10 @@ const Parser = {
     });
     return menuArr;
   },
+
+  splitNames(input) {
+    return input.split(',').map((x) => x.trim());
+  },
 };
 
 export default Parser;
