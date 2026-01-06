@@ -20,7 +20,7 @@ class CategoryManager {
 
   #makeRandom() {
     const randomNum = MissionUtils.Random.pickNumberInRange(1, 5);
-    const bool = CategoryValidaotr.validateUnique(randomNum, arr);
+    const bool = CategoryValidaotr.validateUnique(randomNum, this.#category);
     if (!bool) {
       this.#category.push(randomNum);
       this.#length++;

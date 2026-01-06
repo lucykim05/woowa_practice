@@ -1,7 +1,10 @@
 import Parser from '../model/Parser.js';
-import { CategoryValidaotr, InputValidator } from '../model/Validator.js';
+import { InputValidator } from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
+import Coach from '../model/Coach.js';
+import CategoryManager from '../model/CategoryManager.js';
+import MenuManager from '../model/MenuManager.js';
 
 class Controller {
   #names;
@@ -12,24 +15,31 @@ class Controller {
   // while 문으로 결과 받음
   // 카테고리 별로 shuffle
   // 결과 최종 처리
+  constructor() {
+    this.#coaches = [];
+  }
 
   async readInput() {
     OutputView.printStart();
     const names = await this.readNames();
     const foodInfo = await this.readFoodInfo(names);
     const organizedInfo = Parser.organizeInfo(names, foodInfo);
+    this.#category = new CategoryManager();
     return organizedInfo;
   }
 
   makeCoach(info) {
     this.#names.forEach((x) => {
-      const foodInfo = info.filter((x) => x.name === x);
-      this.#coaches.push(new Coach(x, foodInfo));
+      const foodInfo = info.filter((y) => y.name === x);
+      this.#coaches.push({
+        name: x,
+        coach: new Coach(x, foodInfo[0]),
+      });
     });
   }
 
-  getCategory() {
-    this.#category = new CategoryManager();
+  makeMenu(info) {
+    const manager = new MenuManager(info, this.#coaches);
   }
 
   async readNames() {
