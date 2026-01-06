@@ -17,6 +17,8 @@ export const SystemController = {
 
     const holidayWorkerInput = await this.getHolidayWorker();
     const holidayWorker = new Worker(TYPE.HOLIDAY, holidayWorkerInput);
+
+    system.saveWorkers(weeklyWorker, holidayWorker);
   },
 
   async getStartMonth() {
