@@ -1,4 +1,3 @@
-import { Month } from "../Model/Month.js";
 import { System } from "../Model/System.js";
 import { Validator } from "../Model/Validator.js";
 import { commaParser } from "../Utils/commaParser.js";
@@ -11,8 +10,7 @@ export const SystemController = {
     const weeklyWorkerInput = await this.getWeeklyWorker();
     const holidayWorkerInput = await this.getHolidayWorker();
 
-    const month = new Month(startMonth);
-    const system = new System(day, startMonth, month);
+    const system = new System(day, startMonth);
 
     system.saveWorkers(weeklyWorkerInput, holidayWorkerInput);
     system.arrange();

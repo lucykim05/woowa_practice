@@ -12,9 +12,10 @@ export class System {
   #currentHolidayWorkerIdx;
 
   #arrangedList;
+  #resultMsg;
 
-  constructor(day, startMonth, month) {
-    this.#month = month;
+  constructor(day, startMonth) {
+    this.#month = startMonth;
     this.#day = MONTH_INFO[startMonth];
     this.#startDay = day;
 
@@ -22,6 +23,7 @@ export class System {
     this.#currentWeeklyWorkerIdx = 0;
     this.#currentHolidayWorkerIdx = 0;
     this.#arrangedList = [];
+    this.#resultMsg = [];
   }
 
   #calculateDayIdx() {
@@ -41,13 +43,25 @@ export class System {
         this.#arrangedList.push(
           this.#holidayWorkers[this.#currentHolidayWorkerIdx]
         );
+        this.#resultMsg.push(
+          `${this.#month}월 ${i + 1}일 ${day} ${
+            this.#holidayWorkers[this.#currentHolidayWorkerIdx]
+          }`
+        );
+
         this.#currentHolidayWorkerIdx++;
         this.#currentDayIdx++;
+
         continue;
       }
 
       this.#arrangedList.push(
         this.#weeklyWorkers[this.#currentWeeklyWorkerIdx]
+      );
+      this.#resultMsg.push(
+        `${this.#month}월 ${i + 1}일 ${day} ${
+          this.#weeklyWorkers[this.#currentWeeklyWorkerIdx]
+        }`
       );
       this.#currentWeeklyWorkerIdx++;
       this.#currentDayIdx++;
@@ -55,6 +69,6 @@ export class System {
   }
 
   makeResultMsg() {
-    return this.#arrangedList;
+    return this.#resultMsg;
   }
 }

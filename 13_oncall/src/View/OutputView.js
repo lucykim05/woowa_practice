@@ -6,6 +6,8 @@ export const OutputView = {
   },
 
   reuslt(result) {
-    Console.print(result);
+    result.forEach((scedule) => {
+      Console.print(scedule);
+    });
   },
 };
