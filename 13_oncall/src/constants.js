@@ -4,6 +4,13 @@ export const DEFAULT_MSG = Object.freeze({
   HOLIDAY_WORKERS: "휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ",
 });
 
+export const DELIMITER = ",";
+
+export const TYPE = Object.freeze({
+  WEEKLY: "평일",
+  HOLIDAY: "공휴일",
+});
+
 export const DAY_OF_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
 export const NATIONAL_HOLIDAY = Object.freeze({

@@ -1,5 +1,3 @@
-import { start } from "node:repl";
-
 export class System {
   #month;
   #startDay;
