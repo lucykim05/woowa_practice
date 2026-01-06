@@ -45,11 +45,13 @@ System
 
 InputView
 
-- [ ] 목
+- [ ] startMonth
+- [ ] weeklyWorker
+- [ ] holidayWorker
 
 OutputView
 
-- [ ]
+- [ ] result
 
 ### Controller
 
