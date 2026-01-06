@@ -127,13 +127,13 @@ menu = [
 - [x] CategoryManager 생성
 - [x] category 생성 -> 검증(while 문으로) -> 결과 받음
 - [x] MenuManager 생성 -> 못 먹는 음식 전달
-- [ ] 카테고리 별로 shuffle 돌림
+- [x] 카테고리 별로 shuffle 돌림
 - [ ] 결과 받음
 - [ ] 출력
 
 ### MenuManager
 
-- [ ] category 마다(요일마다) 내부의 shuffle로직 발동
+- [x] category 마다(요일마다) 내부의 shuffle로직 발동
 - [ ] 코치마다 class 생성
 - [ ] shuffle 로직
   - [ ] 카테고리에 해당되는 메뉴 문자배열로 정리

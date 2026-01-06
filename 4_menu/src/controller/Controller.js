@@ -40,6 +40,9 @@ class Controller {
 
   makeMenu(info) {
     const manager = new MenuManager(info, this.#coaches);
+    this.#category.forEach((x) => {
+      manager.shuffle(x);
+    });
   }
 
   async readNames() {
