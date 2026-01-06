@@ -6,6 +6,7 @@ class App {
     try {
       const controller = new Controller();
       const info = await controller.readInput();
+      controller.makeCoach(info);
     } catch (error) {
       Console.print(error.message);
       throw error;
