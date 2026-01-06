@@ -5,7 +5,8 @@ import { OutputView } from "../View/OutputView.js";
 
 export const SystemController = {
   async start() {
-    const startMonth = await this.getStartMonth(); //리턴값 [월, '요일']
+    const [startMonth, day] = await this.getStartMonth(); //리턴값 [월, '요일']
+    const month = new Month(startMonth);
   },
 
   async getStartMonth() {
