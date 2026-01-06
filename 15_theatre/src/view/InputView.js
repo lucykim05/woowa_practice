@@ -14,7 +14,7 @@ const InputView = {
   },
   async readTime() {
     const input = await Console.readLineAsync(MESSAGE.TIME);
-    return input;
+    return Number(input);
   },
   async read() {
     const input = await Console.readLineAsync();
