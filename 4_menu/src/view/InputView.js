@@ -9,7 +9,7 @@ const InputView = {
 
   async readFoodInfo(name) {
     const result = await Console.readLineAsync(
-      `${name}(이)가 못 먹는 메뉴를 입력해주세요.`
+      `${name}(이)가 못 먹는 메뉴를 입력해주세요.\n`
     );
     return result;
   },

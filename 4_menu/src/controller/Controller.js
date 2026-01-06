@@ -15,12 +15,14 @@ class Controller {
     const names = await this.readNames();
     const foodInfo = await this.readFoodInfo(names);
     const organizedInfo = Parser.organizeInfo(names, foodInfo);
+    console.log(organizedInfo);
+    return organizedInfo;
   }
 
   async readNames() {
     const namesInput = await InputView.readNames();
-    InputValidator.validateNames(namesInput);
     const namesArr = Parser.splitNames(namesInput);
+    InputValidator.validateNames(namesArr);
     return namesArr;
   }
 
@@ -28,7 +30,7 @@ class Controller {
     const arr = [];
     for (const name of names) {
       const result = await this.checkInfo(name);
-      result.push(arr);
+      arr.push(result);
     }
     return arr;
   }
@@ -36,7 +38,7 @@ class Controller {
   async checkInfo(name) {
     const info = await InputView.readFoodInfo(name);
     const arr = info.split(',').map((x) => x.trim());
-    if (arr) {
+    if (arr.length !== 0) {
       InputValidator.validateMenu(arr);
       return arr;
     }

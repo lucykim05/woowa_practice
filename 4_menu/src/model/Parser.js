@@ -5,7 +5,7 @@ const Parser = {
       .map((x) => x.split(':'))
       .filter((x) => x !== '');
 
-    const menuArr = this.makeObj(categorized);
+    const menuArr = this.organizeArr(categorized);
     return menuArr;
   },
 
@@ -26,6 +26,7 @@ const Parser = {
   },
 
   splitNames(input) {
+    console.log(input.split(',').map((x) => x.trim()));
     return input.split(',').map((x) => x.trim());
   },
 

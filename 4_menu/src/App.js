@@ -5,7 +5,7 @@ class App {
   async play() {
     try {
       const controller = new Controller();
-      await controller.readNames();
+      await controller.readInput();
     } catch (error) {
       Console.print(error.message);
       throw error;

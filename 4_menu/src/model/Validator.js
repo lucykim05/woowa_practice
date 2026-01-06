@@ -3,8 +3,10 @@ import Menu from './menu.js';
 
 export const InputValidator = {
   validateNames(input) {
-    this.validateTotal(input);
-    this.validateNames(input);
+    input.forEach((x) => {
+      this.validateTotal(x);
+      this.validateName(x);
+    });
   },
 
   validateMenu(arr) {
@@ -19,11 +21,11 @@ export const InputValidator = {
       throw new Error(ERROR.COACH_LENGTH);
   },
 
-  validateNames(input) {
-    input.split(',').forEach((x) => {
-      if (x.length < 2 || x.length > 4) throw new Error(ERROR.COACH_NAMES);
-      if (!x.match(/^[가-힣]+$/)) throw new Error(ERROR.NAME_KOREAN);
-    });
+  validateName(input) {
+    if (input.length < 2 || input.length > 4)
+      throw new Error(ERROR.COACH_NAMES);
+    if (input.replace(/^[가-힣]+$/g, '') !== '')
+      throw new Error(ERROR.NAME_KOREAN);
   },
 
   checkIsMenu(menu) {
