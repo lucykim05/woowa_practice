@@ -1,0 +1,6 @@
+reservation_id,theater,time,seats,count
+R001,A,10,A1-A2-A3,3
+R002,B,14,C5-C6,2
+R003,A,18,B7-B8-B9-B10,4
+R004,C,22,E1-E2,2
+R005,A,10,D5,1
