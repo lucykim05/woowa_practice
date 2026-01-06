@@ -1,18 +1,19 @@
 import { Console } from '@woowacourse/mission-utils';
 import fs from 'fs';
 import ResultProcessor from '../model/ResultProcessor.js';
+import { MESSAGE } from '../constants/message.js';
 
 const InputView = {
-  async read() {
-    const input = await Console.readLineAsync();
+  async readCommand() {
+    const input = await Console.readLineAsync(MESSAGE.COMMAND);
     return input;
   },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readTheatre() {
+    const input = await Console.readLineAsync(MESSAGE.THEATRE);
     return input;
   },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readTime() {
+    const input = await Console.readLineAsync(MESSAGE.TIME);
     return input;
   },
   async read() {
