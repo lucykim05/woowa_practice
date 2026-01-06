@@ -25,14 +25,22 @@ class Controller {
   }
 
   async readFoodInfo(names) {
-    const result = [];
+    const arr = [];
     for (const name of names) {
-      const info = await InputView.readFoodInfo(name);
-      const arr = info.split(',').map((x) => x.trim());
-      InputValidator.validateMenu(arr);
+      const result = await this.checkInfo(name);
       result.push(arr);
     }
-    return result;
+    return arr;
+  }
+
+  async checkInfo(name) {
+    const info = await InputView.readFoodInfo(name);
+    const arr = info.split(',').map((x) => x.trim());
+    if (arr) {
+      InputValidator.validateMenu(arr);
+      return arr;
+    }
+    return null;
   }
 }
 
