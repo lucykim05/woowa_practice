@@ -5,5 +5,7 @@ export const OutputView = {
     Console.print(error.message);
   },
 
-  reuslt() {},
+  reuslt(result) {
+    Console.print(result);
+  },
 };

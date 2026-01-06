@@ -6,12 +6,8 @@ export const DEFAULT_MSG = Object.freeze({
 
 export const DELIMITER = ",";
 
-export const TYPE = Object.freeze({
-  WEEKLY: "평일",
-  HOLIDAY: "공휴일",
-});
-
 export const DAY_OF_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
+export const WEEKEND = ["토", "일"];
 
 export const NATIONAL_HOLIDAY = Object.freeze({
   1: [1],
