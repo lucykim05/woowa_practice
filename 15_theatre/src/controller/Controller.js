@@ -1,4 +1,5 @@
 import Database from '../model/Database.js';
+import InfoHandler from '../model/handlers/InfoHandler.js';
 import InputView from '../view/InputView.js';
 
 class Controller {
@@ -32,6 +33,8 @@ class Controller {
     const theatre = await InputView.readTheatre();
     const time = await InputView.readTime();
     this.#validator.validateInfoRequest(theatre, time);
+    const handler = new InfoHandler();
+    return handler.getInfo(theatre, time);
   }
 
   makeOldReservation() {

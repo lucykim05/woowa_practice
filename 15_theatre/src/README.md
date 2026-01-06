@@ -179,7 +179,7 @@
 
 ### InfoManager
 
-- [ ] Parser 정보 저장
+- [x] Parser 정보 저장
 - [ ] 상영관, 시간대 정보 가져와서 Parser에 넘김
 - [ ] 정보 가져와서
 - [ ] 가공(ResultProcessor.js)
@@ -266,8 +266,8 @@
 - [x] 정보 조회 command
   - [x] 상영관 입력 -> 검증
   - [x] 시간대 입력 -> 검증
-  - [ ] 상영관, 시간대 InfoManager 전달
-  - [ ] 결과 받음
+  - [x] 상영관, 시간대 InfoManager 전달
+  - [x] 결과 받음
 - [ ] 좌석 예매 command
   - [ ] 상영관 입력 -> 검증
   - [ ] 시간대 입력 -> 검증
