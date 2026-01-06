@@ -33,3 +33,15 @@ export const MONTH_INFO = Object.freeze({
   11: 30,
   12: 31,
 });
+
+export const MONTH_LIMIT = Object.freeze({
+  MIN: 1,
+  MAX: 12,
+});
+
+export const ERROR = Object.freeze({
+  EMPTY: "[ERROR] 입력 값이 비었습니다. 다시 입력 부탁드립니다.\n",
+  MONTH_OUT_OF_RANGE:
+    "[ERROR] 달(month)을 읽을 수 없습니다.. 1~12 사이의 수로 다시 입력해주세요.",
+  UNVALID_STARTDAY: "[ERROR] 요일을 읽을 수 없습니다. 다시 입력해주세요.",
+});
