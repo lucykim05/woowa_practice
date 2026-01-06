@@ -128,8 +128,8 @@ menu = [
 - [x] category 생성 -> 검증(while 문으로) -> 결과 받음
 - [x] MenuManager 생성 -> 못 먹는 음식 전달
 - [x] 카테고리 별로 shuffle 돌림
-- [ ] 결과 받음
-- [ ] 출력
+- [x] 결과 받음
+- [x] 출력
 
 ### MenuManager
 

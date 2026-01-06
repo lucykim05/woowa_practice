@@ -7,6 +7,7 @@ class App {
       const controller = new Controller();
       const info = await controller.readInput();
       controller.makeCoach(info);
+      controller.makeMenu();
       controller.printResult();
     } catch (error) {
       Console.print(error.message);

@@ -11,7 +11,9 @@ class Coach {
 
   setMenu(menu) {
     this.#food.push(menu);
-    this.#info.push(menu);
+    const foodInfo = this.#info.food;
+    foodInfo.push(menu);
+    this.#info.food = foodInfo;
   }
 
   getInfo() {

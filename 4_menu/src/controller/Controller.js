@@ -47,7 +47,7 @@ class Controller {
   }
 
   makeMenu() {
-    const manager = new MenuManager(this.#coaches, this.#names);
+    const manager = new MenuManager(this.#coaches, this.#names, this.#menu);
     this.#category.forEach((x) => {
       manager.shuffle(x);
     });

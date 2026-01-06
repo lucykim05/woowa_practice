@@ -20,22 +20,27 @@ class MenuManager {
       const filtered = this.#coaches.filter((x) => x.name === name)[0];
       const coach = filtered.coach;
       const menu = this.shuffleMenu(menuName, coach);
+      this.#result.push(menu);
       coach.setMenu(menu);
     }
   }
 
   shuffleMenu(menuName, coach) {
     while (true) {
-      const menu = Random.shuffle(menuName)[0];
+      const arr = this.makeArr(menuName);
+      const menu = menuName[Random.shuffle(arr)[0]];
       const result = this.checkMenu(menu, coach);
-      if (!result) break;
+      if (!result) return menu;
     }
-    this.#result.push(menu);
-    return menu;
+  }
+
+  makeArr(menuName) {
+    const arr = Array.from({ length: menuName.length }, (_, i) => 0 + i);
+    return arr;
   }
 
   checkMenu(menu, coach) {
-    const foodInfo = coach.getInfo();
+    const foodInfo = coach.getInfo().food;
     if (foodInfo.includes(menu)) return true;
     if (this.#result.includes(menu)) return true;
     return false;
