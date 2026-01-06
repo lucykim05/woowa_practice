@@ -1,3 +1,4 @@
+import { InputValidator } from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
@@ -15,5 +16,6 @@ class Controller {
 
   async readNames() {
     const namesInput = await InputView.readNames();
+    InputValidator.validateNames(namesInput);
   }
 }
