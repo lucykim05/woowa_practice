@@ -19,6 +19,7 @@ class Controller {
     OutputView.printStart();
     while (true) {
       const input = await InputView.readCommand();
+      this.#validator.validateCommand(input);
       if (input === 'Q') return;
       if (input === '1') return await this.showInfo();
       if (input === '2') return;

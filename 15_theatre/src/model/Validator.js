@@ -7,6 +7,11 @@ class Validator {
     this.#parser = parser;
   }
 
+  validateCommand(input) {
+    const arr = ['Q', '1', '2', '3', '4'];
+    if (!arr.includes(input)) throw new Error(ERROR.FORMAT);
+  }
+
   validateInfoRequest(theatre, time) {
     this.validateTheatre(theatre);
     this.validateTime(time);

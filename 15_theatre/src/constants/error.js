@@ -7,5 +7,6 @@ export const ERROR = Object.freeze({
   LENGTH: '[ERROR] 로또 한 장은 6개의 숫자로 입력되어야 합니다.',
   THEATRE: '[ERROR] 존재하지 않는 상영관입니다.',
   TIME: '[ERROR] 잘못된 시간대입니다.',
-  INFO: '',
+
+  FORMAT: '[ERROR] 잘못된 형식을 입력하였습니다.',
 });
