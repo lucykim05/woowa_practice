@@ -16,6 +16,14 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGE.TIME);
     return Number(input);
   },
+  async readSeat() {
+    const input = await Console.readLineAsync(MESSAGE.SEAT);
+    return input;
+  },
+  async readPeople() {
+    const input = await Console.readLineAsync(MESSAGE.PEOPLE);
+    return Number(input);
+  },
   async read() {
     const input = await Console.readLineAsync();
     return input;

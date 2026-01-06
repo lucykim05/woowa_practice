@@ -40,6 +40,16 @@ class Controller {
   makeOldReservation() {
     const data = InputView.readOldReservation();
   }
+
+  async makeReservation() {
+    const theatre = await InputView.readTheatre();
+    const time = await InputView.readTime();
+    const seat = await InputView.readSeat();
+    const people = await InputView.readPeople();
+    this.#validator.validateReservation(theatre, time, seat, people);
+    const handler = new ReservationHandler(theatre, time, seat);
+    return handler.getResult();
+  }
 }
 
 export default Controller;
