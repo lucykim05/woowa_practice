@@ -4,6 +4,8 @@ import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 class Controller {
+  #names;
+  #coaches;
   // 입력 받아서 코치별로 못 먹는 음식 정리
   // CategoryManager 생성
   // while 문으로 결과 받음
@@ -18,14 +20,18 @@ class Controller {
     return organizedInfo;
   }
 
-  makeCategory() {
-    const manager = new CategoryManager();
+  makeCoach(names, info) {
+    const category = new CategoryManager();
+    names.forEach((x) => {
+      this.#coaches.push(new Coach(name, info));
+    });
   }
 
   async readNames() {
     const namesInput = await InputView.readNames();
     const namesArr = Parser.splitNames(namesInput);
     InputValidator.validateNames(namesArr);
+    this.#names = namesArr;
     return namesArr;
   }
 

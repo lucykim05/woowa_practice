@@ -124,8 +124,8 @@ menu = [
 - [x] Menu 가져옴
 - [x] 시작 문구 출력
 - [x] 입력 받아서 코치별로 못 먹는 음식 정리
-- [ ] CategoryManager 생성
-- [ ] category 생성 -> 검증(while 문으로) -> 결과 받음
+- [x] CategoryManager 생성
+- [x] category 생성 -> 검증(while 문으로) -> 결과 받음
 - [ ] MenuManager 생성 -> 못 먹는 음식 전달
 - [ ] 카테고리 별로 shuffle 돌림
 - [ ] 결과 받음
