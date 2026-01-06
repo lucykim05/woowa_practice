@@ -1,3 +1,4 @@
+import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 class Controller {
@@ -10,5 +11,9 @@ class Controller {
 
   async readInput() {
     OutputView.printStart();
+  }
+
+  async readNames() {
+    const namesInput = await InputView.readNames();
   }
 }
