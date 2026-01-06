@@ -1,5 +1,5 @@
 import Parser from '../model/Parser.js';
-import { InputValidator } from '../model/Validator.js';
+import { CategoryValidaotr, InputValidator } from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
@@ -15,8 +15,11 @@ class Controller {
     const names = await this.readNames();
     const foodInfo = await this.readFoodInfo(names);
     const organizedInfo = Parser.organizeInfo(names, foodInfo);
-    console.log(organizedInfo);
     return organizedInfo;
+  }
+
+  makeCategory() {
+    const manager = new CategoryManager();
   }
 
   async readNames() {

@@ -162,11 +162,11 @@ menu = [
 
 ### CategoryManager
 
-- [ ] makeCategory
-  - [ ] while문으로
-  - [ ] pickNumberInRange 돌림
-  - [ ] 검증
-  - [ ] 검증 성공 시 멈춤 return
+- [x] makeCategory
+  - [x] while문으로
+  - [x] pickNumberInRange 돌림
+  - [x] 검증
+  - [x] 검증 성공 시 멈춤 return
 
 ### InputValidator
 

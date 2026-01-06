@@ -38,4 +38,9 @@ export const InputValidator = {
   },
 };
 
-export const CategoryValidaotr = {};
+export const CategoryValidaotr = {
+  validateUnique(num, arr) {
+    if (arr.includes(num)) return true;
+    return false;
+  },
+};
