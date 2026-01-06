@@ -5,11 +5,13 @@ import OutputView from '../view/OutputView.js';
 import Coach from '../model/Coach.js';
 import CategoryManager from '../model/CategoryManager.js';
 import MenuManager from '../model/MenuManager.js';
+import fs from 'fs';
 
 class Controller {
   #names;
   #coaches;
   #category;
+  #menu;
   // 입력 받아서 코치별로 못 먹는 음식 정리
   // CategoryManager 생성
   // while 문으로 결과 받음
@@ -17,6 +19,7 @@ class Controller {
   // 결과 최종 처리
   constructor() {
     this.#coaches = [];
+    this.getMenuInfo();
   }
 
   async readInput() {
@@ -38,11 +41,22 @@ class Controller {
     });
   }
 
+  getMenuInfo() {
+    this.#menu = InputView.readMenuInfo();
+  }
+
   makeMenu() {
     const manager = new MenuManager(this.#coaches, this.#names);
     this.#category.forEach((x) => {
       manager.shuffle(x);
     });
+  }
+
+  printResult() {
+    const filePath = 'public/menu.md';
+    const data = fs.readFileSync(filePath, 'utf-8');
+    const menu = Parser.makeMenu(data);
+    this.#menu = menu;
   }
 
   async readNames() {
@@ -66,7 +80,7 @@ class Controller {
     const info = await InputView.readFoodInfo(name);
     const arr = info.split(',').map((x) => x.trim());
     if (arr.length !== 0) {
-      InputValidator.validateMenu(arr);
+      InputValidator.validateMenu(arr, this.#menu);
       return arr;
     }
     return null;

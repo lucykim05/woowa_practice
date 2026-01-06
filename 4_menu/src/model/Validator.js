@@ -1,5 +1,4 @@
 import { ERROR } from '../constants/error.js';
-import Menu from './menu.js';
 
 export const InputValidator = {
   validateNames(input) {
@@ -9,10 +8,10 @@ export const InputValidator = {
     });
   },
 
-  validateMenu(arr) {
+  validateMenu(arr, menu) {
     this.validateMenuLength(arr);
     arr.forEach((x) => {
-      this.checkIsMenu(x);
+      this.checkIsMenu(x, menu);
     });
   },
 
@@ -28,8 +27,8 @@ export const InputValidator = {
       throw new Error(ERROR.NAME_KOREAN);
   },
 
-  checkIsMenu(menu) {
-    const filtered = Menu.filter((x) => x.menuName === menu);
+  checkIsMenu(name, menu) {
+    const filtered = menu.filter((x) => x.menuName === name);
     if (filtered.length === 0) throw new Error(ERROR.NOT_IN_MENU);
   },
 
@@ -40,7 +39,8 @@ export const InputValidator = {
 
 export const CategoryValidaotr = {
   validateUnique(num, arr) {
-    if (arr.includes(num)) return true;
+    const filtered = arr.filter((x) => x === num);
+    if (filtered.length < 2) return true;
     return false;
   },
 };

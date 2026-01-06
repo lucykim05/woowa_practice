@@ -1,19 +1,21 @@
 import { Random } from '@woowacourse/mission-utils';
-import Parser from './Parser.js';
+import { Parser } from './Parser.js';
 
 class MenuManager {
   #coaches;
   #names;
   #result;
+  #menu;
 
-  constructor(coaches, names) {
+  constructor(coaches, names, menu) {
     this.#coaches = coaches;
     this.#names = names;
     this.#result = [];
+    this.#menu = menu;
   }
 
   shuffle(category) {
-    const menuName = Parser.organizeSameCategory(category);
+    const menuName = Parser.organizeSameCategory(category, this.#menu);
     for (const name of this.#names) {
       const filtered = this.#coaches.filter((x) => x.name === name)[0];
       const coach = filtered.coach;
