@@ -17,6 +17,10 @@ class Coach {
   getInfo() {
     return this.#info;
   }
+
+  getFood() {
+    return this.#food;
+  }
 }
 
 export default Coach;
