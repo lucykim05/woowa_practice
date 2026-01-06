@@ -1,6 +1,7 @@
+import Parser from './Parser.js';
+
 class MenuManager {
   #info;
-  #category;
   #coaches;
 
   constructor(info, coaches) {
@@ -8,7 +9,9 @@ class MenuManager {
     this.#coaches = coaches;
   }
 
-  shuffle(category) {}
+  shuffle(category) {
+    const menuName = Parser.organizeSameCategory(category);
+  }
 }
 
 export default MenuManager;

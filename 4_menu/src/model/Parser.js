@@ -1,5 +1,7 @@
+import Menu from './menu.js';
+
 const Parser = {
-  organizeCategory(data) {
+  makeMenu(data) {
     const splitted = data.split('\n').filter((x) => x !== '');
     const categorized = splitted
       .map((x) => x.split(':'))
@@ -39,6 +41,14 @@ const Parser = {
       });
     }
     return result;
+  },
+
+  organizeSameCategory(category) {
+    const arr = [];
+    Menu.filter((x) => x.category === category).forEach((x) => {
+      arr.push(x.menuName);
+    });
+    return arr;
   },
 };
 

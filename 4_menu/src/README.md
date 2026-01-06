@@ -134,10 +134,10 @@ menu = [
 ### MenuManager
 
 - [x] category 마다(요일마다) 내부의 shuffle로직 발동
-- [ ] 코치마다 class 생성
+- [x] 코치마다 class 생성
 - [ ] shuffle 로직
-  - [ ] 카테고리에 해당되는 메뉴 문자배열로 정리
-  - [ ] array 생성
+  - [x] 카테고리에 해당되는 메뉴 문자배열로 정리
+  - [x] array 생성
   - [ ] 반복문
     - [ ] shuffle 돌려서 0번 인덱스 내용 가져옴
     - [ ] 결과 확인
