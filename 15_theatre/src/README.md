@@ -180,10 +180,10 @@
 ### InfoManager
 
 - [x] Parser 정보 저장
-- [ ] 상영관, 시간대 정보 가져와서 Parser에 넘김
-- [ ] 정보 가져와서
-- [ ] 가공(ResultProcessor.js)
-- [ ] 결과 return
+- [x] 상영관, 시간대 정보 가져와서 Parser에 넘김
+- [x] 정보 가져와서
+- [x] 가공(ResultProcessor.js)
+- [x] 결과 return
 
 ### StatusManager
 

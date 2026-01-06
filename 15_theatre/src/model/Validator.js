@@ -17,14 +17,16 @@ class Validator {
     this.validateTime(time);
   }
 
-  validateTheatre(theatre) {
+  validateReservation(theatre, time, seat, people) {}
+
+  validateTheatre(theater) {
     const arr = ['A', 'B', 'C'];
-    if (!arr.includes(theatre)) throw new Error(ERROR.TEATHRE);
+    if (!arr.includes(theater)) throw new Error(ERROR.TEATHRE);
   }
 
   validateTime(time) {
     const arr = [10, 14, 18, 22];
-    if (!arr.includes(theatre)) throw new Error(ERROR.TIME);
+    if (!arr.includes(time)) throw new Error(ERROR.TIME);
   }
 }
 
