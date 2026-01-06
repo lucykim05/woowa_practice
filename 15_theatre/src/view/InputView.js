@@ -24,6 +24,10 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGE.PEOPLE);
     return Number(input);
   },
+  async readCancel() {
+    const input = await Console.readLineAsync(MESSAGE.CANCEL);
+    return input;
+  },
   async read() {
     const input = await Console.readLineAsync();
     return input;

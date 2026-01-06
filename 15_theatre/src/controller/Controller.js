@@ -23,9 +23,9 @@ class Controller {
       this.#validator.validateCommand(input);
       if (input === 'Q') return;
       if (input === '1') return await this.showInfo();
-      if (input === '2') return;
-      if (input === '3') return;
-      if (input === '4') return;
+      if (input === '2') return await this.makeReservation();
+      if (input === '3') return await this.cancelReservation();
+      if (input === '4') return this.getStatus();
     }
   }
 
@@ -39,7 +39,12 @@ class Controller {
 
   makeOldReservation() {
     const data = InputView.readOldReservation();
+    for (const request of data) {
+      this.requestReservation(request);
+    }
   }
+
+  requestReservation(request) {}
 
   async makeReservation() {
     const theatre = await InputView.readTheatre();
@@ -47,7 +52,19 @@ class Controller {
     const seat = await InputView.readSeat();
     const people = await InputView.readPeople();
     this.#validator.validateReservation(theatre, time, seat, people);
-    const handler = new ReservationHandler(theatre, time, seat);
+    const handler = new ReservationHandler(this.#worker);
+    return handler.make(theatre, time, seat);
+  }
+
+  async cancelReservation() {
+    const number = await InputView.readCancel();
+    this.#validator.validateCancel(number);
+    const handler = new CancelHandler(this.#worker, this.#parser);
+    return handler.cancel(number);
+  }
+
+  getStatus() {
+    const handler = new StatusHandler(this.#parser);
     return handler.getResult();
   }
 }

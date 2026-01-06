@@ -274,9 +274,9 @@
   - [x] 인원수, 좌석번호 입력 -> 검증
   - [x] PurchaseManager로 상영관, 시간대, 좌석번호 전달
   - [x] 결과 받음
-- [ ] 취소 command
-  - [ ] 예매 번호 입력 -> 검증
-  - [ ] CancelManager로 예매 번호 전달
-  - [ ] 결과 받음
-- [ ] 통계 command
-  - [ ] 결과 받음
+- [x] 취소 command
+  - [x] 예매 번호 입력 -> 검증
+  - [x] CancelManager로 예매 번호 전달
+  - [x] 결과 받음
+- [x] 통계 command
+  - [x] 결과 받음
