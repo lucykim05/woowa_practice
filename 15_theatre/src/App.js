@@ -1,3 +1,5 @@
-class App {}
+class App {
+  run() {}
+}
 
 export default App;
