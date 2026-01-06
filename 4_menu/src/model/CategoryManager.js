@@ -8,25 +8,23 @@ class CategoryManager {
   constructor() {
     this.#category = [];
     this.#length = 0;
+    this.#make();
   }
 
-  make() {
+  #make() {
     while (this.#length !== 5) {
-      this.makeRandom();
+      this.#makeRandom();
     }
+    return this.#category;
   }
 
-  makeRandom() {
-    const randomNum = MissionUtils.Random.pickNumberInRange();
+  #makeRandom() {
+    const randomNum = MissionUtils.Random.pickNumberInRange(1, 5);
     const bool = CategoryValidaotr.validateUnique(randomNum, arr);
     if (!bool) {
       this.#category.push(randomNum);
       this.#length++;
     }
-  }
-
-  getCategory() {
-    return this.#category;
   }
 }
 
