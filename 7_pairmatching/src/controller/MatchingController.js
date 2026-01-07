@@ -27,6 +27,12 @@ class MatchingController {
     }
   }
 
+  async readRequest() {
+    const input = await InputView.readRequest();
+    InputValidator.validateRequest(input);
+    return input;
+  }
+
   process(command) {}
 }
 

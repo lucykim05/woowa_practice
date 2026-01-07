@@ -20,9 +20,9 @@ export const ERROR = Object.freeze({
 });
 
 export const MISSION = Object.freeze({
-  CLASS: ['백엔드', '프론트엔드'],
+  COURSE: ['백엔드', '프론트엔드'],
   LEVEL: ['레벨1', '레벨2', '레벨3', '레벨4', '레벨5'],
-  MISSION: [
+  NAME: [
     '자동차경주',
     '로또',
     '숫자야구게임',

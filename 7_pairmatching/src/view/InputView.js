@@ -7,8 +7,8 @@ const InputView = {
     const input = await Console.readLineAsync(MESSAGE.COMMAND);
     return input;
   },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readRequest() {
+    const input = await Console.readLineAsync(MESSAGE.MISSION_REQUEST);
     return input;
   },
   async read() {

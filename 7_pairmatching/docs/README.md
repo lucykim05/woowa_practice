@@ -301,7 +301,7 @@ Controller의 외부와의 상호작용을 제외한 가장 큰 부분의 내부
   - [x] Command 검증
   - [x] command Q 아니면 command 다음으로 전달
   - [x] Command Q면 break
-- [ ] 미션 선택 입력 받는 메서드
+- [x] 미션 선택 입력 받는 메서드
 - [ ] 추가 입력
   - [ ] 미션 선택 입력 받음
   - [ ] DataValidator로 검증
