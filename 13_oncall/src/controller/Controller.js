@@ -43,10 +43,10 @@ class Controller {
     const manager = new Manager(this.#calendar, this.#organizer);
     manager.manage();
     const result = manager.getResult();
-    result.forEach((x) => this.printResult(x));
+    result.forEach((x) => this.#printResult(x));
   }
 
-  printResult(input) {
+  #printResult(input) {
     const holiday = this.#calendar.getHoliday();
     if (holiday.includes(input.date)) {
       OutputView.printHoliday(input);

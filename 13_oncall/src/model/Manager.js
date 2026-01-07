@@ -12,18 +12,18 @@ class Manager {
   manage() {
     const total = this.#calendar.getTotal();
     for (let i = 1; i <= total; i++) {
-      const worker = this.getWorker(i);
-      const result = this.makeResult(worker, i);
+      const worker = this.#getWorker(i);
+      const result = this.#makeResult(worker, i);
       this.#result.push(result);
     }
   }
 
-  getWorker(number) {
+  #getWorker(number) {
     const bool = this.#calendar.checkWorkday(number);
     return this.#organizer.manageWorker(bool);
   }
 
-  makeResult(worker, i) {
+  #makeResult(worker, i) {
     const info = this.#calendar.getInfo(i);
     info.worker = worker;
     return info;
