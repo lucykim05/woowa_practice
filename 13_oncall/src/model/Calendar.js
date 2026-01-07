@@ -12,21 +12,6 @@ class Calendar {
     const [month, day] = input;
     this.#total = DATE.MONTH[month];
     this.#info = Parser.parseCalendarInfo(Number(month), day);
-    // this.#makeHolidayInfo(Number(month));
-  }
-
-  #makeHolidayInfo(month) {
-    const holiday = DATE.HOLIDAY[month];
-    if (holiday) holiday.forEach((x) => this.#setHoliday(x));
-  }
-
-  #setHoliday(number) {
-    const info = this.#info.filter((x) => x.date === number);
-    const bool = info[0].workday;
-    if (bool) {
-      info[0].workday = false;
-      info[0].holiday = true;
-    }
   }
 
   checkWorkday(date) {
