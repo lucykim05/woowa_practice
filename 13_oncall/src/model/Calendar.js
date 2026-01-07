@@ -11,7 +11,7 @@ class Calendar {
 
   initCalendar(input) {
     const [month, day] = input;
-    this.#total = DATE.MONTH.Number(month);
+    this.#total = DATE.MONTH[Number(month)];
     this.makeInfo(day);
     this.makeHolidayInfo(Number(month));
   }

@@ -9,10 +9,16 @@ class Controller {
 
   async makeCalendar() {
     const date = await InputView.readDate();
-    Validator.validateDate();
+    Validator.validateDate(date);
     const calendar = new Calendar();
     this.#calendar = calendar;
     calendar.initCalendar(date);
+  }
+
+  async makeOrganizer() {
+    const workDay = await InputView.readWorkDay();
+    const weekDay = await InputView.readWeekEnd();
+    Validator.validateSchedule(workDay, weekDay);
   }
 }
 
