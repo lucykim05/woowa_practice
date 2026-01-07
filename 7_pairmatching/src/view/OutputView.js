@@ -1,11 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  print(input) {
-    Console.print();
+  printResult(input) {
+    Console.print(`\n페어 매칭 결과입니다.\n${input}`);
   },
-  print(input) {
-    Console.print();
+  printReset() {
+    Console.print('초기화 되었습니다.');
   },
   print(input) {
     Console.print();

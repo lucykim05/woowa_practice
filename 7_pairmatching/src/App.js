@@ -5,6 +5,7 @@ class App {
   async run() {
     const controller = new MatchingController();
     controller.initMission();
+    await controller.start();
   }
 }
 

@@ -9,10 +9,10 @@ const InputView = {
   },
   async readRequest() {
     const input = await Console.readLineAsync(MESSAGE.MISSION_REQUEST);
-    return input;
+    return input.split(',').map((x) => x.trim());
   },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readRematch() {
+    const input = await Console.readLineAsync(MESSAGE.RESET);
     return input;
   },
   async read() {

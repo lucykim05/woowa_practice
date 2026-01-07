@@ -1,16 +1,17 @@
 import DataLauncher from '../model/DataLauncher.js';
 import MissionRepo from '../model/MissionRepo.js';
 import InputView from '../view/InputView.js';
-import MatchingService from '../model/MatchingService.js';
 import {
   InputValidator,
   DataValidator,
 } from '../model/validators/InputValidator.js';
 import { Console } from '@woowacourse/mission-utils';
+import CommandHandler from '../model/CommandHandler.js';
+import OutputView from '../view/OutputView.js';
 
 class MatchingController {
   #repo;
-  #service;
+  #handler;
 
   initMission() {
     const frontend = InputView.readFrontend();
@@ -19,50 +20,49 @@ class MatchingController {
     const info = launcher.launch(backend, frontend);
     const repo = new MissionRepo(info);
     this.#repo = repo;
-    this.#service = new MatchingService(repo);
+    this.#handler = new CommandHandler(repo);
   }
 
   async start() {
     while (true) {
       const command = await InputView.readCommand();
       InputValidator.validateCommand(command);
-      if (command !== 'Q') this.process(command);
+      if (command !== 'Q') await this.process(command);
       if (command === 'Q') break;
     }
   }
 
   async process(command) {
-    const result = await this.makeRequest(command);
+    const result = await this.#readRequest(command);
+    this.printResult(result, command);
   }
 
-  async makeRequest(input) {
-    const request = await this.#readRequest();
-    const result = this.#service.checkCommand({
-      command: input,
-      info: request,
-    });
-    if (result.command === 'check-rematch')
-      return await this.#checkReMatch(result);
-    return result;
-  }
-
-  async #readRequest() {
+  async #readRequest(command) {
     try {
       const input = await InputView.readRequest();
-      InputValidator.validateRequest(input);
-      DataValidator.validateRequest(input);
-      return input;
+      const filteredData = this.#repo.filter(input);
+      DataValidator.validateRequest(filteredData);
+      const result = await this.validateMissionInput(filteredData[0], command);
+      return this.#handler.runCommand(result.command, result.data);
     } catch (error) {
       Console.print(error.message);
-      await this.process(command);
+      await this.#readRequest();
     }
   }
 
-  async #checkReMatch(result) {
-    const answer = await InputView.readReset();
-    if (answer === '예')
-      return this.#service.checkCommand((result.command = 'rematch'));
-    return (result.command = 'no-rematch');
+  async validateMissionInput(input, command) {
+    const bool = input.match.length !== 0;
+    InputValidator.validateCommandData(command, bool);
+    if (command === '1' && bool) {
+      const answer = await InputView.readRematch();
+      if (answer === '아니오') throw new Error();
+    }
+    return { data: input, command: command };
+  }
+
+  printResult(result, command) {
+    if (command === '3') OutputView.printReset();
+    if (command !== '3') OutputView.printResult(result.msg);
   }
 }
 

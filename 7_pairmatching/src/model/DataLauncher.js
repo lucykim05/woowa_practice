@@ -1,18 +1,29 @@
 import { MISSION } from '../constants/constants.js';
 import Mission from './Mission.js';
+import Crew from './Crew.js';
 
 class DataLauncher {
   constructor() {
     this.info = [];
+    this.frontend = [];
+    this.backend = [];
   }
 
   launch(backend, frontend) {
+    this.makeCrew(backend, this.backend);
+    this.makeCrew(frontend, this.frontend);
     const missions = MISSION.INFO;
     for (const mission of missions) {
-      this.launchBackend(backend, mission);
-      this.launchFrontend(frontend, mission);
+      this.launchBackend(this.backend, mission);
+      this.launchFrontend(this.frontend, mission);
     }
     return this.info;
+  }
+
+  makeCrew(names, arr) {
+    for (const name of names) {
+      arr.push(new Crew(name));
+    }
   }
 
   launchBackend(crew, mission) {
