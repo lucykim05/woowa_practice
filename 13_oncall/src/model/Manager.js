@@ -14,7 +14,6 @@ class Manager {
     for (let i = 1; i <= total; i++) {
       const worker = this.getWorker(i);
       const result = this.makeResult(worker, i);
-      console.log(result);
       this.#result.push(result);
     }
   }
