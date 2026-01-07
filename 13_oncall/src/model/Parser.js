@@ -15,13 +15,22 @@ const Parser = {
 
   makeInfo(number, dayName, month) {
     const bool = DATE.WORKDAY.includes(dayName);
+    const holiday = this.checkHoliday(month, number, bool);
+    if (holiday) bool = false;
     return {
       month: month,
       date: number + 1,
       day: dayName,
       workday: bool,
-      holiday: false,
+      holiday: holiday,
     };
+  },
+
+  checkHoliday(month, number, bool) {
+    if (!bool) return false;
+    if (!DATE.HOLIDAY[month]) return false;
+    if (DATE.HOLIDAY[month].includes(number)) return true;
+    return false;
   },
 };
 
