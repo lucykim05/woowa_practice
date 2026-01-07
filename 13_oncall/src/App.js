@@ -5,6 +5,7 @@ class App {
   async run() {
     try {
       const controller = new Controller();
+      await controller.makeCalendar();
     } catch (error) {
       Console.print(error.message);
       throw error;
