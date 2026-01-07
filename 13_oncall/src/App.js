@@ -6,6 +6,7 @@ class App {
     try {
       const controller = new Controller();
       await controller.makeCalendar();
+      await controller.makeOrganizer();
     } catch (error) {
       Console.print(error.message);
       throw error;

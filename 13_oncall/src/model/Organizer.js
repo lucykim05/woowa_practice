@@ -1,5 +1,11 @@
 class Organizer {
-  constructor() {}
+  #workDay;
+  #weekDay;
+
+  constructor(workDay, weekDay) {
+    this.#workDay = workDay;
+    this.#weekDay = weekDay;
+  }
 }
 
 export default Organizer;

@@ -1,9 +1,11 @@
 import Validator from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 import Calendar from '../model/Calendar.js';
+import Organizer from '../model/Organizer.js';
 
 class Controller {
   #calendar;
+  #organizer;
 
   constructor() {}
 
@@ -19,6 +21,8 @@ class Controller {
     const workDay = await InputView.readWorkDay();
     const weekDay = await InputView.readWeekEnd();
     Validator.validateSchedule(workDay, weekDay);
+    const organizer = new Organizer(workDay, weekDay);
+    this.#organizer = organizer;
   }
 }
 
