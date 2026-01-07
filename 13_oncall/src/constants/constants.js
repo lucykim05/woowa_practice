@@ -43,8 +43,13 @@ export const MESSAGE = Object.freeze({
 });
 
 export const ERROR = Object.freeze({
-  NOT_A_NUMBER: '[ERROR] ',
-  NOT_INTEGER: '[ERROR] ',
-  MONTH_IN_RANGE: '[ERROR] ',
-  DAY_IN_RANGE: '[ERROR] ',
+  NOT_A_NUMBER: '[ERROR] 숫자를 입력해주세요.',
+  NOT_INTEGER: '[ERROR] 자연수를 입력해주세요.',
+  MONTH_IN_RANGE: '[ERROR] 1 이상 12 이하의 숫자를 입력해주세요.',
+  DAY_IN_RANGE: '[ERROR] 요일을 입력해주세요.',
+  TOTAL_LENGTH: '[ERROR] 총 인원수가 적절하지 않습니다.',
+  WORKER_LENGTH: '[ERROR] 인원수가 적절하지 않습니다.',
+  NOT_UNIQUE: '[ERROR] 중복된 인원이 있습니다.',
+  NOT_KOREAN: '[ERROR] 닉네임은 한글로만 설정 가능합니다.',
+  NAME_RANGE: '[ERROR] 닉네임은 5글자 이하로 설정 가능합니다.',
 });
