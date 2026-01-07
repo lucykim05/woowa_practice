@@ -59,7 +59,8 @@ class Controller {
     const seat = await InputView.readSeat();
     const people = await InputView.readPeople();
     this.#validator.validateReservation(theater, time, seat, people);
-    return this.#reservationHandler.make(theater, time, seat);
+    const result = this.#reservationHandler.make(theater, time, seat);
+    console.log(result);
   }
 
   async cancelReservation() {

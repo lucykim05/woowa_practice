@@ -7,12 +7,13 @@ class Database {
   constructor() {
     this.#reservation = [];
     this.#seat = [];
-    this.#totalQuantity = 0;
+    this.#totalQuantity = 1;
     this.#totalPrice = 0;
   }
 
   addReservation(input) {
     this.#reservation.push(input);
+    this.#totalQuantity += 1;
   }
 
   addSeat(theater, time, input) {
@@ -35,6 +36,11 @@ class Database {
 
   getSeatData() {
     return this.#seat;
+  }
+
+  getId() {
+    const num = this.#totalQuantity;
+    return `R${String(num).padStart(3, '0')}`;
   }
 }
 

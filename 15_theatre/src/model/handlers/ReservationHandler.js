@@ -17,6 +17,16 @@ class ReservationHandler {
       seat: seats,
     });
   }
+
+  make(theater, time, seat) {
+    const result = this.#worker.makeReservation({
+      theater: theater,
+      time: time,
+      seat: seat,
+    });
+    this.info = reservationInfo;
+    this.total = totalPrice;
+  }
 }
 
 export default ReservationHandler;

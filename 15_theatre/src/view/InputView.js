@@ -18,7 +18,7 @@ const InputView = {
   },
   async readSeat() {
     const input = await Console.readLineAsync(MESSAGE.SEAT);
-    return input;
+    return input.split(',').map((x) => x.trim());
   },
   async readPeople() {
     const input = await Console.readLineAsync(MESSAGE.PEOPLE);
