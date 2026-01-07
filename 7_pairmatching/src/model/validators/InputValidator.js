@@ -1,6 +1,6 @@
 import { ERROR, INPUT, MISSION } from '../../constants/constants.js';
 
-const InputValidator = {
+export const InputValidator = {
   validateCommand(input) {
     if (!INPUT.COMMAND.includes(input)) throw new Error(ERROR.COMMAND);
   },
@@ -13,4 +13,10 @@ const InputValidator = {
   },
 };
 
-export default InputValidator;
+export const DataValidator = {
+  validateRequest(input) {
+    const [course, level, name] = input;
+    const request = [level, name];
+    if (!MISSION.INFO.includes(request)) throw new Error(ERROR.NO_RESULT);
+  },
+};

@@ -302,11 +302,11 @@ Controller의 외부와의 상호작용을 제외한 가장 큰 부분의 내부
   - [x] command Q 아니면 command 다음으로 전달
   - [x] Command Q면 break
 - [x] 미션 선택 입력 받는 메서드
-- [ ] 추가 입력
-  - [ ] 미션 선택 입력 받음
-  - [ ] DataValidator로 검증
-  - [ ] 검증 실패하면 재입력(try-catch)
-  - [ ] 성공하면 MatchingService로 Command와 미션 정보 전달 후 결과 return
+- [x] 추가 입력
+  - [x] 미션 선택 입력 받음
+  - [x] DataValidator로 검증
+  - [x] 검증 실패하면 재입력(try-catch)
+  - [x] 성공하면 MatchingService로 Command와 미션 정보 전달 후 결과 return
   - [ ] 결과 가공
 - [ ] 결과 가공
   - [ ] 결과가 재매칭 입력 받아야하면 입력 받아서 MatchingService 메인 로직으로 이동(command는 reset으로)

@@ -2,7 +2,11 @@ import DataLauncher from '../model/DataLauncher.js';
 import MissionRepo from '../model/MissionRepo.js';
 import InputView from '../view/InputView.js';
 import MatchingService from '../model/MatchingService.js';
-import InputValidator from '../model/validators/InputValidator.js';
+import {
+  InputValidator,
+  DataValidator,
+} from '../model/validators/InputValidator.js';
+import { Console } from '@woowacourse/mission-utils';
 
 class MatchingController {
   #repo;
@@ -27,13 +31,25 @@ class MatchingController {
     }
   }
 
-  async readRequest() {
-    const input = await InputView.readRequest();
-    InputValidator.validateRequest(input);
-    return input;
+  async process(input) {
+    const request = await this.#readRequest();
+    const result = this.#service.checkCommand({
+      command: input,
+      info: request,
+    });
   }
 
-  process(command) {}
+  async #readRequest() {
+    try {
+      const input = await InputView.readRequest();
+      InputValidator.validateRequest(input);
+      DataValidator.validateRequest(input);
+      return input;
+    } catch (error) {
+      Console.print(error.message);
+      await this.process(command);
+    }
+  }
 }
 
 export default MatchingController;
