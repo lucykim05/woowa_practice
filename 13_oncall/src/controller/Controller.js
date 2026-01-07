@@ -24,6 +24,10 @@ class Controller {
     const organizer = new Organizer(workDay, weekDay);
     this.#organizer = organizer;
   }
+
+  makeResult() {
+    const manager = new Manager(this.#calendar, this.#organizer);
+  }
 }
 
 export default Controller;
