@@ -37,7 +37,8 @@ class CommandHandler {
 
   reMatch(data) {
     data.resetMatch();
-    this.makeMatch(data);
+    const result = this.makeMatch(data);
+    return result;
   }
 }
 
