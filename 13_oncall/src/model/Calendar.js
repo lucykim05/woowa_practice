@@ -2,9 +2,11 @@ import { DATE } from '../constants/constants.js';
 class Calendar {
   #total;
   #info;
+  #holiday;
 
   constructor() {
     this.#info = [];
+    this.#holiday = [];
   }
 
   initCalendar(input) {
@@ -21,6 +23,20 @@ class Calendar {
       const dayName = DATE.DAY_NAME[remain];
       this.pushInfo(i, dayName);
       total++;
+    }
+  }
+
+  makeHolidayInfo(month) {
+    const holiday = DATE.HOLIDAY[month];
+    if (holiday) holiday.forEach((x) => this.setHoliday(x));
+  }
+
+  setHoliday(number) {
+    const info = this.#info.filter((x) => x.date === number);
+    const bool = info[0].workday;
+    if (bool) {
+      info[0].workday = false;
+      this.#holiday.push(number);
     }
   }
 
