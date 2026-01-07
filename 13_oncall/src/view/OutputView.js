@@ -1,12 +1,14 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printResult(input, month) {
-    Console.print(`${month}월 ${input.date}일 ${input.day} ${input.worker}`);
-  },
-  printHoliday(input, month) {
+  printResult(input) {
     Console.print(
-      `${month}월 ${input.date}일 ${input.day}(휴일) ${input.worker}`
+      `${input.month}월 ${input.date}일 ${input.day} ${input.worker}`
+    );
+  },
+  printHoliday(input) {
+    Console.print(
+      `${input.month}월 ${input.date}일 ${input.day}(휴일) ${input.worker}`
     );
   },
   // print(input) {

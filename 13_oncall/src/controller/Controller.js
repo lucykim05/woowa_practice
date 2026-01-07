@@ -15,6 +15,7 @@ class Controller {
   async makeCalendar() {
     try {
       const date = await InputView.readDate();
+      console.log(date);
       Validator.validateDate(date);
       const calendar = new Calendar();
       this.#calendar = calendar;
@@ -47,12 +48,11 @@ class Controller {
 
   printResult(input) {
     const holiday = this.#calendar.getHoliday();
-    const month = this.#calendar.getMonth();
     if (holiday.includes(input.date)) {
-      OutputView.printHoliday(input, month);
+      OutputView.printHoliday(input);
       return;
     }
-    OutputView.printResult(input, month);
+    OutputView.printResult(input);
   }
 }
 

@@ -1,9 +1,9 @@
 import { DATE } from '../constants/constants.js';
+import Parser from './Parser.js';
 class Calendar {
   #total;
   #info;
   #holiday;
-  #month;
 
   constructor() {
     this.#info = [];
@@ -12,20 +12,9 @@ class Calendar {
 
   initCalendar(input) {
     const [month, day] = input;
-    this.#month = month;
-    this.#total = DATE.MONTH[Number(month)];
-    this.makeInfo(day);
+    this.#total = DATE.MONTH[month];
+    this.#info = Parser.parseCalendarInfo(Number(month), day);
     this.makeHolidayInfo(Number(month));
-  }
-
-  makeInfo(day) {
-    let total = DATE.DAY_MAP[day];
-    for (let i = 0; i < this.#total; i++) {
-      const remain = total % 7;
-      const dayName = DATE.DAY_NAME[remain];
-      this.pushInfo(i, dayName);
-      total++;
-    }
   }
 
   makeHolidayInfo(month) {
@@ -40,15 +29,6 @@ class Calendar {
       info[0].workday = false;
       this.#holiday.push(number);
     }
-  }
-
-  pushInfo(number, dayName) {
-    const bool = DATE.WORKDAY.includes(dayName);
-    this.#info.push({
-      date: number + 1,
-      day: dayName,
-      workday: bool,
-    });
   }
 
   checkWorkday(date) {
@@ -72,10 +52,6 @@ class Calendar {
 
   getHoliday() {
     return this.#holiday;
-  }
-
-  getMonth() {
-    return this.#month;
   }
 }
 
