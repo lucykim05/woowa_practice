@@ -1,4 +1,5 @@
-import { ERROR } from '../constants/message.js';
+import { DAY } from '../constants/constants.js';
+import { ERROR } from '../constants/constants.js';
 
 const Validator = {
   validateDate(input) {
@@ -10,6 +11,11 @@ const Validator = {
   validateMonth(input) {
     this.validateNumber(input);
     if (input < 1 || input > 12) throw new Error(ERROR.MONTH_IN_RANGE);
+  },
+
+  validateDay(input) {
+    const arr = DAY;
+    if (!arr.includes(input)) throw new Error(ERROR.DAY_IN_RANGE);
   },
 
   validateNumber(input) {
