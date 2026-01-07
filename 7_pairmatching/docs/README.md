@@ -307,17 +307,17 @@ Controller의 외부와의 상호작용을 제외한 가장 큰 부분의 내부
   - [x] DataValidator로 검증
   - [x] 검증 실패하면 재입력(try-catch)
   - [x] 성공하면 MatchingService로 Command와 미션 정보 전달 후 결과 return
-  - [ ] 결과 가공
-- [ ] 결과 가공
-  - [ ] 결과가 재매칭 입력 받아야하면 입력 받아서 MatchingService 메인 로직으로 이동(command는 reset으로)
+  - [x] 결과 가공
+- [x] 결과 가공
+  - [x] 결과가 재매칭 입력 받아야하면 입력 받아서 MatchingService 메인 로직으로 이동(command는 reset으로)
   - [ ] 결과 print
 
 ### MatchingService
 
-- [ ] 메인 로직
-  - [ ] command와 미션 정보 받음
-  - [ ] command마다 해당 메서드 실행
-  - [ ] 결과 return
+- [x] 메인 로직
+  - [x] command와 미션 정보 받음
+  - [x] command마다 해당 메서드 실행
+  - [x] 결과 return
 - [ ] 매칭 메서드
   - [ ] 매칭 데이터 있는지 확인
   - [ ] 없으면 Matcher 매칭 메서드로 전달

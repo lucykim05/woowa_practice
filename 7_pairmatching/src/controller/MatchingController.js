@@ -31,13 +31,18 @@ class MatchingController {
     }
   }
 
-  async process(input) {
+  async process(command) {
+    const result = await this.makeRequest(command);
+  }
+
+  async makeRequest(input) {
     const request = await this.#readRequest();
     const result = this.#service.checkCommand({
       command: input,
       info: request,
     });
-    if (result.command === 'check-reset') return await this.#checkReset(result);
+    if (result.command === 'check-rematch')
+      return await this.#checkReMatch(result);
     return result;
   }
 
@@ -53,11 +58,11 @@ class MatchingController {
     }
   }
 
-  async #checkReset(result) {
+  async #checkReMatch(result) {
     const answer = await InputView.readReset();
     if (answer === '예')
-      return this.#service.checkCommand((result.command = 'reset'));
-    return (result.command = 'no-reset');
+      return this.#service.checkCommand((result.command = 'rematch'));
+    return (result.command = 'no-rematch');
   }
 }
 
