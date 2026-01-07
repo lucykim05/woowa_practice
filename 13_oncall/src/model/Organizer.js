@@ -9,9 +9,15 @@ class Organizer {
     this.#worker = '';
   }
 
-  manageWorker(bool) {
-    if (bool) return this.#makeResult(this.#workDay);
-    return this.#makeResult(this.#weekEnd);
+  manageWorker(bool, info) {
+    if (bool) {
+      const name = this.#makeResult(this.#workDay);
+      info.worker = name;
+      return info;
+    }
+    const name = this.#makeResult(this.#weekEnd);
+    info.worker = name;
+    return info;
   }
 
   #makeResult(arr) {

@@ -20,6 +20,7 @@ const Parser = {
       date: number + 1,
       day: dayName,
       workday: bool,
+      holiday: false,
     };
   },
 };
