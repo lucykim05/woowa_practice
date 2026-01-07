@@ -9,7 +9,6 @@ const Validator = {
   },
 
   validateSchedule(workDay, weekDay) {
-    this.validateTotalLength(workDay, weekDay);
     this.validateDaySchedule(workDay);
     this.validateDaySchedule(weekDay);
   },
@@ -57,11 +56,6 @@ const Validator = {
   validateNumber(input) {
     if (Number.isNaN(input)) throw new Error(ERROR.NOT_A_NUMBER);
     if (!Number.isInteger(input)) throw new Error(ERROR.NOT_INTEGER);
-  },
-
-  validateTotalLength(a, b) {
-    const total = a.length + b.length;
-    if (total < 5 || total > 35) throw new Error(ERROR.WORKER_LENGTH);
   },
 };
 

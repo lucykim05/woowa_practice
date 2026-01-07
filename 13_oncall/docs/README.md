@@ -129,9 +129,9 @@
   - [x] Manager에 Organizer, Calendar 전달하여 생성
   - [x] Manager 실행
   - [x] 결과 받아옴
-- [ ] 결과 출력
-  - [ ] 결과 가공
-  - [ ] OutputView 통해 출력
+- [x] 결과 출력
+  - [x] 결과 가공
+  - [x] OutputView 통해 출력
 
 ### Calendar
 
@@ -169,7 +169,7 @@
   - [x] 결과 받아서
   - [x] 휴일이면 요일에 (휴일) 추가
   - [x] 결과 {일, 요일, 이름} push
-- [ ] 결과 return
+- [x] 결과 return
 
 ### Validator
 
@@ -196,4 +196,4 @@
 
 ### OutputView
 
-- [ ] 근무 정보 출력
+- [x] 근무 정보 출력

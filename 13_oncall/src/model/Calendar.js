@@ -3,6 +3,7 @@ class Calendar {
   #total;
   #info;
   #holiday;
+  #month;
 
   constructor() {
     this.#info = [];
@@ -11,6 +12,7 @@ class Calendar {
 
   initCalendar(input) {
     const [month, day] = input;
+    this.#month = month;
     this.#total = DATE.MONTH[Number(month)];
     this.makeInfo(day);
     this.makeHolidayInfo(Number(month));
@@ -19,7 +21,7 @@ class Calendar {
   makeInfo(day) {
     let total = DATE.DAY_MAP[day];
     for (let i = 0; i < this.#total; i++) {
-      const remain = (total + i) % 7;
+      const remain = total % 7;
       const dayName = DATE.DAY_NAME[remain];
       this.pushInfo(i, dayName);
       total++;
@@ -57,7 +59,7 @@ class Calendar {
   getInfo(date) {
     const filtered = this.#info.filter((x) => x.date === date);
     const holiday = this.#holiday.filter((x) => x.date === date);
-    if (holiday.length !== 0) {
+    if (holiday.length === 0) {
       return filtered[0];
     }
     const result = (filtered[0].holiday = true);
@@ -66,6 +68,14 @@ class Calendar {
 
   getTotal() {
     return this.#total;
+  }
+
+  getHoliday() {
+    return this.#holiday;
+  }
+
+  getMonth() {
+    return this.#month;
   }
 }
 

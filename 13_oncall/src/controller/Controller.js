@@ -4,6 +4,7 @@ import Calendar from '../model/Calendar.js';
 import Organizer from '../model/Organizer.js';
 import Manager from '../model/Manager.js';
 import { Console } from '@woowacourse/mission-utils';
+import OutputView from '../view/OutputView.js';
 
 class Controller {
   #calendar;
@@ -40,7 +41,18 @@ class Controller {
   makeResult() {
     const manager = new Manager(this.#calendar, this.#organizer);
     manager.manage();
-    return manager.getResult();
+    const result = manager.getResult();
+    result.forEach((x) => this.printResult(x));
+  }
+
+  printResult(input) {
+    const holiday = this.#calendar.getHoliday();
+    const month = this.#calendar.getMonth();
+    if (holiday.includes(input.date)) {
+      OutputView.printHoliday(input, month);
+      return;
+    }
+    OutputView.printResult(input, month);
   }
 }
 

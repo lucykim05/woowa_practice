@@ -3,14 +3,10 @@ import Controller from './controller/Controller.js';
 
 class App {
   async run() {
-    try {
-      const controller = new Controller();
-      await controller.makeCalendar();
-      await controller.makeOrganizer();
-    } catch (error) {
-      Console.print(error.message);
-      throw error;
-    }
+    const controller = new Controller();
+    await controller.makeCalendar();
+    await controller.makeOrganizer();
+    controller.makeResult();
   }
 }
 

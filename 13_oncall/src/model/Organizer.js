@@ -31,7 +31,7 @@ class Organizer {
       this.#worker = name;
       return name;
     }
-    if (name === this.#weekEnd) {
+    if (name === this.#worker) {
       return this.changeWeekEndWorker(name);
     }
     this.#worker = name;

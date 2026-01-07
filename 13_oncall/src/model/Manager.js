@@ -13,7 +13,8 @@ class Manager {
     const total = this.#calendar.getTotal();
     for (let i = 1; i <= total; i++) {
       const worker = this.getWorker(i);
-      const result = this.makeResult(worker);
+      const result = this.makeResult(worker, i);
+      console.log(result);
       this.#result.push(result);
     }
   }
@@ -26,8 +27,8 @@ class Manager {
 
   makeResult(worker, i) {
     const info = this.#calendar.getInfo(i);
-    const result = (info.worker = worker);
-    return result;
+    info.worker = worker;
+    return info;
   }
 
   getResult() {
