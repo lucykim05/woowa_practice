@@ -1,4 +1,4 @@
-import { DAY } from '../constants/constants.js';
+import { DATE } from '../constants/constants.js';
 import { ERROR } from '../constants/constants.js';
 
 const Validator = {
@@ -14,7 +14,7 @@ const Validator = {
   },
 
   validateDay(input) {
-    const arr = DAY;
+    const arr = DATE.DAY_NAME;
     if (!arr.includes(input)) throw new Error(ERROR.DAY_IN_RANGE);
   },
 
