@@ -9,51 +9,32 @@ class Organizer {
     this.#worker = '';
   }
 
-  workDay() {
-    const name = this.#workDay.shift();
-    const bool = this.checkUnique(this.#workDay);
+  manageWorker(bool) {
+    if (bool) return this.makeResult(this.#workDay);
+    return this.makeResult(this.#weekEnd);
+  }
+
+  makeResult(arr) {
+    const name = arr.shift();
+    const bool = this.checkUnique(arr);
     if (!bool) {
       this.#worker = name;
       return name;
     }
     if (name === this.#worker) {
-      return this.changeWorkDayWorker(name);
+      return this.changeWorker(name, arr);
     }
     this.#worker = name;
-    this.#workDay.push(name);
+    arr.push(name);
     return name;
   }
 
-  weekEnd() {
-    const name = this.#weekEnd.shift();
-    const bool = this.checkUnique(this.#weekEnd);
-    if (!bool) {
-      this.#worker = name;
-      return name;
-    }
-    if (name === this.#worker) {
-      return this.changeWeekEndWorker(name);
-    }
-    this.#worker = name;
-    this.#weekEnd.push(name);
-    return name;
-  }
-
-  changeWeekEndWorker(name) {
-    const next = this.#weekEnd.shift();
+  changeWorker(name, arr) {
+    const next = arr.shift();
     this.#worker = next;
-    this.#weekEnd.unshift(name);
-    this.#weekEnd.push(name);
-    this.#weekEnd.push(next);
-    return next;
-  }
-
-  changeWorkDayWorker(name) {
-    const next = this.#workDay.shift();
-    this.#worker = next;
-    this.#workDay.unshift(name);
-    this.#workDay.push(name);
-    this.#workDay.push(next);
+    arr.unshift(name);
+    arr.push(name);
+    arr.push(next);
     return next;
   }
 

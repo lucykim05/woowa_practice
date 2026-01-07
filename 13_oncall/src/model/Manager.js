@@ -20,8 +20,7 @@ class Manager {
 
   getWorker(number) {
     const bool = this.#calendar.checkWorkday(number);
-    if (bool) return this.#organizer.workDay();
-    return this.#organizer.weekEnd();
+    return this.#organizer.manageWorker(bool);
   }
 
   makeResult(worker, i) {
