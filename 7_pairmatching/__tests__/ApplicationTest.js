@@ -1,6 +1,5 @@
-import App from '../src/Application.js';
-import Console from '../src/utils/Console.js';
-import Random from '../src/utils/Random.js';
+import App from '../src/App.js';
+import { Console, Random } from '@woowacourse/mission-utils';
 import { EOL } from 'os';
 
 describe('ApplicationTest', () => {
@@ -20,12 +19,16 @@ describe('ApplicationTest', () => {
       .mockImplementation(() => Promise.resolve(inputs.shift()));
   };
 
-  const getOutput = () => logSpy.mock.calls.map((call) => call[0]).join(EOL);
+  const getOutput = () =>
+    logSpy.mock.calls.map(([message]) => message).join(EOL);
 
   test('짝수 인원 페어 매칭', async () => {
-    jest
-      .spyOn(Random, 'shuffle')
-      .mockReturnValue(['태웅', '백호', '치수', '태섭']);
+    /**
+     * crews = ['태웅', '백호', '치수', '태섭']
+     * indexes = [0, 1, 2, 3]
+     * → 셔플 결과를 숫자로 고정
+     */
+    jest.spyOn(Random, 'shuffle').mockReturnValue([0, 1, 2, 3]);
 
     mockInputs(['1', '백엔드, 레벨1, 자동차경주', 'Q']);
 
