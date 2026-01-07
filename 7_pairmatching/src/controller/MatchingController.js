@@ -27,8 +27,22 @@ class MatchingController {
     while (true) {
       const command = await InputView.readCommand();
       InputValidator.validateCommand(command);
-      if (command !== 'Q') await this.#readRequest(command);
       if (command === 'Q') break;
+      if (command !== '1') await this.getRequest(command);
+      if (command === '1') await this.#readRequest(command);
+    }
+  }
+
+  async getRequest(command) {
+    try {
+      const input = await InputView.readRequest();
+      const filteredData = this.#repo.filter(input);
+      DataValidator.validateRequest(filteredData);
+      const result = await this.validateMissionInput(filteredData[0], command);
+      const a = this.#handler.runCommand(result.command, result.data);
+      this.printResult(a, command);
+    } catch (error) {
+      Console.print(error.message);
     }
   }
 
