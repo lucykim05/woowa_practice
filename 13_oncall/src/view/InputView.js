@@ -1,20 +1,17 @@
 import { Console } from '@woowacourse/mission-utils';
+import { MESSAGE } from '../constants/message.js';
 
 const InputView = {
-  async read() {
-    const input = await Console.readLineAsync();
+  async readDate() {
+    const input = await Console.readLineAsync(MESSAGE.DATE);
     return input;
   },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readWorkDay() {
+    const input = await Console.readLineAsync(MESSAGE.WORK_DAY);
     return input;
   },
-  async read() {
-    const input = await Console.readLineAsync();
-    return input;
-  },
-  async read() {
-    const input = await Console.readLineAsync();
+  async readWeekEnd() {
+    const input = await Console.readLineAsync(MESSAGE.WEEK_END);
     return input;
   },
 };
