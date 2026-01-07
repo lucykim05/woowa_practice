@@ -10,5 +10,15 @@ export const Validator = {
     if (!DAY_OF_WEEK.includes(startDay)) throw Error(ERROR.UNVALID_STARTDAY);
   },
 
-  workers() {},
+  workers(input) {
+    const workers = commaParser(input);
+
+    const emptyValue = workers.filter((name) => !name);
+    if (emptyValue.length > 0) throw Error(ERROR.NAME_EMPTY);
+
+    const set = new Set(workers);
+    if (workers.length !== set.size) throw Error(ERROR.SAME_NAME);
+
+    const unvalidName = workers.filter;
+  },
 };

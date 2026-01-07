@@ -39,9 +39,21 @@ export const MONTH_LIMIT = Object.freeze({
   MAX: 12,
 });
 
+export const WORKER_LIMIT = Object.freeze({
+  MIN: 5,
+  MAX: 35,
+});
+
+export const NAME_LIMIT = Object.freeze({
+  MIN: 1,
+  MAX: 5,
+});
+
 export const ERROR = Object.freeze({
   EMPTY: "[ERROR] 입력 값이 비었습니다. 다시 입력 부탁드립니다.\n",
   MONTH_OUT_OF_RANGE:
     "[ERROR] 달(month)을 읽을 수 없습니다.. 1~12 사이의 수로 다시 입력해주세요.",
   UNVALID_STARTDAY: "[ERROR] 요일을 읽을 수 없습니다. 다시 입력해주세요.",
+  NAME_EMPTY: "[ERROR] 이름에 빈 부분이 있습니다. 다시 입력해주세요.",
+  SAME_NAME: "[ERROR] 중복되는 이름이 존재합니다. 다시 입력해주세요",
 });
