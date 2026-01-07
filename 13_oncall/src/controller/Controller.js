@@ -28,6 +28,8 @@ class Controller {
 
   makeResult() {
     const manager = new Manager(this.#calendar, this.#organizer);
+    manager.manage();
+    return manager.getResult();
   }
 }
 

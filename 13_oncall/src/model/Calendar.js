@@ -48,6 +48,25 @@ class Calendar {
       workday: bool,
     });
   }
+
+  checkWorkday(date) {
+    const filtered = this.#info.filter((x) => x.date === date);
+    return filtered[0].workday;
+  }
+
+  getInfo(date) {
+    const filtered = this.#info.filter((x) => x.date === date);
+    const holiday = this.#holiday.filter((x) => x.date === date);
+    if (holiday.length !== 0) {
+      return filtered[0];
+    }
+    const result = (filtered[0].holiday = true);
+    return result;
+  }
+
+  getTotal() {
+    return this.#total;
+  }
 }
 
 export default Calendar;
