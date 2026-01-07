@@ -2,6 +2,7 @@ import DataLauncher from '../model/DataLauncher.js';
 import MissionRepo from '../model/MissionRepo.js';
 import InputView from '../view/InputView.js';
 import MatchingService from '../model/MatchingService.js';
+import InputValidator from '../model/validators/InputValidator.js';
 
 class MatchingController {
   #repo;
@@ -16,6 +17,17 @@ class MatchingController {
     this.#repo = repo;
     this.#service = new MatchingService(repo);
   }
+
+  async start() {
+    while (true) {
+      const command = await InputView.readCommand();
+      InputValidator.validateCommand(command);
+      if (command !== 'Q') this.process(command);
+      if (command === 'Q') break;
+    }
+  }
+
+  process(command) {}
 }
 
 export default MatchingController;

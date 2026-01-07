@@ -43,3 +43,7 @@ export const MISSION = Object.freeze({
     ['레벨4', '배포'],
   ],
 });
+
+export const INPUT = Object.freeze({
+  COMMAND: ['1', '2', '3', 'Q'],
+});
