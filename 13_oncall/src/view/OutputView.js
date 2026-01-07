@@ -1,8 +1,7 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printResult(input) {
-    const msg = input.holiday ? '(휴일)' : '';
+  printResult(input, msg) {
     Console.print(
       `${input.month}월 ${input.date}일 ${input.day}${msg} ${input.worker}`
     );
