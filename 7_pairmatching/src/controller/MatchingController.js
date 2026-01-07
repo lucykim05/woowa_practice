@@ -37,6 +37,8 @@ class MatchingController {
       command: input,
       info: request,
     });
+    if (result.command === 'check-reset') return await this.#checkReset(result);
+    return result;
   }
 
   async #readRequest() {
@@ -49,6 +51,13 @@ class MatchingController {
       Console.print(error.message);
       await this.process(command);
     }
+  }
+
+  async #checkReset(result) {
+    const answer = await InputView.readReset();
+    if (answer === '예')
+      return this.#service.checkCommand((result.command = 'reset'));
+    return (result.command = 'no-reset');
   }
 }
 
