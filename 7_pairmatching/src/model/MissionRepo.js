@@ -1,5 +1,15 @@
+import Mission from './Mission.js';
+
 class MissionRepo {
-  constructor() {}
+  #missions;
+
+  constructor(missions) {
+    this.#missions = missions;
+  }
+
+  getMissions() {
+    return this.#missions;
+  }
 }
 
 export default MissionRepo;

@@ -292,10 +292,10 @@ Controller의 외부와의 상호작용을 제외한 가장 큰 부분의 내부
 
 ### Controller
 
-- [ ] initMission()
-  - [ ] DataLauncher 실행
-  - [ ] MissionRepo 생성 및 저장
-  - [ ] MatchingService 생성 및 저장
+- [x] initMission()
+  - [x] DataLauncher 실행
+  - [x] MissionRepo 생성 및 저장
+  - [x] MatchingService 생성 및 저장
 - [ ] while문으로 감싸진 메인 메서드
   - [ ] Command 입력 받음
   - [ ] Command 검증
