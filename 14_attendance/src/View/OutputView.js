@@ -9,6 +9,4 @@ export const OutputView = {
   attendance(msg) {
     Console.print(msg);
   },
-  progress() {},
-  result() {},
 };
