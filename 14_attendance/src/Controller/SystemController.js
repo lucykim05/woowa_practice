@@ -7,28 +7,7 @@ export const SystemController = {
   initialize() {
     const rawAttendanceData = readFile(FILE_URL);
     const parsedData = Parser.rawFile(rawAttendanceData);
-    this.saveData(parsedData);
-  },
-
-  saveData(data) {
-    for (const row of data) {
-      const format = getNewObjectFormat();
-      const [name, temp] = Parser.parse(row, ",");
-      const [date, time] = Parser.parse(temp, " ");
-      const [year, month, day] = Parser.parse(date, "-");
-      const [hour, minute] = Parser.parse(time, ":");
-
-      format.DATE.MONTH = month;
-      format.DATE.DAY = day;
-      format.DATE.TIME.HOUR = hour;
-      format.DATE.TIME.MINUTE = minute;
-
-      if (!Info[name]) {
-        Info[name] = [format];
-        continue;
-      }
-      Info[name].push(format);
-    }
+    saveData(parsedData);
   },
 };
 
@@ -44,4 +23,25 @@ const getNewObjectFormat = () => {
     },
     STATUS: "",
   };
+};
+
+const saveData = (data) => {
+  for (const row of data) {
+    const format = getNewObjectFormat();
+    const [name, temp] = Parser.parse(row, ",");
+    const [date, time] = Parser.parse(temp, " ");
+    const [year, month, day] = Parser.parse(date, "-");
+    const [hour, minute] = Parser.parse(time, ":");
+
+    format.DATE.MONTH = month;
+    format.DATE.DAY = day;
+    format.DATE.TIME.HOUR = hour;
+    format.DATE.TIME.MINUTE = minute;
+
+    if (!Info[name]) {
+      Info[name] = [format];
+      continue;
+    }
+    Info[name].push(format);
+  }
 };
