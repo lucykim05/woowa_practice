@@ -9,4 +9,8 @@ export const InputView = {
   async name() {
     return await Console.readLineAsync(DEFAULT.NAME);
   },
+
+  async time() {
+    return await Console.readLineAsync(DEFAULT.TIME);
+  },
 };

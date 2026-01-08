@@ -1,5 +1,5 @@
 import { DateInfo } from "../../Utils/DateInfo.js";
-import { ERROR } from "../../constants.js";
+import { ERROR, HOUR, MINUTE } from "../../constants.js";
 import { Info } from "../Info.js";
 
 export const AttendanceValidator = {
@@ -15,7 +15,12 @@ export const AttendanceValidator = {
   },
 
   validName(name) {
-    const nameList = Info.keys();
+    const nameList = Object.keys(Info);
     if (!nameList.includes(name)) throw Error(ERROR.NAME);
+  },
+
+  validTime(hour, minute) {
+    if (hour < HOUR.MIN || hour > HOUR.MAX) throw Error(ERROR.WRONG);
+    if (minute < MINUTE.MIN || minute > MINUTE.MAX) throw Error(ERROR.WRONG);
   },
 };

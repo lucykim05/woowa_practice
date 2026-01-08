@@ -16,17 +16,26 @@ export const SystemController = {
 
   async start() {
     while (true) {
-      const todayMsg = getTodayMsg();
-      OutputView.start(todayMsg);
-      const input = await getInput();
-      if (input === FINISH) return;
+      try {
+        const todayMsg = getTodayMsg();
+        OutputView.start(todayMsg);
+        const input = await getInput();
+        if (input === FINISH) return;
 
-      await this.process(input);
+        await this.process(input);
+      } catch (error) {
+        OutputView.error(error.message);
+        return;
+      }
     }
   },
 
   async process(input) {
-    if (input === "1") await AttendanceController.process();
+    try {
+      if (input === "1") await AttendanceController.process();
+    } catch (error) {
+      throw Error(error.message);
+    }
   },
 };
 
@@ -50,7 +59,7 @@ const saveData = (data) => {
     const [name, temp] = Parser.parse(row, ",");
     const [date, time] = Parser.parse(temp, " ");
     const [year, month, day] = Parser.parse(date, "-");
-    const [hour, minute] = Parser.parse(time, ":");
+    const [hour, minute] = Parser.parse(time, ":").map(Number);
 
     format.DATE.MONTH = month;
     format.DATE.DAY = day;
@@ -70,7 +79,7 @@ const getTodayMsg = () => {
   const day = DateInfo.getDayNumber();
   const dayName = DateInfo.getDayName();
 
-  return `오늘은 ${month}월 ${day}일 ${dayName}요일입니다. 기능을 선택해 주세요.`;
+  return `\n오늘은 ${month}월 ${day}일 ${dayName}요일입니다. 기능을 선택해 주세요.`;
 };
 
 const getInput = async () => {
