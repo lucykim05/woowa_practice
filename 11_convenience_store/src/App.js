@@ -1,3 +1,6 @@
+import { SystemController } from "./Controller/SystemController.js";
 export class App {
-  async play() {}
+  async play() {
+    await SystemController();
+  }
 }
