@@ -2,6 +2,7 @@ import { PRODUCT, PROMO, RAW_PRODUCT, RAW_PROMO } from "../constants.js";
 
 export const saveProductAsObject = (arr) => {
   arr.shift();
+  arr.pop();
   for (const product of arr) {
     let copy = JSON.parse(JSON.stringify(RAW_PRODUCT));
     if (PRODUCT[product[0]]) copy = PRODUCT[product[0]];
@@ -21,6 +22,7 @@ export const saveProductAsObject = (arr) => {
 
 export const savePromoAsObject = (arr) => {
   arr.shift();
+  arr.pop();
   for (const promo of arr) {
     const copy = JSON.parse(JSON.stringify(RAW_PROMO));
     copy.NAME = promo[0];
