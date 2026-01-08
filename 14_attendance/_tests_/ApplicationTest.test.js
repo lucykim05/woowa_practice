@@ -1,5 +1,6 @@
 import { Console, DateTimes } from "@woowacourse/mission-utils";
 import App from "../src/App.js";
+import { jest } from "@jest/globals";
 
 const mockQuestions = (inputs) => {
   const messages = [];
