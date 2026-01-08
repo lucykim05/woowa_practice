@@ -23,4 +23,11 @@ export const DateInfo = {
     const dayName = DAY_NAME_LIST[new Date().getDay()];
     return dayName;
   },
+
+  getDateAsString() {
+    const month = this.getMonth();
+    const day = this.getDayNumber();
+    const dayName = this.getDayName();
+    return `${month}월 ${day}일 ${dayName}요일`;
+  },
 };
