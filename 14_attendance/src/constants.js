@@ -12,4 +12,5 @@ export const ERROR = {
   EMPTY: "[ERROR] 값이 비었습니다. 다시 입력해주세요.",
   FILE: "[ERROR] 파일 이름을 읽을 수 없습니다.",
   HOLIDAY: "은 등교일이 아닙니다.",
+  NAME: "[ERROR] 등록되지 않은 닉네임입니다.",
 };
