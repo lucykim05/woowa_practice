@@ -5,4 +5,7 @@ export const OutputView = {
   start() {
     Console.print(DEFAULT_MSG.START);
   },
+  print(msg) {
+    Console.print(msg);
+  },
 };

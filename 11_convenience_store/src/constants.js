@@ -7,6 +7,27 @@ export const URL = {
   PROMO: "../../public/promotion.md",
 };
 
+export const PRODUCT = {};
+export const RAW_PRODUCT = Object.freeze({
+  NAME: "",
+  PRICE: "",
+  COUNT: 0,
+  PROMO: {
+    STATUS: false,
+    NAME: "",
+    COUNT: 0,
+  },
+});
+
+export const PROMO = {};
+export const RAW_PROMO = Object.freeze({
+  NAME: "",
+  BUY: 0,
+  GET: 0,
+  START: null,
+  END: null,
+});
+
 export const ERROR = {
   FILE: "[ERROR] 파일 이름을 읽을 수 없습니다.",
 };
