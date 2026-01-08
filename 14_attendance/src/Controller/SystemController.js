@@ -15,12 +15,14 @@ export const SystemController = {
   },
 
   async start() {
-    const todayMsg = getTodayMsg();
-    OutputView.start(todayMsg);
-    const input = await getInput();
-    if (input === FINISH) return;
+    while (true) {
+      const todayMsg = getTodayMsg();
+      OutputView.start(todayMsg);
+      const input = await getInput();
+      if (input === FINISH) return;
 
-    await this.process(input);
+      await this.process(input);
+    }
   },
 
   async process(input) {
