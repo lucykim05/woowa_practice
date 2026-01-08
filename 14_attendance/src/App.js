@@ -1,4 +1,4 @@
-import { SystemController } from "./Controller/SystemController";
+import { SystemController } from "./Controller/SystemController.js";
 
 class App {
   async run() {

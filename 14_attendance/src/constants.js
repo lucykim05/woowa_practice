@@ -2,6 +2,8 @@ export const DEFAULT = {
   START: "",
 };
 
+export const FILE_URL = "../../public/attendances.csv";
+
 export const DAY_NAME_LIST = ["일", "월", "화", "수", "목", "금", "토"];
 
 export const ERROR = {
