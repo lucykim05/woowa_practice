@@ -18,8 +18,10 @@ export const AttendanceController = {
       try {
         const rawName = await InputView.name();
         AttendanceValidator.validName(rawName);
+        AttendanceValidator.validName(rawName);
         return rawName;
       } catch (error) {
+        OutputView.error(error);
         OutputView.error(error);
         return;
       }
