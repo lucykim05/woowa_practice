@@ -30,6 +30,20 @@ const Utils = {
     if (total <= 630) return '지각';
     return '결석';
   },
+
+  makeNewDate(dateNumber) {
+    const year = DateTimes.now().getFullYear();
+    const month = DateTimes.now().getMonth() + 1;
+    const msg = `${year}-${month}-${dateNumber}`;
+    return new Date(msg);
+  },
+
+  makeAlertMsg(total) {
+    if (total > 5) return '제적';
+    if (total >= 3) return '면담';
+    if (total >= 2) return '경고';
+    return '';
+  },
 };
 
 export default Utils;

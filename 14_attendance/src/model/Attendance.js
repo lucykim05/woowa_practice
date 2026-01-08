@@ -4,6 +4,11 @@ class Attendance {
     this.time = '--:--';
     this.status = '결석';
   }
+
+  checkAttend() {
+    if (this.time === '--:--') return false;
+    return true;
+  }
 }
 
 export default Attendance;

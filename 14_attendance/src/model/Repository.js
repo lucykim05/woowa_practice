@@ -12,6 +12,7 @@ class Repository {
     this.setMonthArr();
     const splitted = data.map((x) => x.split(',').map((x) => x.trim()));
     const nicknames = this.getNickNames(splitted);
+    this.nicknames = nicknames;
     for (const nickname of nicknames) {
       const filtered = splitted
         .filter((x) => x[0] === nickname)
@@ -20,12 +21,35 @@ class Repository {
     }
   }
 
+  showList() {
+    const result = this.makeTotalList();
+    const sorted = result
+      .sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      })
+      .sort((a, b) => b.total - a.total);
+    return sorted;
+  }
+
+  makeTotalList() {
+    const result = [];
+    this.nicknames.forEach((x) => {
+      const crew = this.crews.get(x);
+      const absent = crew.absent.length;
+      const late = crew.late.length;
+      const total = Math.floor(late / 3) + absent;
+      result.push({ crew: crew, total: total });
+    });
+    return result;
+  }
+
   makeCrew(name, data) {
     const crew = new Crew(name);
+    this.crews.set(name, crew);
     this.monthDays.forEach((x) => {
       const filtered = data.filter((y) => new Date(y).getDate() === x);
       if (filtered.length === 0) crew.makeEmptyAttend(x);
-      if (filtered.length !== 0) crew.makeAttend(filtered[0]);
+      if (filtered.length !== 0) crew.makeFirstAttend(filtered[0]);
     });
   }
 
