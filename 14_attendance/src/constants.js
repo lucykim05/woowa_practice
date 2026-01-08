@@ -1,5 +1,6 @@
 export const DEFAULT = {
-  START: "",
+  START:
+    "1. 출석 확인\n2. 출석 수정\n3. 크루별 출석 기록 확인\n4. 제적 위험자 확인\nQ. 종료",
 };
 
 export const FILE_URL = "../../public/attendances.csv";
