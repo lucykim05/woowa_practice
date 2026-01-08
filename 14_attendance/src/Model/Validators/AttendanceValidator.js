@@ -15,12 +15,15 @@ export const AttendanceValidator = {
   },
 
   validName(name) {
+    if (!name) throw Error(ERROR.EMPTY);
     const nameList = Object.keys(Info);
     if (!nameList.includes(name)) throw Error(ERROR.NAME);
     if (isAlreadyFinished(name)) throw Error(ERROR.ATTENDANCE_DONE);
   },
 
   validTime(hour, minute) {
+    if (!hour || !minute) throw Error(ERROR.EMPTY);
+
     if (hour < HOUR.MIN || hour > HOUR.MAX) throw Error(ERROR.WRONG);
     if (minute < MINUTE.MIN || minute > MINUTE.MAX) throw Error(ERROR.WRONG);
   },
