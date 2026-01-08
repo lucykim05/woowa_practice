@@ -27,9 +27,8 @@ export const AttendanceValidator = {
 };
 
 const isAlreadyFinished = (name) => {
-  const month = DateInfo.getMonth();
+  const recentData = Info[name][Info[name].length - 1];
   const day = DateInfo.getDayNumber();
-  if (Info[name].DATE.MONTH === month && Info[name].DATE.DAY === day)
-    return true;
+  if (recentData.DATE.DAY === day) return true;
   return false;
 };

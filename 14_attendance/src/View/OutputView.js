@@ -6,6 +6,9 @@ export const OutputView = {
   error(error) {
     Console.print(error);
   },
+  attendance(msg) {
+    Console.print(msg);
+  },
   progress() {},
   result() {},
 };

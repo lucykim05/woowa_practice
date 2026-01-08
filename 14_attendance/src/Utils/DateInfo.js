@@ -19,7 +19,11 @@ export const DateInfo = {
     return day.toString().padStart(2, "0");
   },
 
-  getDayName() {
+  getDayName(date = "") {
+    if (date.length > 0) {
+      const dayName = DAY_NAME_LIST[new Date(date).getDay()];
+      return dayName;
+    }
     const dayName = DAY_NAME_LIST[new Date().getDay()];
     return dayName;
   },

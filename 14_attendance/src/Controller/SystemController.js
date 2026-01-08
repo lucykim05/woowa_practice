@@ -1,4 +1,4 @@
-import { FILE_URL, FINISH } from "../constants.js";
+import { DAY_NAME_LIST, FILE_URL, FINISH } from "../constants.js";
 import { Info } from "../Model/Info.js";
 import { Parser } from "../Model/Parser.js";
 import { DateInfo } from "../Utils/DateInfo.js";
@@ -19,6 +19,7 @@ export const SystemController = {
       try {
         const todayMsg = getTodayMsg();
         OutputView.start(todayMsg);
+
         const input = await getInput();
         if (input === FINISH) return;
 
@@ -53,18 +54,25 @@ const getNewObjectFormat = () => {
   };
 };
 
-const saveData = (data) => {
+export const saveData = (data) => {
   for (const row of data) {
-    const format = getNewObjectFormat();
     const [name, temp] = Parser.parse(row, ",");
     const [date, time] = Parser.parse(temp, " ");
     const [year, month, day] = Parser.parse(date, "-");
-    const [hour, minute] = Parser.parse(time, ":").map(Number);
+    const [hour, minute] = Parser.parse(time, ":");
+    const dayName = DateInfo.getDayName(date);
 
+    const format = getNewObjectFormat();
     format.DATE.MONTH = month;
     format.DATE.DAY = day;
-    format.DATE.TIME.HOUR = hour;
-    format.DATE.TIME.MINUTE = minute;
+    format.STATUS = checkStatus(dayName, Number(hour), Number(minute));
+    if (format.STATUS === "결석") {
+      format.DATE.TIME.HOUR = "--";
+      format.DATE.TIME.MINUTE = "--";
+    } else {
+      format.DATE.TIME.HOUR = Number(hour);
+      format.DATE.TIME.MINUTE = Number(minute);
+    }
 
     if (!Info[name]) {
       Info[name] = [format];
@@ -72,6 +80,18 @@ const saveData = (data) => {
     }
     Info[name].push(format);
   }
+};
+
+const checkStatus = (dayName, hour, minute) => {
+  if (dayName === DAY_NAME_LIST[1]) {
+    if ((hour === 13 && minute > 30) || hour > 13) return "결석";
+    if (hour === 13 && minute > 5) return "지각";
+    return "출석";
+  }
+
+  if ((hour === 10 && minute > 30) || hour > 10) return "결석";
+  if (hour === 10 && minute > 5) return "지각";
+  return "출석";
 };
 
 const getTodayMsg = () => {
