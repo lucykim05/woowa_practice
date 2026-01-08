@@ -17,10 +17,19 @@ export const AttendanceValidator = {
   validName(name) {
     const nameList = Object.keys(Info);
     if (!nameList.includes(name)) throw Error(ERROR.NAME);
+    if (isAlreadyFinished(name)) throw Error(ERROR.ATTENDANCE_DONE);
   },
 
   validTime(hour, minute) {
     if (hour < HOUR.MIN || hour > HOUR.MAX) throw Error(ERROR.WRONG);
     if (minute < MINUTE.MIN || minute > MINUTE.MAX) throw Error(ERROR.WRONG);
   },
+};
+
+const isAlreadyFinished = (name) => {
+  const month = DateInfo.getMonth();
+  const day = DateInfo.getDayNumber();
+  if (Info[name].DATE.MONTH === month && Info[name].DATE.DAY === day)
+    return true;
+  return false;
 };

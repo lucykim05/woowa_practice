@@ -31,7 +31,7 @@ export const AttendanceController = {
         const rawTime = await InputView.time();
         const [hour, minute] = Parser.parse(rawTime, ":").map(Number);
         AttendanceValidator.validTime(hour, minute);
-        return [hour, minute];
+        return hour, minute;
       } catch (error) {
         throw Error(error.message);
       }

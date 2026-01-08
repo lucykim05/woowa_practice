@@ -23,4 +23,6 @@ export const ERROR = {
   HOLIDAY: "은 등교일이 아닙니다.",
   NAME: "[ERROR] 등록되지 않은 닉네임입니다.\n",
   WRONG: "[ERROR] 잘못된 형식을 입력하였습니다.",
+  ATTENDANCE_DONE:
+    "[ERROR] 이미 출석을 완료했습니다. 출석 시간을 변경할 경우, 수정 기능을 이용해주세요.",
 };
