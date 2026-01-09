@@ -5,7 +5,7 @@ export const DEFAULT = {
   TIME: "등교 시간을 입력해 주세요.\n",
 };
 
-export const FILE_URL = "../../public/attendances.csv";
+export const FILE_URL = "./public/attendances.csv";
 export const FINISH = "Q";
 export const DAY_NAME_LIST = ["일", "월", "화", "수", "목", "금", "토"];
 export const HOUR = {
