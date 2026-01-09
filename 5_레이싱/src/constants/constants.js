@@ -10,4 +10,8 @@ export const ERROR = Object.freeze({
   NAME: '[ERROR] 이름이 잘못된 형식입니다.',
 });
 
-export const MOVE_NUMBER = 4;
+export const NUMBERS = Object.freeze({
+  RANDOM_START: 0,
+  RANDOM_END: 9,
+  MOVE_NUMER: 4,
+});

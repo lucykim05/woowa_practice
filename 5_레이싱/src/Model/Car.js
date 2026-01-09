@@ -1,4 +1,5 @@
-import { canMove } from '../utils/UtilFunction.js';
+import { Random } from '@woowacourse/mission-utils';
+import { NUMBERS } from '../constants/constants.js';
 
 class Car {
   constructor(name) {
@@ -7,8 +8,17 @@ class Car {
   }
 
   move() {
-    const bool = canMove();
+    const bool = this.canMove();
     if (bool) this.position++;
+  }
+
+  canMove() {
+    const randomNum = Random.pickNumberInRange(
+      NUMBERS.RANDOM_START,
+      NUMBERS.RANDOM_END
+    );
+    if (randomNum >= NUMBERS.MOVE_NUMBER) return true;
+    return false;
   }
 }
 
