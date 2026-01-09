@@ -1,6 +1,7 @@
 import LottoGame from '../model/LottoGame.js';
 import Validator from '../model/Validator.js';
 import InputView from '../view/InputView.js';
+import OutputView from '../view/OutputView.js';
 
 class GameController {
   async initGame() {
@@ -11,7 +12,10 @@ class GameController {
 
   makeLotto() {
     const lottos = this.game.makeLotto();
-    OutputView.printLottos(lottos);
+    OutputView.printAmount(lottos.length);
+    lottos.forEach((x) => {
+      OutputView.printLotto(x.getNumbers());
+    });
   }
 
   async readAmount() {
