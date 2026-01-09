@@ -1,6 +1,7 @@
 import Validator from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 import Game from '../model/Game.js';
+import OutputView from '../view/OutputView.js';
 
 class GameController {
   async run() {
