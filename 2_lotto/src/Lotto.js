@@ -20,6 +20,15 @@ export class Lotto {
   getNumberMsg() {
     return `[${this.#numbers.join(", ")}]`;
   }
+
+  match(winningNum, bonusNum) {
+    const match = winningNum.filter((num) =>
+      this.#numbers.includes(num)
+    ).length;
+
+    if (this.#numbers.includes(bonusNum)) return [match, true];
+    return [match, false];
+  }
 }
 
 export default Lotto;
