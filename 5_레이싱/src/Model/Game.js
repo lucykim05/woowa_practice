@@ -2,8 +2,8 @@ import Car from './Car.js';
 
 class Game {
   constructor(names) {
-    this.makeCars(names);
     this.cars = [];
+    this.makeCars(names);
   }
 
   play(count) {
@@ -15,15 +15,15 @@ class Game {
   makeCars(names) {
     names.forEach((x) => {
       const car = new Car(x);
-      this.cars.push[{ name: x, car: car }];
+      this.cars.push({ name: x, car: car });
     });
   }
 
   getResult() {
-    const position = this.cars.map((x) => x.position);
+    const position = this.cars.map((x) => x.car.position);
     const max = Math.max(...position);
     const winner = this.cars
-      .filter((x) => x.position === max)
+      .filter((x) => x.car.position === max)
       .map((x) => x.name);
     return { info: this.cars, winner: winner };
   }

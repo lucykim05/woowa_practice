@@ -1,9 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
 
-export default OutputView = {
+const OutputView = {
   printCarResult(input) {
     const name = input.name;
-    const position = input.position;
+    const position = input.car.position;
     const msg = '-'.repeat(position);
     Console.print(`${name} : ${msg}`);
   },
@@ -13,3 +13,5 @@ export default OutputView = {
     Console.print(`최종 우승자 : ${msg}`);
   },
 };
+
+export default OutputView;

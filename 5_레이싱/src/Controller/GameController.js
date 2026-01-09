@@ -21,13 +21,13 @@ class GameController {
   }
 
   async readNames() {
-    const names = InputView.readNames();
+    const names = await InputView.readNames();
     Validator.validateNames(names);
     return names;
   }
 
   async readCount() {
-    const count = InputView.readCount();
+    const count = await InputView.readCount();
     Validator.validateCount(count);
     return count;
   }
