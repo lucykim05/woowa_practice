@@ -1,3 +1,6 @@
+import { ERROR, LOTTO } from "./constants.js";
+import { Validator } from "./Model/Validator.js";
+
 export class Lotto {
   #numbers;
 
@@ -7,9 +10,10 @@ export class Lotto {
   }
 
   #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+    if (numbers.length !== LOTTO.COUNT) {
+      throw new Error(ERROR.LOTTO_OUT_OF_RANGE);
     }
+    Validator.lotto(numbers);
   }
 
   // TODO: 추가 기능 구현
