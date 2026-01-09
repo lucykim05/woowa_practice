@@ -1,5 +1,3 @@
-class GameController {
-  constructor() {}
-}
+class GameController {}
 
 export default GameController;
