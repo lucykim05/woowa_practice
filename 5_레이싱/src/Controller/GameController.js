@@ -1,0 +1,3 @@
+class GameController {
+  async readInfo() {}
+}
