@@ -7,7 +7,7 @@ class LottoResult {
   getResult(lotto) {
     const numbers = lotto.getNumbers();
     const filtered = this.winning.filter((x) => numbers.includes(x));
-    const hasBonus = numbers.includes(bonus);
+    const hasBonus = numbers.includes(this.bonus);
     const rank = this.getRank(filtered.length, hasBonus);
     return rank;
   }
@@ -18,6 +18,7 @@ class LottoResult {
     if (number === 5) return 3;
     if (number === 4) return 4;
     if (number === 3) return 5;
+    return;
   }
 }
 

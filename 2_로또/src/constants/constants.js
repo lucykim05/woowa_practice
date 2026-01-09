@@ -1,6 +1,8 @@
 export const PROMPT = Object.freeze({});
 
-export const ERROR = Object.freeze({});
+export const ERROR = Object.freeze({
+  NUMBER: '[ERROR] 숫자 아님',
+});
 
 export const LOTTO = Object.freeze({
   PRIZE: {

@@ -6,12 +6,12 @@ const OutputView = {
     Console.print(`${input}개를 구매했습니다.`);
   },
   printLotto(input) {
-    Console.print(input);
+    Console.print(`[${input.join(', ')}]`);
   },
   printResult(input) {
     const [a, b, c, d, e] = input;
     Console.print(`${LOTTO.RESULT[5]}${e}개`);
-    Console.print(`${LOTTO.RESULT[4]}${d}}개`);
+    Console.print(`${LOTTO.RESULT[4]}${d}개`);
     Console.print(`${LOTTO.RESULT[3]}${c}개`);
     Console.print(`${LOTTO.RESULT[2]}${b}개`);
     Console.print(`${LOTTO.RESULT[1]}${a}개`);
@@ -19,8 +19,8 @@ const OutputView = {
   printProfit(input) {
     Console.print(`총 수익률은 ${input}%입니다.`);
   },
-  print(input) {
-    Console.print();
+  printError(input) {
+    Console.print(input);
   },
   print(input) {
     Console.print();

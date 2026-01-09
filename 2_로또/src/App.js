@@ -1,5 +1,5 @@
-import { Console } from '@woowacourse/mission-utils';
 import GameController from './controller/GameController.js';
+import OutputView from './view/OutputView.js';
 
 class App {
   async run() {
@@ -8,9 +8,9 @@ class App {
       await controller.initGame();
       controller.makeLotto();
       await controller.runGame();
+      controller.printResult();
     } catch (error) {
-      Console.print(error.message);
-      throw error;
+      OutputView.printError(error.message);
     }
   }
 }

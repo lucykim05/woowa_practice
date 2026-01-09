@@ -27,7 +27,7 @@ class LottoGame {
     const resultMaker = new LottoResult(winning, bonus);
     this.lottos.forEach((x) => {
       const rank = resultMaker.getResult(x);
-      this.result.set(rank, this.result.get(rank) + 1);
+      if (rank) this.result.set(rank, this.result.get(rank) + 1);
     });
   }
 
@@ -39,7 +39,7 @@ class LottoGame {
       total += LOTTO.PRIZE[key] * value;
       result.push(value);
     }
-    const profit = (total / this.amount).toFixed(1);
+    const profit = ((total / this.amount) * 100).toFixed(1);
     return [result, profit];
   }
 }

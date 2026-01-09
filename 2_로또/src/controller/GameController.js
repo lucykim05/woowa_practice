@@ -5,9 +5,13 @@ import OutputView from '../view/OutputView.js';
 
 class GameController {
   async initGame() {
-    const amount = await this.readAmount();
-    const game = new LottoGame(amount);
-    this.game = game;
+    try {
+      const amount = await this.readAmount();
+      const game = new LottoGame(amount);
+      this.game = game;
+    } catch (error) {
+      throw error;
+    }
   }
 
   makeLotto() {
@@ -30,16 +34,21 @@ class GameController {
   }
 
   async readAmount() {
-    const input = await InputView.readAmount();
-    Validator.validateAmount(input);
-    return input;
+    try {
+      const input = await InputView.readAmount();
+      Validator.validateAmount(input);
+      return input;
+    } catch (error) {
+      OutputView.printError(error.message);
+      throw error;
+    }
   }
 
   async readNumbers() {
     const winning = await InputView.readWinningNumbers();
-    Validator.validateWinningNumbers(winning);
+    Validator.validateRandomNumbers(winning);
     const bonus = await InputView.readBonusNumber();
-    Validator.validateBonusNumber(bonus);
+    Validator.validateBonusNumber(bonus, winning);
     return [winning, bonus];
   }
 }
