@@ -13,5 +13,5 @@ export const ERROR = Object.freeze({
 export const NUMBERS = Object.freeze({
   RANDOM_START: 0,
   RANDOM_END: 9,
-  MOVE_NUMER: 4,
+  MOVE_NUMBER: 4,
 });

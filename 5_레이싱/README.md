@@ -71,3 +71,40 @@
   - [x] 숫자인가
   - [x] 정수인가
   - [x] 자연수인가
+
+## 구현
+
+구현된 파일 구조는 다음과 같다.
+
+```
+src/
+├── constants/
+│   └── constants.js           # 상수 (프롬프트, 에러, 내부 상수 등)
+│
+├── controller/
+│   └── GameController.js      # 전체 게임 흐름 제어
+│
+├── model/
+│   ├── Car.js                 # 자동차 객체
+│   ├── Game.js                # 게임 로직
+│   └── Validator.js           # 검증 로직 통합
+│
+├── view/
+│   ├── InputView.js           # 사용자 입력
+│   └── OutputView.js          # 결과 출력
+│
+├── App.js                     # 프로그램 실행
+├── index.js                   # 진입점
+└── README.md                  # 프로젝트 설명
+```
+
+GameController에서는 사용자 입력을 받아 -> 게임 객체를 만들게 되고, 결과 처리와 함께 출력을 하게 된다.
+그리고 Game.js 즉, 게임 객체 자체 안에서 Car 객체를 만들어 -> 저장 -> 게임이 굴러가도록 하였다.
+
+## 소감
+
+어쩌구 저쩌구
+
+<br />
+
+1시간 반 걸림
