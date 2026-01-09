@@ -22,7 +22,9 @@ class Game {
   getResult() {
     const position = this.cars.map((x) => x.position);
     const max = Math.max(...position);
-    const winner = this.cars.filter((x) => x.position === max);
+    const winner = this.cars
+      .filter((x) => x.position === max)
+      .map((x) => x.name);
     return { info: this.cars, winner: winner };
   }
 }

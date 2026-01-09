@@ -11,6 +11,14 @@ class GameController {
     this.game.play(count);
   }
 
+  printResult() {
+    const result = this.game.getResult();
+    const carsInfo = result.info;
+    const winnerInfo = result.winner;
+    carsInfo.forEach((x) => OutputView.printCarResult(x));
+    OutputView.printWinner(winnerInfo);
+  }
+
   async readNames() {
     const names = InputView.readNames();
     Validator.validateNames(names);
