@@ -18,6 +18,13 @@ class Game {
       this.cars.push[{ name: x, car: car }];
     });
   }
+
+  getResult() {
+    const position = this.cars.map((x) => x.position);
+    const max = Math.max(...position);
+    const winner = this.cars.filter((x) => x.position === max);
+    return { info: this.cars, winner: winner };
+  }
 }
 
 export default Game;
