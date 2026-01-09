@@ -1,5 +1,5 @@
 import { Random } from "@woowacourse/mission-utils";
-import { LOTTO } from "../constants.js";
+import { DEFAULT, LOTTO } from "../constants.js";
 import Lotto from "../Lotto.js";
 
 export class LottoSystem {
@@ -20,6 +20,14 @@ export class LottoSystem {
       const lotto = new Lotto(sortedNumArr);
       this.#lottoList.push(lotto);
     }
+  }
+  randResult() {
+    const msg = [`\n${this.#lottoList.length}${DEFAULT.RANDOM}`];
+
+    for (const numbers of this.#lottoList) {
+      msg.push(numbers.getNumberMsg());
+    }
+    return msg;
   }
 }
 

@@ -17,6 +17,9 @@ export class Lotto {
   }
 
   // TODO: 추가 기능 구현
+  getNumberMsg() {
+    return `[${this.#numbers.join(", ")}]`;
+  }
 }
 
 export default Lotto;

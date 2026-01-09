@@ -1,5 +1,6 @@
 export const DEFAULT = {
   PRICE: "구입금액을 입력해 주세요.\n",
+  RANDOM: "개를 구매했습니다.",
 };
 export const LOTTO = Object.freeze({
   COUNT: 6,
