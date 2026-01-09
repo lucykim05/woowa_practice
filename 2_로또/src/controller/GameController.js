@@ -5,13 +5,9 @@ import OutputView from '../view/OutputView.js';
 
 class GameController {
   async initGame() {
-    try {
-      const amount = await this.readAmount();
-      const game = new LottoGame(amount);
-      this.game = game;
-    } catch (error) {
-      throw error;
-    }
+    const amount = await this.readAmount();
+    const game = new LottoGame(amount);
+    this.game = game;
   }
 
   makeLotto() {
