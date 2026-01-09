@@ -41,6 +41,25 @@ Lotto.js
 
 ## 프로젝트 구조
 
+```
+📦src
+ ┣ 📂Controller
+ ┃ ┗ 📜LottoController.js
+ ┣ 📂Model
+ ┃ ┣ 📜LottoSystem.js
+ ┃ ┗ 📜Validator.js
+ ┣ 📂Utils
+ ┃ ┗ 📜Parser.js
+ ┣ 📂View
+ ┃ ┣ 📜InputView.js
+ ┃ ┗ 📜OutputView.js
+ ┣ 📜App.js
+ ┣ 📜constants.js
+ ┣ 📜index.js
+ ┣ 📜Lotto.js
+ ┗ 📜README.md
+```
+
 ## 기능 상세 설명 및 구현 기능 목록
 
 ### Model
@@ -57,27 +76,22 @@ LottoSystem : 로또 번호에 대한 처리를 담당하는 class
 
 Validator
 
-- [ ] price : 구입 금액 입력 값을 검증함
+- [x] price : 구입 금액 입력 값을 검증함
   - [x] 빈 값인지
   - [x] 숫자인지
-  - [ ] 0 이상의 양수인지
-  - [ ] 1000으로 나누어 떨어지는지
-  - [ ] 100,000원 이하의 값인지
-- [ ] lotto : 자동 생성된 로또 번호 값을 검증함
-  - [ ] 빈값이 존재 하는지
-  - [ ] 숫자가 6개인지
-  - [ ] 중복 값이 존재하는지
-  - [ ] 1~45 사이의 범위에 존재하는지
-- [ ] winningNum : 당첨 번호 입력 값을 검증함
-  - [ ] 빈값이 존재 하는지
-  - [ ] 숫자가 6개인지
-  - [ ] 중복 값이 존재하는지
-  - [ ] 1~45 사이의 범위에 존재하는지
-- [ ] bonusNum : 보너스 번호 입력 값을 검증함
-  - [ ] 빈 값인지
-  - [ ] 숫자인지
-  - [ ] 1~45 사이의 범위에 존재하는지
-  - [ ] 당첨 번호와 중복되는지
+  - [x] 0 이상의 양수인지
+  - [x] 1000으로 나누어 떨어지는지
+  - [x] 100,000원 이하의 값인지
+- [x] lotto : 자동 생성된 로또 번호 & 당첨 번호 값을 검증함
+  - [x] 빈값이 존재 하는지
+  - [x] 숫자가 6개인지
+  - [x] 중복 값이 존재하는지
+  - [x] 1~45 사이의 범위에 존재하는지
+- [x] bonusNum : 보너스 번호 입력 값을 검증함
+  - [x] 빈 값인지
+  - [x] 숫자인지
+  - [x] 1~45 사이의 범위에 존재하는지
+  - [x] 당첨 번호와 중복되는지
 
 ### View
 
@@ -144,11 +158,11 @@ ERROR
 - [x] LOTTO_OUT_OF_RANGE: "[ERROR] 로또 번호는 6개여야 합니다."
 - [x] NAN: "[ERROR] 입력 값이 숫자가 아닙니다."
 - [x] LOTTO_SAME_NUM: "[ERROR] 중복된 숫자가 들어있습니다. ",
-- [ ] NOT_POSITIVE : “[ERROR] 양수가 아닙니다.”
-- [ ] NOT_DIVISIBLE : ”[ERROR] 1000원으로 나누어 떨어지지 않는 수입니다.”
-- [ ] LOTTO_PRICE_EXCEED : “[ERROR] 로또는 1000원 이상 10만원 이하로 구매 가능합니다.”
-- [ ] NUMBER_OUT_OF_RANGE : “[ERROR] 번호는 1~45 사이의 숫자여야 합니다.”
-- [ ] BONUS_SAME_NUM : “[ERROR] 보너스 번호가 당첨번호와 중복됩니다.”
+- [x] NOT_POSITIVE : “[ERROR] 양수가 아닙니다.”
+- [x] NOT_DIVISIBLE : ”[ERROR] 1000원으로 나누어 떨어지지 않는 수입니다.”
+- [x] LOTTO_PRICE_EXCEED : “[ERROR] 로또는 1000원 이상 10만원 이하로 구매 가능합니다.”
+- [x] NUMBER_OUT_OF_RANGE : “[ERROR] 번호는 1~45 사이의 숫자여야 합니다.”
+- [x] BONUS_SAME_NUM : “[ERROR] 보너스 번호가 당첨번호와 중복됩니다.”
 
 ## Test
 
