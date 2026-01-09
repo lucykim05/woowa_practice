@@ -3,10 +3,12 @@ import InputView from '../view/InputView.js';
 import Game from '../model/Game.js';
 
 class GameController {
-  async readInfo() {
+  async run() {
     const names = await this.readNames();
     const count = await this.readCount();
     const game = new Game(names);
+    this.game = game;
+    this.game.play(count);
   }
 
   async readNames() {
@@ -21,3 +23,5 @@ class GameController {
     return count;
   }
 }
+
+export default GameController;
