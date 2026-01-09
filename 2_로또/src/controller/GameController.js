@@ -1,7 +1,14 @@
+import LottoGame from '../model/LottoGame.js';
 import Validator from '../model/Validator.js';
 import InputView from '../view/InputView.js';
 
 class GameController {
+  async initGame() {
+    const amount = await this.readAmount();
+    const game = new LottoGame(amount);
+    this.game = game;
+  }
+
   async readAmount() {
     const input = await InputView.readAmount();
     Validator.validateAmount(input);
