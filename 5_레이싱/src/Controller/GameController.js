@@ -1,41 +1,36 @@
-import Car from '../Model/Car.js';
-import OutputView from '../View/OutputView.js';
+import Validator from '../model/Validator.js';
+import InputView from '../view/InputView.js';
+import Game from '../model/Game.js';
+import OutputView from '../view/OutputView.js';
 
 class GameController {
-  #names;
-  #count;
-
-  constructor(names, count) {
-    this.cars = names.map((x) => new Car(x));
-    this.count = count;
+  async run() {
+    const names = await this.readNames();
+    const count = await this.readCount();
+    const game = new Game(names);
+    this.game = game;
+    this.game.play(count);
   }
 
-  play() {
-    const count = this.count;
-    for (let i = 0; i < count; i++) {
-      this.#round();
-    }
-    const winner = this.#getWinner();
-    OutputView.printWinner(winner);
+  printResult() {
+    const result = this.game.getResult();
+    const carsInfo = result.info;
+    const winnerInfo = result.winner;
+    OutputView.printResultStart();
+    carsInfo.forEach((x) => OutputView.printCarResult(x));
+    OutputView.printWinner(winnerInfo);
   }
 
-  #round() {
-    OutputView.printNothing();
-    this.cars.forEach((x) => {
-      x.move();
-    });
+  async readNames() {
+    const names = await InputView.readNames();
+    Validator.validateNames(names);
+    return names;
   }
 
-  #getWinner() {
-    const max = Math.max(...this.cars.map((x) => x.position));
-    const winner = this.cars
-      .filter((x) => x.position === max)
-      .map((x) => x.name);
-    return winner;
-  }
-
-  getCars() {
-    return this.cars;
+  async readCount() {
+    const count = await InputView.readCount();
+    Validator.validateCount(count);
+    return count;
   }
 }
 

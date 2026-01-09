@@ -1,34 +1,24 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import OutputView from '../View/OutputView.js';
+import { Random } from '@woowacourse/mission-utils';
+import { NUMBERS } from '../constants/constants.js';
 
 class Car {
-  #name;
-  #position;
-
   constructor(name) {
     this.name = name;
     this.position = 0;
   }
 
   move() {
-    const num = this.#getRandom();
-    if (num >= 4) this.position++;
-    this.#printResult();
+    const bool = this.canMove();
+    if (bool) this.position++;
   }
 
-  #getRandom() {
-    const num = MissionUtils.Random.pickNumberInRange(0, 9);
-    return num;
-  }
-
-  #printResult() {
-    const name = this.name;
-    const num = this.position;
-    OutputView.printResult(name, num);
-  }
-
-  resetPosition() {
-    this.position = 0;
+  canMove() {
+    const randomNum = Random.pickNumberInRange(
+      NUMBERS.RANDOM_START,
+      NUMBERS.RANDOM_END
+    );
+    if (randomNum >= NUMBERS.MOVE_NUMBER) return true;
+    return false;
   }
 }
 

@@ -1,31 +1,22 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { Console } from '@woowacourse/mission-utils';
+import { PROMPT } from '../constants/constants.js';
 
-class OutputView {
-  static printStart() {
-    MissionUtils.Console.print('\n실행 결과');
-  }
+const OutputView = {
+  printResultStart() {
+    Console.print(PROMPT.RESULT);
+  },
 
-  static printResult(name, num) {
-    const msg = '-'.repeat(num);
-    MissionUtils.Console.print(`${name} : ${msg}`);
-  }
+  printCarResult(input) {
+    const name = input.name;
+    const position = input.car.position;
+    const msg = '-'.repeat(position);
+    Console.print(`${name} : ${msg}`);
+  },
 
-  static printWinner(winner) {
-    const msg = winner.join(', ');
-    MissionUtils.Console.print(`\n최종 우승자 : ${msg}`);
-  }
-
-  static printNothing() {
-    MissionUtils.Console.print('');
-  }
-
-  static printRound(count) {
-    MissionUtils.Console.print(`${count} 라운드`);
-  }
-
-  static printNewResult(num) {
-    MissionUtils.Console.print(`${num} 라운드에 우승하셨습니다.`);
-  }
-}
+  printWinner(input) {
+    const msg = input.join(', ');
+    Console.print(`${PROMPT.WINNER}${msg}`);
+  },
+};
 
 export default OutputView;

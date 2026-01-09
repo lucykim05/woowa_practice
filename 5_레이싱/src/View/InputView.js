@@ -1,60 +1,16 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
-import { MESSAGE } from '../Constants/Message.js';
-import Validator from '../utils/Validator.js';
+import { Console } from '@woowacourse/mission-utils';
+import { PROMPT } from '../constants/constants.js';
 
-class InputView {
-  static async readType() {
-    const gameType = await MissionUtils.Console.readLineAsync(
-      MESSAGE.READ_TYPE
-    );
-    const type = Number(gameType);
-    Validator.validateType(type);
-    return type;
-  }
+const InputView = {
+  async readNames() {
+    const input = await Console.readLineAsync(PROMPT.NAME);
+    return input.split(',').map((x) => x.trim());
+  },
 
-  static async readNames() {
-    const names = await MissionUtils.Console.readLineAsync(MESSAGE.READ_NAME);
-    const arr = names.split(',').map((x) => {
-      const trimmed = x.trim();
-      Validator.validateName(trimmed);
-      return trimmed;
-    });
-    return arr;
-  }
-
-  static async readCount() {
-    const input = await MissionUtils.Console.readLineAsync(MESSAGE.READ_COUNT);
-    const count = Number(input);
-    Validator.validateNum(count);
-    return count;
-  }
-
-  static async readUserName() {
-    const name = await MissionUtils.Console.readLineAsync(
-      MESSAGE.READ_USER_NAME
-    );
-    Validator.validateName(name);
-    return name;
-  }
-
-  static async readOtherNames() {
-    const names = await MissionUtils.Console.readLineAsync(
-      MESSAGE.READ_OTHERS_NAME
-    );
-    const arr = names.split(',').map((x) => {
-      const trimmed = x.trim();
-      Validator.validateName(trimmed);
-      return trimmed;
-    });
-    return arr;
-  }
-
-  static async readRetry() {
-    const input = await MissionUtils.Console.readLineAsync(MESSAGE.RETRY);
-    const retry = Number(input);
-    Validator.validateRetry(retry);
-    return retry;
-  }
-}
+  async readCount() {
+    const input = await Console.readLineAsync(PROMPT.COUNT);
+    return Number(input);
+  },
+};
 
 export default InputView;
