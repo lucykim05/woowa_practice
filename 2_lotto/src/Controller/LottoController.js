@@ -13,7 +13,7 @@ export const LottoController = {
       OutputView.random(randNumResult);
 
       const winningNum = await this.getWinningNum();
-      const bonusNum = await this.getBonusNum();
+      const bonusNum = await this.getBonusNum(winningNum);
       lottoSystem.match(winningNum, bonusNum);
 
       const result = lottoSystem.getResult();
@@ -36,15 +36,19 @@ export const LottoController = {
   async getWinningNum() {
     try {
       const winningNum = await InputView.winning();
-      return Parser.comma(winningNum).map(Number);
+
+      const parsedWinningNum = Parser.comma(winningNum).map(Number);
+      Validator.lotto(parsedWinningNum);
+      return parsedWinningNum;
     } catch (error) {
       throw Error(error.message);
     }
   },
 
-  async getBonusNum() {
+  async getBonusNum(winningNum) {
     try {
       const bonusNum = await InputView.bonus();
+      Validator.bonusNum(winningNum, bonusNum);
       return Number(bonusNum);
     } catch (error) {
       throw Error(error.message);

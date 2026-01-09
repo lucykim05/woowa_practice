@@ -10,9 +10,6 @@ export class Lotto {
   }
 
   #validate(numbers) {
-    if (numbers.length !== LOTTO.COUNT) {
-      throw new Error(ERROR.LOTTO_OUT_OF_RANGE);
-    }
     Validator.lotto(numbers);
   }
 

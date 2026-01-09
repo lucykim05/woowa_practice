@@ -9,7 +9,7 @@ export class LottoSystem {
   }
 
   #calculateProfit() {
-    const buyPrice = this.#lottoList.length * LOTTO.PRICE;
+    const buyPrice = this.#lottoList.length * LOTTO.PRICE.MIN;
     let prize = 0;
 
     for (const match in result) {
@@ -20,7 +20,7 @@ export class LottoSystem {
   }
 
   makeLotto(price) {
-    const count = price / LOTTO.PRICE;
+    const count = price / LOTTO.PRICE.MIN;
     for (let i = 0; i < count; i++) {
       const randomNumArr = Random.pickUniqueNumbersInRange(
         LOTTO.RANGE.MIN,
