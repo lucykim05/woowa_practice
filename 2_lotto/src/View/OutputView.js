@@ -6,5 +6,9 @@ export const OutputView = {
       Console.print(row);
     }
   },
-  result() {},
+  result(result) {
+    for (const line of result) {
+      Console.print(line);
+    }
+  },
 };
