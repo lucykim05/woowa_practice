@@ -6,6 +6,9 @@ export const OutputView = {
       Console.print(row);
     }
   },
+  error(error) {
+    Console.print(`${error.message}`);
+  },
   result(result) {
     for (const line of result) {
       Console.print(line);

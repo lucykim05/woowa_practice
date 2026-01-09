@@ -19,7 +19,7 @@ export const LottoController = {
       const result = lottoSystem.getResult();
       OutputView.result(result);
     } catch (error) {
-      throw Error(error.message);
+      OutputView.error(error);
     }
   },
 
