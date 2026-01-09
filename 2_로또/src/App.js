@@ -7,6 +7,7 @@ class App {
       const controller = new GameController();
       await controller.initGame();
       controller.makeLotto();
+      await controller.runGame();
     } catch (error) {
       Console.print(error.message);
       throw error;

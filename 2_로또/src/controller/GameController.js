@@ -23,6 +23,12 @@ class GameController {
     this.game.runGame(numbers);
   }
 
+  printResult() {
+    const [result, profit] = this.game.getResult();
+    OutputView.printResult(result);
+    OutputView.printProfit(profit);
+  }
+
   async readAmount() {
     const input = await InputView.readAmount();
     Validator.validateAmount(input);
