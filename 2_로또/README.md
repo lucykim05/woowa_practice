@@ -111,9 +111,9 @@ src/
 - [x] 구입 금액 입력 후 검증
 - [x] LottoGame 생성(금액 전달)
 - [x] Lotto 발행 결과 받아 출력
-- [ ] 당첨 번호 입력 후 검증
-- [ ] 보너스 번호 입력 후 검증
-- [ ] LottoGame에 번호 전달하며 로직 실행
+- [x] 당첨 번호 입력 후 검증
+- [x] 보너스 번호 입력 후 검증
+- [x] LottoGame에 번호 전달하며 로직 실행
 - [ ] 결과 가져와서 출력
 
 ### LottoGame
@@ -125,10 +125,10 @@ src/
   - [x] 구입금액 입력 받아 저장
   - [x] LottoMaker 통해 로또 발행
   - [x] 발행 결과 저장 및 return
-- [ ] 로또 게임 실행
-  - [ ] 당첨 번호, 보너스 번호 입력 받아 LottoResult 생성
-  - [ ] Lotto마다 LottoResult 내부 결과 도출 로직 실행
-  - [ ] 결과 받아서 map에 저장 (this.result.set(x, this.result.get(x)++))
+- [x] 로또 게임 실행
+  - [x] 당첨 번호, 보너스 번호 입력 받아 LottoResult 생성
+  - [x] Lotto마다 LottoResult 내부 결과 도출 로직 실행
+  - [x] 결과 받아서 map에 저장 (this.result.set(x, this.result.get(x)++))
   - [ ] 수익률 계산하여 {결과map, 수익률} return
 
 ### LottoMaker
@@ -139,11 +139,11 @@ src/
 
 ### LottoResult
 
-- [ ] 당첨번호, 보너스 번호 저장
-- [ ] 결과 도출 로직
-  - [ ] Lotto내부에 당첨번호 몇개인가
-  - [ ] 보너스 번호 있는가
-  - [ ] 위의 내용 바탕으로 순위 숫자 return
+- [x] 당첨번호, 보너스 번호 저장
+- [x] 결과 도출 로직
+  - [x] Lotto내부에 당첨번호 몇개인가
+  - [x] 보너스 번호 있는가
+  - [x] 위의 내용 바탕으로 순위 숫자 return
 
 ### Calculator
 

@@ -18,6 +18,11 @@ class GameController {
     });
   }
 
+  async runGame() {
+    const numbers = await this.readNumbers();
+    this.game.runGame(numbers);
+  }
+
   async readAmount() {
     const input = await InputView.readAmount();
     Validator.validateAmount(input);
