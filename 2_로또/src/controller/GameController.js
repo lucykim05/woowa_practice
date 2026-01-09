@@ -9,6 +9,11 @@ class GameController {
     this.game = game;
   }
 
+  makeLotto() {
+    const lottos = this.game.makeLotto();
+    OutputView.printLottos(lottos);
+  }
+
   async readAmount() {
     const input = await InputView.readAmount();
     Validator.validateAmount(input);

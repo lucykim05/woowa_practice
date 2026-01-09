@@ -121,10 +121,10 @@ src/
 - [x] 기본 생성
   - [x] 금액 저장
   - [x] 결과 map 생성
-- [ ] 로또 발행
-  - [ ] 구입금액 입력 받아 저장
-  - [ ] LottoMaker 통해 로또 발행
-  - [ ] 발행 결과 저장 및 return
+- [x] 로또 발행
+  - [x] 구입금액 입력 받아 저장
+  - [x] LottoMaker 통해 로또 발행
+  - [x] 발행 결과 저장 및 return
 - [ ] 로또 게임 실행
   - [ ] 당첨 번호, 보너스 번호 입력 받아 LottoResult 생성
   - [ ] Lotto마다 LottoResult 내부 결과 도출 로직 실행
@@ -133,9 +133,9 @@ src/
 
 ### LottoMaker
 
-- [ ] 금액 입력 받아 개수 계산
-- [ ] 랜덤 숫자 만들어서 Lotto 생성
-- [ ] 생성된 Lotto 담은 배열 return
+- [x] 금액 입력 받아 개수 계산
+- [x] 랜덤 숫자 만들어서 Lotto 생성
+- [x] 생성된 Lotto 담은 배열 return
 
 ### LottoResult
 
