@@ -16,6 +16,7 @@ class GameController {
     const result = this.game.getResult();
     const carsInfo = result.info;
     const winnerInfo = result.winner;
+    OutputView.printResultStart();
     carsInfo.forEach((x) => OutputView.printCarResult(x));
     OutputView.printWinner(winnerInfo);
   }

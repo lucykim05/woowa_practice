@@ -1,6 +1,11 @@
 import { Console } from '@woowacourse/mission-utils';
+import { PROMPT } from '../constants/constants.js';
 
 const OutputView = {
+  printResultStart() {
+    Console.print(PROMPT.RESULT);
+  },
+
   printCarResult(input) {
     const name = input.name;
     const position = input.car.position;
@@ -10,7 +15,7 @@ const OutputView = {
 
   printWinner(input) {
     const msg = input.join(', ');
-    Console.print(`최종 우승자 : ${msg}`);
+    Console.print(`${PROMPT.WINNER}${msg}`);
   },
 };
 
