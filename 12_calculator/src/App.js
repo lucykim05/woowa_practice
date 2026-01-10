@@ -1,5 +1,9 @@
+import { CalculatorController } from "./Controller/CalcultorController.js";
+
 class App {
-  async run() {}
+  async run() {
+    await CalculatorController.process();
+  }
 }
 
 export default App;
